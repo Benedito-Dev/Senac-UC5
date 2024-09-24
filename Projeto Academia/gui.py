@@ -59,7 +59,6 @@ class Application(tk.Tk, Funções):
         self.entry_endereco.pack(pady=5)
 
         tk.Button(self, text="Cadastrar-se", command=self.validar_dados, font=("Arial", 12)).pack(pady=20)
-        tk.Button(self, text="Login", command=self.exibir_login, font=("Arial", 12)).pack(pady=0)
         tk.Button(self, text="Voltar", command=self.menu_inicial, font=("Arial", 10)).pack(pady=10)
 
         
