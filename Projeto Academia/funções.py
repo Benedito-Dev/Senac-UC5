@@ -68,7 +68,7 @@ class Funções():
         telefone = self.entry_telefone.get()
         endereco = self.entry_endereco.get()
 
-        if not nome or not email:
+        if not nome or not email or not senha or not telefone or not endereco:
             messagebox.showerror("Erro", "Por favor preencha todos os campos")
             return
 
