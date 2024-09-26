@@ -60,6 +60,12 @@ class Funções():
         # Se todos os dados estiverem válidos, prosseguir com a lógica de envio
         self.enviar_dados()
 
+    def Exibir_senha(self):
+        # Altera entre mostrar a senha ou não com base no valor do Checkbutton
+        if self.check_senha.get() == 1:
+            self.entry_senha.config(show="")  # Mostrar a senha
+        else:
+            self.entry_senha.config(show="*")  # Ocultar a senha
 
     def enviar_dados(self):
         nome = self.entry_nome.get()
