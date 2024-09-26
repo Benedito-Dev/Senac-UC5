@@ -72,9 +72,14 @@ class Application(tk.Tk, Funções):
         self.entry_email = tk.Entry(self)
         self.entry_email.pack(pady=5)
 
+        self.check_senha = tk.IntVar()
+
         tk.Label(self, text="Senha:", font=("Arial", 10)).pack()
-        self.entry_senha = tk.Entry(self)
+        self.entry_senha = tk.Entry(self, show="*")
         self.entry_senha.pack(pady=5)
+
+        check_button = tk.Checkbutton(self, text="Exibir Senha", variable=self.check_senha, command=self.Exibir_senha)
+        check_button.pack()
 
         tk.Label(self, text="Telefone:", font=("Arial", 10)).pack()
         self.entry_telefone = tk.Entry(self)
