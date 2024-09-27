@@ -25,16 +25,19 @@ class Database:
     def verificando_usuario(self, nome_login, senha_login):
         try:
             with self.Session() as session:
-                # Consulta para verificar se o usuário existe
-                query = select(self.usuarios_table.c.id).where(self.usuarios_table.c.nome == nome_login, self.usuarios_table.c.senha == senha_login)
-                resultado = session.execute(query).scalars().first()  # Executa a consulta e pega o primeiro resultado
+                # Consulta para verificar se o usuário existe com nome e senha
+                query = select(self.usuarios_table.c.id, self.usuarios_table.c.nome).where(
+                    self.usuarios_table.c.nome == nome_login,
+                    self.usuarios_table.c.senha == senha_login
+                )
+                resultado = session.execute(query).first()  # Executa a consulta e pega o primeiro resultado
 
                 if resultado:
                     print("Usuário encontrado:", resultado.nome)
-                    return True  # Login bem-sucedido
+                    return True
                 else:
                     print("Usuário não encontrado.")
-                    return False  # Login falhou
+                    return False
         except SQLAlchemyError as e:
             print("Erro ao verificar usuário:", e)
             return False
