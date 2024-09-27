@@ -37,15 +37,6 @@ class Application(tk.Tk, Funções):
         # Estilização da Janela
         self.configure(bg="black")
 
-        # Estilização do Botão da Home
-        style = ttk.Style()
-        style.configure("Rounded.TButton",
-                        borderwidth=10,
-                        relief="raised",
-                        background="#03F934",  # Corrigido o código da cor
-                        foreground="white",
-                        padding=(10, 5))
-
         # Frame superior com o título e plano
         frame_superior = tk.Frame(self, bg="black")
         frame_superior.pack(side="top", fill="x", pady=10)
@@ -61,14 +52,15 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
 
         # Colocando os botões lado a lado usando grid
-        btn_perfil = ttk.Button(central_frame, text="Perfil", style="Rounded.TButton", command=self.perfil)
-        btn_perfil.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")  # Adicionei sticky para expandir
+        btn_perfil = tk.Button(central_frame, text="Perfil", command=self.perfil, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_perfil.grid(row=0, column=0, padx=20, pady=20)
 
-        btn_treinos = ttk.Button(central_frame, text="Treinos", style="Rounded.TButton", command=self.treinos)
-        btn_treinos.grid(row=0, column=1, padx=20, pady=20, sticky="nsew")  # Adicionei sticky para expandir
+        btn_treinos = tk.Button(central_frame, text="Treinos", command=self.treinos, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_treinos.grid(row=0, column=1, padx=20, pady=20)
 
-        btn_ajustes = ttk.Button(central_frame, text="Ajustes", style="Rounded.TButton", command=self.ajustes)
-        btn_ajustes.grid(row=0, column=2, padx=20, pady=20, sticky="nsew")  # Adicionei sticky para expandir
+        btn_ajustes = tk.Button(central_frame, text="Ajustes", command=self.ajustes, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_ajustes.grid(row=0, column=2, padx=20, pady=20)
+
 
         # Configurar expansão de colunas
         central_frame.grid_columnconfigure(0, weight=1)
