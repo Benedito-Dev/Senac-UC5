@@ -15,4 +15,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Testando Sprint 1 maquina da minha casa
+# Testando 2-feature-treinos
