@@ -3,6 +3,7 @@ import tkinter as tk
 import re
 from tkinter import ttk
 from tkinter import messagebox
+from tkcalendar import Calendar
 
 
 class Funções():
@@ -130,5 +131,6 @@ class Funções():
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
 
+
     def Encerrar_programa(self):
-        self.destroy()
+            self.destroy()

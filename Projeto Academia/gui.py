@@ -3,6 +3,7 @@ from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
 from funções import Funções
+from tkcalendar import Calendar
 
 class Application(tk.Tk, Funções):
     def __init__(self, db):
@@ -159,11 +160,41 @@ class Application(tk.Tk, Funções):
         self.entry_endereco = tk.Entry(frame)
         self.entry_endereco.grid(row=6, column=1, pady=5)
 
+        #CPF 
+        tk.Label(frame, text="CPF", font=("Arial",10)).grid(row=7, column=0, sticky="e",padx=10)
+        self.entry_cpf = tk.Entry(frame)
+        self.entry_cpf.grid(row=7,column=1, pady=5)
+        
+        #Data de nascimento 
+        tk.Label(frame, text="Data de nascimento", font=("Arial",10)).grid(row=8,column=0, sticky="e", padx=10)
+        
+        self.entry_dataDeNascimento = tk.Entry(frame)
+        self.entry_dataDeNascimento.grid(row=8,column=1,pady=5)
+
+        btn_abrir_calendario = ttk.Button(frame, text="Escolher data", command=self.abrir_calendario)
+        btn_abrir_calendario.grid(row=8, column=2,padx=10)
+
         # Botão Cadastrar-se
-        tk.Button(frame, text="Cadastrar-se", command=self.validar_dados, font=("Arial", 12)).grid(row=7, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Cadastrar-se", command=self.validar_dados, font=("Arial", 12)).grid(row=9, column=0, columnspan=2, pady=10)
 
         # Botão Voltar
-        tk.Button(frame, text="Voltar", command=self.realizar_login, font=("Arial", 10)).grid(row=8, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Voltar", command=self.realizar_login, font=("Arial", 10)).grid(row=10, column=0, columnspan=2, pady=10)
+
+    def abrir_calendario(self):
+        janela_calendario = tk.Toplevel(self)
+        janela_calendario.title("Selecione a data de nascimento")
+
+        calendario = Calendar(janela_calendario,selectmode="day",year=2000,month=1,day=10)
+        calendario.pack(pady=20)
+
+        def pegar_data():
+            data_selecionada = calendario.get_date()
+            self.entry_dataDeNascimento.delete(0,tk.END)
+            self.entry_dataDeNascimento.insert(0,data_selecionada)
+            janela_calendario.destroy()
+            
+        btn_selecionar_data = ttk.Button(janela_calendario,text="Selecionar",command=pegar_data)
+        btn_selecionar_data.pack(pady=10)
         
     def Exibir_perfis(self):
         for widget in self.winfo_children():
