@@ -4,7 +4,7 @@ import re
 from tkinter import ttk
 from tkinter import messagebox
 from tkcalendar import Calendar
-
+from datetime import datetime
 
 class Funções():
         
@@ -48,6 +48,8 @@ class Funções():
         senha = self.entry_senha.get().strip()
         telefone = self.entry_telefone.get().strip()
         endereco = self.entry_endereco.get().strip()
+        Cpf = self.entry_CPF.get().strip()
+        dataDeNascimento = self.entry_dataDeNascimento.get().strip()
 
         # Validação do nome (mínimo de 3 letras, apenas caracteres alfabéticos)
         if len(nome) < 3 or not nome.isalpha():
@@ -74,6 +76,16 @@ class Funções():
         if len(endereco) < 5:
             messagebox.showerror("Erro", "O endereço deve ter pelo menos 5 caracteres.")
             return
+        
+        # Validação de CPF(exatos 11 digitos)
+        if len(Cpf) > 11 or len(Cpf) < 11:
+            messagebox.showerror("Erro", "O endereço deve ter exatos 11 digitos")
+
+        #validação da Data de nascimento(Minimo de 12 anos)
+        if dataDeNascimento - datetime.now() > 12:
+            messagebox.showerror("Erro", "A idade minima permitida é 12 anos")
+
+        
 
         # Se todos os dados estiverem válidos, prosseguir com a lógica de envio
         self.enviar_dados()
@@ -85,6 +97,8 @@ class Funções():
         senha = self.entry_senha.get()
         telefone = self.entry_telefone.get()
         endereco = self.entry_endereco.get()
+        Cpf = self.entry_CPF.get()
+        dataDeNascimento = self.entry_dataDeNascimento.get()
 
         if not nome or not email:
             messagebox.showerror("Erro", "Por favor preencha todos os campos")
@@ -130,7 +144,7 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Perfil deletado com sucesso!")
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
-
+    
 
     def Encerrar_programa(self):
             self.destroy()
