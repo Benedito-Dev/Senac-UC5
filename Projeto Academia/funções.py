@@ -6,7 +6,8 @@ from tkinter import messagebox
 
 
 class Funções():
-
+        
+    
     def carregar_perfis(self):
         try:
             # Obtendo os dados da tabela
@@ -23,6 +24,13 @@ class Funções():
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao carregar perfis: {e}")
 
+
+
+    def Exibir_senha(self):
+        if self.check_senha.get() == 1:
+            self.entry_senha.config(show="")
+        else:
+            self.entry_senha.config(show="*")
 
     def validar_dados(self):
         nome = self.entry_nome.get().strip()
@@ -60,6 +68,12 @@ class Funções():
         # Se todos os dados estiverem válidos, prosseguir com a lógica de envio
         self.enviar_dados()
 
+    def Exibir_senha(self):
+        # Altera entre mostrar a senha ou não com base no valor do Checkbutton
+        if self.check_senha.get() == 1:
+            self.entry_senha.config(show="")  # Mostrar a senha
+        else:
+            self.entry_senha.config(show="*")  # Ocultar a senha
 
     def enviar_dados(self):
         nome = self.entry_nome.get()
@@ -78,6 +92,12 @@ class Funções():
             self.after(500, self.menu_inicial)
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao cadastrar usuário: {e}")
+
+    def validar_login(self):
+        nome = self.entry_nome.get()
+        senha = self.entry_senha.get()
+
+        self.db.verificando_usuario(self,nome,senha)
 
 
     def deletar_perfil(self):
