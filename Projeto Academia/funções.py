@@ -6,6 +6,26 @@ from tkinter import messagebox
 
 
 class Funções():
+        
+    # Funções da Home
+    def perfil(self):
+        super().perfil()
+
+    def treinos(self):
+        super().treinos()
+
+    def ajustes(self):
+        super().ajustes()
+
+    # Funnções do menu de Treinos
+    def next_page(self):
+        self.current_page += 1
+        self.Exibir_Treinos()
+
+    def previous_page(self):
+        self.current_page -= 1
+        self.Exibir_Treinos()
+
 
     def carregar_perfis(self):
         try:
@@ -23,6 +43,12 @@ class Funções():
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao carregar perfis: {e}")
 
+
+    def Exibir_senha(self):
+        if self.check_senha.get() == 1:
+            self.entry_senha.config(show="")
+        else:
+            self.entry_senha.config(show="*")
 
     def validar_dados(self):
         nome = self.entry_nome.get().strip()
@@ -80,6 +106,21 @@ class Funções():
             messagebox.showerror("Erro", f"Erro ao cadastrar usuário: {e}")
 
 
+    def validar_login(self):
+        nome = self.entry_nome.get()
+        senha = self.entry_senha.get()
+
+        try:
+            if self.db.verificando_usuario(nome, senha):
+                messagebox.showinfo("Sucesso", "Login Efetuado")
+                self.nome_usuario = nome
+                self.after(500, self.Home)
+            else:
+                messagebox.showerror("Erro", "Nome ou senha inválidos")
+        except Exception as e:
+            messagebox.showerror("Erro", f"Erro em nosso sistema, aguarde... {e}")
+
+
     def deletar_perfil(self):
         selected_item = self.tree.selection()
         if not selected_item:
@@ -100,12 +141,3 @@ class Funções():
 
     def Encerrar_programa(self):
         self.destroy()
-    
-    def perfil(self):
-        print("Perfil selecionado")
-
-    def treinos(self):
-        print("Treinos selecionado")
-
-    def ajustes(self):
-        print("Ajustes selecionado")

@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, String, Integer
+from sqlalchemy import create_engine, MetaData, Table, Column, String, Integer, select, func
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -20,6 +20,28 @@ class Database:
                                     Column('telefone', String(50)),
                                     Column('endereco', String(100)))
         self.metadata.create_all(self.engine)
+
+#verificando se o usuario esta na tabela(usado para o login)
+    def verificando_usuario(self, nome_login, senha_login):
+        try:
+            with self.Session() as session:
+                # Consulta para verificar se o usuário existe com nome e senha
+                query = select(self.usuarios_table.c.id, self.usuarios_table.c.nome).where(
+                    self.usuarios_table.c.nome == nome_login,
+                    self.usuarios_table.c.senha == senha_login
+                )
+                resultado = session.execute(query).first()  # Executa a consulta e pega o primeiro resultado
+
+                if resultado:
+                    print("Usuário encontrado:", resultado.nome)
+                    return True
+                else:
+                    print("Usuário não encontrado.")
+                    return False
+        except SQLAlchemyError as e:
+            print("Erro ao verificar usuário:", e)
+            return False
+        
 
 # Inserir Novo Usuario no Banco de Dados
     def insert_user(self, nome, email, senha, telefone, endereco):
