@@ -17,6 +17,15 @@ class Funções():
     def ajustes(self):
         super().ajustes()
 
+    # Funnções do menu de Treinos
+    def next_page(self):
+        self.current_page += 1
+        self.Exibir_Treinos()
+
+    def previous_page(self):
+        self.current_page -= 1
+        self.Exibir_Treinos()
+
 
     def carregar_perfis(self):
         try:

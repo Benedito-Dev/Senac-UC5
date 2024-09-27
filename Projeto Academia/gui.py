@@ -10,6 +10,7 @@ class Application(tk.Tk, Funções):
         self.db = db
         self.title("Primeira Janela")
         self.geometry("800x600")
+        self.current_page = 0
         self.menu_inicial()
 
 # Janelas
@@ -55,7 +56,7 @@ class Application(tk.Tk, Funções):
         btn_perfil = tk.Button(central_frame, text="Perfil", command=self.perfil, font=("Arial", 12, "bold"), width=15, height=5)
         btn_perfil.grid(row=0, column=0, padx=20, pady=20)
 
-        btn_treinos = tk.Button(central_frame, text="Treinos", command=self.treinos, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_treinos = tk.Button(central_frame, text="Treinos", command=self.Exibir_Treinos, font=("Arial", 12, "bold"), width=15, height=5)
         btn_treinos.grid(row=0, column=1, padx=20, pady=20)
 
         btn_ajustes = tk.Button(central_frame, text="Ajustes", command=self.ajustes, font=("Arial", 12, "bold"), width=15, height=5)
@@ -187,3 +188,62 @@ class Application(tk.Tk, Funções):
 
         btn_voltar = tk.Button(self, text="Voltar", command=self.menu_inicial, font=("Arial", 10))
         btn_voltar.pack(pady=10)
+
+    def Exibir_Treinos(self):
+        # Dicionário de músculos e exercícios
+        treinos = {
+            "Peito": [
+                {"nome": "Supino reto com barra", "reps": "3x15reps"},
+                {"nome": "Crucifixo inclinado com halteres", "reps": "3x15reps"},
+                {"nome": "Crucifixo no crossover polia alta", "reps": "3x15reps"},
+            ],
+            "Ombros": [
+                {"nome": "Elevação lateral com halteres", "reps": "3x12reps"},
+                {"nome": "Desenvolvimento com halteres", "reps": "3x12reps"},
+                {"nome": "Remada alta com barra", "reps": "3x12reps"},
+            ],
+            "Tríceps": [
+                {"nome": "Tríceps testa", "reps": "3x15reps"},
+                {"nome": "Mergulho em bancos", "reps": "3x12reps"},
+                {"nome": "Puxada de tríceps na polia", "reps": "3x15reps"},
+            ]
+        }
+
+        # Pegar a lista de músculos e exercícios
+        grupos_musculares = list(treinos.keys())
+        exercicios_atual = treinos[grupos_musculares[self.current_page]]
+
+        # Limpar a janela
+        for widget in self.winfo_children():
+            widget.destroy()
+
+        # Título
+        tk.Label(self, text=f"Treino de {grupos_musculares[self.current_page]}", font=("Arial", 24), bg="black", fg="white").pack(pady=10)
+
+        # Frame principal para treinos em pirâmide
+        main_frame = tk.Frame(self, bg="#282828")
+        main_frame.pack(pady=20)
+
+        # Pirâmide: primeiro exercício sozinho e dois na segunda linha
+        # 1º Exercício
+        tk.Label(main_frame, text=exercicios_atual[0]["nome"], font=("Arial", 12), bg="#282828", fg="white").grid(row=0, column=0, padx=0, pady=20, sticky="ew")
+        tk.Label(main_frame, text=exercicios_atual[0]["reps"], font=("Arial", 12, "bold"), bg="#282828", fg="white").grid(row=0, column=1, padx=0, pady=20, sticky="ew")
+
+        # 2º e 3º Exercícios (na mesma linha, lado a lado)
+        tk.Label(main_frame, text=exercicios_atual[1]["nome"], font=("Arial", 12), bg="#282828", fg="white").grid(row=1, column=0, padx=10, pady=20, sticky="ew")
+        tk.Label(main_frame, text=exercicios_atual[1]["reps"], font=("Arial", 12, "bold"), bg="#282828", fg="white").grid(row=1, column=1, padx=10, pady=20, sticky="ew")
+
+        tk.Label(main_frame, text=exercicios_atual[2]["nome"], font=("Arial", 12), bg="#282828", fg="white").grid(row=2, column=0, padx=10, pady=20, sticky="ew")
+        tk.Label(main_frame, text=exercicios_atual[2]["reps"], font=("Arial", 12, "bold"), bg="#282828", fg="white").grid(row=2, column=1, padx=10, pady=20, sticky="ew")
+
+        # Botões de Navegação
+        navigation_frame = tk.Frame(self, bg="black")
+        navigation_frame.pack(pady=10)
+
+        if self.current_page > 0:
+            tk.Button(navigation_frame, text="Anterior", command=self.previous_page, font=("Arial", 12)).pack(side="left", padx=20)
+        
+        if self.current_page < len(treinos) - 1:
+            tk.Button(navigation_frame, text="Próximo", command=self.next_page, font=("Arial", 12)).pack(side="right", padx=20)
+        
+        tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Home).pack(pady=20)
