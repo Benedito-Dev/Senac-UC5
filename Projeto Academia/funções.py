@@ -100,3 +100,12 @@ class Funções():
 
     def Encerrar_programa(self):
         self.destroy()
+    
+    def perfil(self):
+        print("Perfil selecionado")
+
+    def treinos(self):
+        print("Treinos selecionado")
+
+    def ajustes(self):
+        print("Ajustes selecionado")

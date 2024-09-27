@@ -8,9 +8,9 @@ class Application(tk.Tk, Funções):
     def __init__(self, db):
         super().__init__()
         self.db = db
-        self.title("Primeira Janela")
+        self.title(f"4 Fitness")
         self.geometry("800x600")
-        self.menu_inicial()
+        self.Home()
 
 # Janelas
 
@@ -84,3 +84,25 @@ class Application(tk.Tk, Funções):
 
         btn_voltar = tk.Button(self, text="Voltar", command=self.menu_inicial, font=("Arial", 10))
         btn_voltar.pack(pady=10)
+
+    def Home(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+
+        nome_home = tk.Label(self, text="Home", font=("Arial",14))
+        nome_home.grid(row=100, column=5, padx=350, pady=20)
+        
+        # Frame central para os botões
+        central_frame = tk.Frame(self)
+        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
+
+        # Colocando os botões lado a lado usando grid
+        btn_perfil = tk.Button(central_frame, text="Perfil", command=self.perfil, font=("Arial", 12), width=15)
+        btn_perfil.grid(row=0, column=0, padx=10, pady=10)
+
+        btn_treinos = tk.Button(central_frame, text="Treinos", command=self.treinos, font=("Arial", 12), width=15)
+        btn_treinos.grid(row=0, column=1, padx=10, pady=10)
+
+        btn_ajustes = tk.Button(central_frame, text="Ajustes", command=self.ajustes, font=("Arial", 12), width=15)
+        btn_ajustes.grid(row=0, column=2, padx=10, pady=10)
+    
