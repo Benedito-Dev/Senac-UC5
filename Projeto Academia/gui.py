@@ -68,10 +68,10 @@ class Application(tk.Tk, Funções):
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
         # Botão de validar
-        tk.Button(frame, text="Validar dados", fg="white", bg="#7fd350", command=self.validar_login, font=("Arial", 10)).grid(row=4, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Login", fg="white", bg="#7fd350", command=self.validar_login, font=("Arial", 12)).grid(row=4, column=0, columnspan=2, pady=10)
 
     # Botão de criar conta
-        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 8)).grid(row=5, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 10)).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
         tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10)).grid(row=6, column=0, columnspan=2, pady=10)
@@ -185,6 +185,9 @@ class Application(tk.Tk, Funções):
         plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12, ))
         plano_label.pack(side="right", padx=20)
 
+        home_button = tk.Button(frame_superior, text="🏠", fg="white", bg="black", command=self.Home)
+        home_button.pack(side="right", padx=10)
+
         # Frame central para os botões
         central_frame = tk.Frame(self, bg="#313131")
         central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)# Centralizando o frame
@@ -224,6 +227,9 @@ class Application(tk.Tk, Funções):
         plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12))
         plano_label.pack(side="right", padx=20)
 
+        home_button = tk.Button(frame_superior, text="🏠", fg="white", bg="black", command=self.Home)
+        home_button.pack(side="right", padx=10)
+
         # Frame central para os botões
         central_frame = tk.Frame(self, bg="#313131")
         central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
@@ -248,7 +254,6 @@ class Application(tk.Tk, Funções):
         btn_voltar = tk.Button(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
         btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
 
-
     def Inferiores(self):
         for widget in self.winfo_children():
             widget.destroy()
@@ -264,6 +269,9 @@ class Application(tk.Tk, Funções):
 
         plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12))
         plano_label.pack(side="right", padx=20)
+
+        home_button = tk.Button(frame_superior, text="🏠", fg="white", bg="black", command=self.Home)
+        home_button.pack(side="right", padx=10)
 
         # Frame central para os botões
         central_frame = tk.Frame(self, bg="#313131")
@@ -454,6 +462,7 @@ class Application(tk.Tk, Funções):
 
         # Botão Voltar
         tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Inferiores).pack(pady=20)
+
 
     def Exibir_perfis(self):
         for widget in self.winfo_children():
