@@ -212,7 +212,6 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
 
-            
         self.configure(bg="#313131")
 
         # Frame superior com o título e plano
@@ -222,35 +221,38 @@ class Application(tk.Tk, Funções):
         title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
-        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12, ))
+        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12))
         plano_label.pack(side="right", padx=20)
 
         # Frame central para os botões
         central_frame = tk.Frame(self, bg="#313131")
-        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)# Centralizando o frame
+        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
 
-        # Colocando os botões lado a lado usando grid
+        # Colocando os botões lado a lado usando grid com borda colorida
+        
+        # Frame para o botão Perna com borda colorida
+        peito_frame = tk.Frame(central_frame, highlightbackground="#7fd350", highlightthickness=4)
+        peito_frame.grid(row=0, column=0, padx=20, pady=20)
+        
+        btn_Peito = tk.Button(peito_frame, text="Peito", command=self.Peito, bd=0, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_Peito.pack()
 
-        btn_treinos = tk.Button(central_frame, text="Peito", command=self.Peito, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_treinos.grid(row=0, column=0, padx=20, pady=20)
+        # Frame para o botão Quadriceps com borda colorida
+        Costas_frame = tk.Frame(central_frame, highlightbackground="#7fd350", highlightthickness=4)
+        Costas_frame.grid(row=0, column=1, padx=20, pady=20)
+        
+        btn_Costas = tk.Button(Costas_frame, text="Costas", command=self.Costas, bd=0, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_Costas.pack()
 
-        btn_ajustes = tk.Button(central_frame, text="Costas", command=self.Costas, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_ajustes.grid(row=0, column=1, padx=20, pady=20)
-
+        # Botão Voltar
         btn_voltar = tk.Button(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
         btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
 
-
-        # Configurar expansão de colunas
-        central_frame.grid_columnconfigure(0, weight=1)
-        central_frame.grid_columnconfigure(1, weight=1)
-        central_frame.grid_columnconfigure(2, weight=1)
 
     def Inferiores(self):
         for widget in self.winfo_children():
             widget.destroy()
 
-            
         self.configure(bg="#313131")
 
         # Frame superior com o título e plano
@@ -260,29 +262,32 @@ class Application(tk.Tk, Funções):
         title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
-        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12, ))
+        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12))
         plano_label.pack(side="right", padx=20)
 
         # Frame central para os botões
         central_frame = tk.Frame(self, bg="#313131")
-        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)# Centralizando o frame
+        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
 
-        # Colocando os botões lado a lado usando grid
+        # Colocando os botões lado a lado usando grid com borda colorida
+        
+        # Frame para o botão Perna com borda colorida
+        perna_frame = tk.Frame(central_frame, highlightbackground="#7fd350", highlightthickness=4)
+        perna_frame.grid(row=0, column=0, padx=20, pady=20)
+        
+        btn_Perna = tk.Button(perna_frame, text="Perna", command=self.Perna, bd=0, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_Perna.pack()
 
-        btn_treinos = tk.Button(central_frame, text="Perna", command=self.Perna, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_treinos.grid(row=0, column=0, padx=20, pady=20)
+        # Frame para o botão Quadriceps com borda colorida
+        quadriceps_frame = tk.Frame(central_frame, highlightbackground="#7fd350", highlightthickness=4)
+        quadriceps_frame.grid(row=0, column=1, padx=20, pady=20)
+        
+        btn_Quadriceps = tk.Button(quadriceps_frame, text="Quadriceps", command=self.Quadriceps, bd=0, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_Quadriceps.pack()
 
-        btn_ajustes = tk.Button(central_frame, text="Quadriceps", command=self.Quadriceps, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_ajustes.grid(row=0, column=1, padx=20, pady=20)
-
+        # Botão Voltar
         btn_voltar = tk.Button(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
         btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
-
-
-        # Configurar expansão de colunas
-        central_frame.grid_columnconfigure(0, weight=1)
-        central_frame.grid_columnconfigure(1, weight=1)
-        central_frame.grid_columnconfigure(2, weight=1)
 
     def Peito(self):
         # Dicionário de músculos e exercícios
