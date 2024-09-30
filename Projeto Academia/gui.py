@@ -174,6 +174,12 @@ class Application(tk.Tk, Funções):
         btn_abrir_calendario = ttk.Button(frame, text="Escolher data", command=self.abrir_calendario)
         btn_abrir_calendario.grid(row=8, column=2,padx=10)
 
+        
+        #
+        btn_botao_escolher_plano = tk.Button(frame, text="Escolher plano", command=self.escolher_plano, font=("Arial",10))
+        btn_botao_escolher_plano.grid(row=9, column=1, columnspan=2,pady=10)
+    
+        
         # Botão Cadastrar-se
         tk.Button(frame, text="Cadastrar-se", command=self.validar_dados, font=("Arial", 12)).grid(row=9, column=0, columnspan=2, pady=10)
 
@@ -195,7 +201,12 @@ class Application(tk.Tk, Funções):
             
         btn_selecionar_data = ttk.Button(janela_calendario,text="Selecionar",command=pegar_data)
         btn_selecionar_data.pack(pady=10)
-        
+
+
+    def escolher_plano(self):
+        for widget in self.winfo_children():
+            widget.destroy()    
+    
     def Exibir_perfis(self):
         for widget in self.winfo_children():
             widget.destroy()

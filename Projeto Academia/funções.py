@@ -4,6 +4,7 @@ import re
 from tkinter import ttk
 from tkinter import messagebox
 from tkcalendar import Calendar
+from datetime import datetime
 
 
 class Funções():
@@ -48,7 +49,9 @@ class Funções():
         senha = self.entry_senha.get().strip()
         telefone = self.entry_telefone.get().strip()
         endereco = self.entry_endereco.get().strip()
-
+        data_de_nascimento = self.entry_dataDeNascimento.get().strip()
+        cpf = self.entry_cpf.get().strip()        
+       
         # Validação do nome (mínimo de 3 letras, apenas caracteres alfabéticos)
         if len(nome) < 3 or not nome.isalpha():
             messagebox.showerror("Erro", "O nome deve ter pelo menos 3 letras e conter apenas caracteres alfabéticos.")
@@ -74,11 +77,43 @@ class Funções():
         if len(endereco) < 5:
             messagebox.showerror("Erro", "O endereço deve ter pelo menos 5 caracteres.")
             return
+        
+        if len(cpf) > 11 or len(cpf) < 11:
+            messagebox.showerror("Erro", "cpf deve ter exatos 11 digitos")
+            return
+        
+        if self.validar_data(data_de_nascimento) == False:
+            messagebox.showerror("Erro", "Você deve ter mais de 12 anos")
+            return
+
 
         # Se todos os dados estiverem válidos, prosseguir com a lógica de envio
         self.enviar_dados()
 
+    def validar_data(self, data_nascimento_str):
+        try:
+            # Converte a string em um objeto datetime
+            data_nascimento = datetime.strptime(data_nascimento_str, '%d/%m/%Y')
+            
+            # Obtém a data atual
+            data_atual = datetime.now()
+            
+            # Calcula a diferença de anos
+            idade = data_atual.year - data_nascimento.year
+            
+            # Ajusta a idade caso o aniversário ainda não tenha ocorrido este ano
+            if (data_atual.month, data_atual.day) < (data_nascimento.month, data_nascimento.day):
+                idade -= 1
 
+            # Verifica se a idade é menor que 12
+            if idade < 12:
+                return False
+            return True
+
+        except ValueError:
+            # Retorna False se o formato da data for inválido
+            return False
+    
     def enviar_dados(self):
         nome = self.entry_nome.get()
         email = self.entry_email.get()
