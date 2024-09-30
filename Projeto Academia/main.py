@@ -1,8 +1,8 @@
 from gui import Application
 from db import Database
 
-DATABASE_URL = "postgresql://postgres:Benedito21@localhost/postgres"
-
+DATABASE_URL = "postgresql://postgres:postgres@localhost/postgres"
+ 
 def main():
     db = Database(DATABASE_URL)
     db.create_table()
@@ -15,4 +15,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Testando Develop
+# Testando 2-feature-treinos (Imcompleta)

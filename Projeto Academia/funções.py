@@ -6,7 +6,29 @@ from tkinter import messagebox
 
 
 class Funções():
+        
+    # Funções da Home e Paralelas
+    def perfil(self):
+        super().perfil()
 
+    def treinos(self):
+        super().treinos()
+
+    def ajustes(self):
+        super().ajustes()
+
+
+    # Funnções do menu de Treinos
+    def next_page(self):
+        self.current_page += 1
+        self.Exibir_Treinos()
+
+
+    def previous_page(self):
+        self.current_page -= 1
+        self.Exibir_Treinos()
+
+# Funções para Guias Interativas
     def carregar_perfis(self):
         try:
             # Obtendo os dados da tabela
@@ -22,6 +44,13 @@ class Funções():
                 self.tree.insert('', tk.END, values=(id, nome, email, telefone, endereco))
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao carregar perfis: {e}")
+
+
+    def Exibir_senha(self):
+        if self.check_senha.get() == 1:
+            self.entry_senha.config(show="")
+        else:
+            self.entry_senha.config(show="*")
 
 
     def validar_dados(self):
@@ -63,6 +92,7 @@ class Funções():
 
     def enviar_dados(self):
         nome = self.entry_nome.get()
+        nome = nome.upper()
         email = self.entry_email.get()
         senha = self.entry_senha.get()
         telefone = self.entry_telefone.get()
@@ -78,6 +108,23 @@ class Funções():
             self.after(500, self.menu_inicial)
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao cadastrar usuário: {e}")
+
+
+    def validar_login(self):
+        nome = self.entry_nome.get()
+        nome = nome.upper()
+        senha = self.entry_senha.get()
+
+        try:
+            if self.db.verificando_usuario(nome, senha):
+                messagebox.showinfo("Sucesso", "Login Efetuado")
+                nome = nome.lower()
+                self.nome_usuario = nome.capitalize()
+                self.after(500, self.Home)
+            else:
+                messagebox.showerror("Erro", "Nome ou senha inválidos")
+        except Exception as e:
+            messagebox.showerror("Erro", f"Erro em nosso sistema, aguarde... {e}")
 
 
     def deletar_perfil(self):
@@ -97,6 +144,7 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Perfil deletado com sucesso!")
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
+
 
     def Encerrar_programa(self):
         self.destroy()
