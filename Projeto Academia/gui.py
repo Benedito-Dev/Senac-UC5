@@ -499,39 +499,43 @@ class Application(tk.Tk, Funções):
         titulo_font = font.Font(family="Nunito", size=14, weight="bold")  # Fonte do título em negrito
         botao_font = font.Font(family="Nunito", size=10, weight="bold")  # Fonte do botão em negrito
 
+        moldura = tk.Frame(self, bd=2, relief="groove")
+        moldura.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
+
+
         # Label para o título com fonte Nunito
-        titulo_label = tk.Label(self, text="Editar Informações", bg="#313131", fg="#ffffff", font=titulo_font)
+        titulo_label = tk.Label(moldura, text="Editar Informações", bg="#313131", fg="#ffffff", font=titulo_font)
         titulo_label.grid(row=0, columnspan=2, pady=10)
 
         # Labels com texto branco e fonte Nunito
-        label_nome = tk.Label(self, text="Nome:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_nome = tk.Label(moldura, text="Nome:", bg="#313131", fg="#ffffff", font=nunito_font)
         label_nome.grid(row=1, column=0, padx=1, pady=2, sticky='e')
 
-        entry_nome = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_nome = tk.Entry(moldura, bg="#efefef", fg="#000000", font=nunito_font)
         entry_nome.grid(row=1, column=1,   pady=2)
 
-        label_datanasc = tk.Label(self, text="Data de nascimento:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_datanasc = tk.Label(moldura, text="Data de nascimento:", bg="#313131", fg="#ffffff", font=nunito_font)
         label_datanasc.grid(row=2, column=0,   pady=2, sticky='e')
 
-        entry_datanasc = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_datanasc = tk.Entry(moldura, bg="#efefef", fg="#000000", font=nunito_font)
         entry_datanasc.grid(row=2, column=1,   pady=2)
 
-        label_endereco = tk.Label(self, text="Endereço:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_endereco = tk.Label(moldura, text="Endereço:", bg="#313131", fg="#ffffff", font=nunito_font)
         label_endereco.grid(row=3, column=0,   pady=2, sticky='e')
 
-        entry_endereco = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_endereco = tk.Entry(moldura, bg="#efefef", fg="#000000", font=nunito_font)
         entry_endereco.grid(row=3, column=1,   pady=2)
 
-        label_telefone = tk.Label(self, text="Telefone:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_telefone = tk.Label(moldura, text="Telefone:", bg="#313131", fg="#ffffff", font=nunito_font)
         label_telefone.grid(row=4, column=0,   pady=2, sticky='e')
 
-        entry_telefone = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_telefone = tk.Entry(moldura, bg="#efefef", fg="#000000", font=nunito_font)
         entry_telefone.grid(row=4, column=1,   pady=2)
 
-        label_email = tk.Label(self, text="E-mail:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_email = tk.Label(moldura, text="E-mail:", bg="#313131", fg="#ffffff", font=nunito_font)
         label_email.grid(row=5, column=0,   pady=2, sticky='e')
 
-        entry_email = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_email = tk.Entry(moldura, bg="#efefef", fg="#000000", font=nunito_font)
         entry_email.grid(row=5, column=1,   pady=2)
 
         # Botão com fundo preto, letra verde e fonte em negrito
@@ -548,5 +552,3 @@ class Application(tk.Tk, Funções):
             f"Nome: {nome}\nEndereço: {endereco} \nTelefone: {telefone}\nE-mail: {email}")
         else:
             messagebox.showerror("Erro", "Por favor, preencha todos os campos!")
-
-        self.mainloop()
