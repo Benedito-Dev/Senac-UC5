@@ -47,22 +47,22 @@ class Application(tk.Tk, Funções):
         self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
         # Frame para centralizar o conteúdo
-        frame = tk.Frame(self, bg="#313131")
+        frame = tk.Frame(self, bg="#313131", highlightthickness=4, relief="solid", highlightbackground="#7fd350", highlightcolor="#7fd350")
         frame.grid(row=1, column=0, columnspan=2)
 
         # Título
         titulo = tk.Label(frame, text="Realizar login", fg="white", bg="#313131", font=("Arial", 20))
-        titulo.grid(row=0, column=0, columnspan=2, pady=10)
+        titulo.grid(row=0, column=0, columnspan=2, pady=10, padx=20)
 
         # Nome do usuário
         tk.Label(frame, text="Nome:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
         self.entry_nome = tk.Entry(frame)
-        self.entry_nome.grid(row=1, column=1, pady=5)
+        self.entry_nome.grid(row=1, column=1, pady=5, padx=20)
 
         # Senha
         tk.Label(frame, text="Senha:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=2, column=0, sticky="e", padx=10)
         self.entry_senha = tk.Entry(frame, show="*")
-        self.entry_senha.grid(row=2, column=1, pady=5)
+        self.entry_senha.grid(row=2, column=1, pady=5, padx=20)
 
         # Checkbutton para mostrar senha
         self.check_senha = tk.IntVar()
@@ -73,10 +73,10 @@ class Application(tk.Tk, Funções):
         tk.Button(frame, text="Login", fg="white", bg="#7fd350", command=self.validar_login, font=("Arial", 12)).grid(row=4, column=0, columnspan=2, pady=10)
 
     # Botão de criar conta
-        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 10)).grid(row=5, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 12)).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10)).grid(row=6, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 12)).grid(row=6, column=0, columnspan=2, pady=10)
 
     def cadastrar_cliente(self):
         # Remove widgets existentes
