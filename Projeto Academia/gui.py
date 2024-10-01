@@ -3,6 +3,7 @@ from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
 from funções import Funções
+from tkcalendar import Calendar
 
 class Application(tk.Tk, Funções):
     def __init__(self, db):
@@ -88,12 +89,12 @@ class Application(tk.Tk, Funções):
         self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
         # Frame para centralizar o conteúdo
-        frame = tk.Frame(self, bg="#313131")
+        frame = tk.Frame(self,bg='#313131',highlightthickness=4,highlightbackground='#7fd350',highlightcolor='#7fd350')
         frame.grid(row=1, column=0, columnspan=2)
 
         # Título
         title = tk.Label(frame, text="Cadastrar Cliente", fg="white", bg="#313131", font=('Arial', 20))
-        title.grid(row=0, column=0, columnspan=2, pady=10)
+        title.grid(row=0, column=0, columnspan=5, pady=10)
 
         # Nome
         tk.Label(frame, text="Nome:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
@@ -125,11 +126,48 @@ class Application(tk.Tk, Funções):
         self.entry_endereco = tk.Entry(frame)
         self.entry_endereco.grid(row=6, column=1, pady=5)
 
+        #CPF 
+        tk.Label(frame, text="CPF", fg="white", bg="#313131", font=("Arial",10)).grid(row=7, column=0, sticky="e",padx=10)
+        self.entry_cpf = tk.Entry(frame)
+        self.entry_cpf.grid(row=7,column=1, pady=5)
+        
+        #Data de nascimento 
+        tk.Label(frame, text="Data de nascimento", fg="white", bg="#313131", font=("Arial",10)).grid(row=8,column=0, sticky="e", padx=10)
+        
+        self.entry_dataDeNascimento = tk.Entry(frame)
+        self.entry_dataDeNascimento.grid(row=8,column=1,pady=5)
+
+        btn_abrir_calendario = ttk.Button(frame, text="Escolher data", command=self.abrir_calendario)
+        btn_abrir_calendario.grid(row=8, column=2,padx=10)
+
         # Botão Cadastrar-se
-        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.validar_dados, font=("Arial", 12)).grid(row=7, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Cadastrar-se",fg='white',bg='#7fd350',command=self.validar_dados, font=("Arial", 12)).grid(row=9, column=1, pady=10)
+        
 
         # Botão Voltar
-        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.realizar_login, font=("Arial", 10)).grid(row=8, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.realizar_login, font=("Arial", 10)).grid(row=10, column=1,pady=10)
+
+    def abrir_calendario(self):
+        janela_calendario = tk.Toplevel(self)
+        janela_calendario.title("Selecione a data de nascimento")
+
+        calendario = Calendar(janela_calendario,selectmode="day",year=2000,month=1,day=10)
+        calendario.pack(pady=20)
+
+        def pegar_data():
+            data_selecionada = calendario.get_date()
+            self.entry_dataDeNascimento.delete(0,tk.END)
+            self.entry_dataDeNascimento.insert(0,data_selecionada)
+            janela_calendario.destroy()
+            
+        btn_selecionar_data = ttk.Button(janela_calendario,text="Selecionar",command=pegar_data)
+        btn_selecionar_data.pack(pady=10)
+
+
+    def escolher_plano(self):
+        for widget in self.winfo_children():
+            widget.destroy()    
+
         
     def Home(self):
         for widget in self.winfo_children():
