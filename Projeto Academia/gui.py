@@ -3,7 +3,6 @@ from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
 from funções import Funções
-from tkcalendar import Calendar
 
 class Application(tk.Tk, Funções):
     def __init__(self, db):
@@ -46,7 +45,7 @@ class Application(tk.Tk, Funções):
         self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
         # Frame para centralizar o conteúdo
-        frame = tk.Frame(self, bg="#313131")
+        frame = tk.Frame(self, bg="#313131", highlightthickness=4, highlightbackground="#7fd350", highlightcolor="#7fd350")
         frame.grid(row=1, column=0, columnspan=2)
 
         # Título
@@ -56,12 +55,12 @@ class Application(tk.Tk, Funções):
         # Nome do usuário
         tk.Label(frame, text="Nome:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
         self.entry_nome = tk.Entry(frame)
-        self.entry_nome.grid(row=1, column=1, pady=5)
+        self.entry_nome.grid(row=1, column=1, pady=5, padx=20)
 
         # Senha
         tk.Label(frame, text="Senha:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=2, column=0, sticky="e", padx=10)
         self.entry_senha = tk.Entry(frame, show="*")
-        self.entry_senha.grid(row=2, column=1, pady=5)
+        self.entry_senha.grid(row=2, column=1, pady=5, padx=20)
 
         # Checkbutton para mostrar senha
         self.check_senha = tk.IntVar()
@@ -72,10 +71,10 @@ class Application(tk.Tk, Funções):
         tk.Button(frame, text="Login", fg="white", bg="#7fd350", command=self.validar_login, font=("Arial", 12)).grid(row=4, column=0, columnspan=2, pady=10)
 
     # Botão de criar conta
-        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 10)).grid(row=5, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 12)).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10)).grid(row=6, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 12)).grid(row=6, column=0, columnspan=2, pady=10)
 
     def cadastrar_cliente(self):
         # Remove widgets existentes
@@ -147,21 +146,6 @@ class Application(tk.Tk, Funções):
         # Botão Voltar
         tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.realizar_login, font=("Arial", 10)).grid(row=10, column=1,pady=10)
 
-    def abrir_calendario(self):
-        janela_calendario = tk.Toplevel(self)
-        janela_calendario.title("Selecione a data de nascimento")
-
-        calendario = Calendar(janela_calendario,selectmode="day",year=2000,month=1,day=10)
-        calendario.pack(pady=20)
-
-        def pegar_data():
-            data_selecionada = calendario.get_date()
-            self.entry_dataDeNascimento.delete(0,tk.END)
-            self.entry_dataDeNascimento.insert(0,data_selecionada)
-            janela_calendario.destroy()
-            
-        btn_selecionar_data = ttk.Button(janela_calendario,text="Selecionar",command=pegar_data)
-        btn_selecionar_data.pack(pady=10)
 
 
     def escolher_plano(self):

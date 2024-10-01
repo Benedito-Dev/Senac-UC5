@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, String, Integer, select, func
+from sqlalchemy import create_engine, MetaData, Table, Column, String, Integer, select, func, Date
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -18,8 +18,24 @@ class Database:
                                     Column('email', String(100)),
                                     Column('senha', String(50)),
                                     Column('telefone', String(50)),
-                                    Column('endereco', String(100)))
+                                    Column('endereco', String(100)),
+                                    Column('CPF', String(50)),
+                                    Column('Data_de_Nascimento', Date))
         self.metadata.create_all(self.engine)
+
+
+# Inserir Novo Usuario no Banco de Dados
+    def insert_user(self, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
+        try:
+            insert_stmt = self.usuarios_table.insert().values(nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco, CPF=cpf, Data_de_Nascimento=data_de_nascimento)
+            with self.Session() as session:
+                session.execute(insert_stmt)
+                session.commit()
+        except SQLAlchemyError as e:
+            if session:
+                session.rollback()
+            raise e
+        
 
 #verificando se o usuario esta na tabela(usado para o login)
     def verificando_usuario(self, nome_login, senha_login):
@@ -40,21 +56,9 @@ class Database:
                     return False
         except SQLAlchemyError as e:
             print("Erro ao verificar usuário:", e)
-            return False
-        
+            return False   
 
-# Inserir Novo Usuario no Banco de Dados
-    def insert_user(self, nome, email, senha, telefone, endereco):
-        try:
-            insert_stmt = self.usuarios_table.insert().values(nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco)
-            with self.Session() as session:
-                session.execute(insert_stmt)
-                session.commit()
-        except SQLAlchemyError as e:
-            if session:
-                session.rollback()
-            raise e
-        
+
 # Deletando algum usuario
     def delete_user(self, user_id):
         try:
