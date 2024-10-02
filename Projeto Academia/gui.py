@@ -3,6 +3,8 @@ from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
 from funções import Funções
+from tkinter import messagebox
+from tkinter import font
 
 class Application(tk.Tk, Funções):
     def __init__(self, db):
@@ -175,7 +177,7 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
 
         # Colocando os botões lado a lado usando grid
-        btn_perfil = tk.Button(central_frame, text="Perfil", command=self.perfil, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_perfil = tk.Button(central_frame, text="Perfil", command=self.Perfil_usuario, font=("Arial", 12, "bold"), width=15, height=5)
         btn_perfil.grid(row=0, column=0, padx=20, pady=20)
 
         btn_treinos = tk.Button(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 12, "bold"), width=15, height=5)
@@ -508,3 +510,71 @@ class Application(tk.Tk, Funções):
 
         btn_voltar = tk.Button(self, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10))
         btn_voltar.pack(pady=10)
+
+    def Perfil_usuario(self):
+
+        for widget in self.winfo_children():
+            widget.destroy()        
+
+        # Criando a fonte Nunito
+        nunito_font = font.Font(family="Nunito", size=10)
+        titulo_font = font.Font(family="Nunito", size=14, weight="bold")  # Fonte do título em negrito
+        botao_font = font.Font(family="Nunito", size=10, weight="bold")  # Fonte do botão em negrito
+
+        # Label para o título com fonte Nunito
+        titulo_label = tk.Label(self, text="Editar Informações", bg="#313131", fg="#ffffff", font=titulo_font)
+        titulo_label.grid(row=0, columnspan=2, pady=10)
+
+        # Labels com texto branco e fonte Nunito
+        label_nome = tk.Label(self, text="Nome:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_nome.grid(row=1, column=0, padx=10, pady=2, sticky='e')
+
+        entry_nome = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_nome.grid(row=1, column=1, padx=10, pady=2)
+
+        label_datanasc = tk.Label(self, text="Data de nascimento:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_datanasc.grid(row=2, column=0, padx=10, pady=2, sticky='e')
+
+        entry_datanasc = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_datanasc.grid(row=2, column=1, padx=10, pady=2)
+
+        label_endereco = tk.Label(self, text="Endereço:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_endereco.grid(row=3, column=0, padx=10, pady=2, sticky='e')
+
+        entry_endereco = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_endereco.grid(row=3, column=1, padx=10, pady=2)
+
+        label_telefone = tk.Label(self, text="Telefone:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_telefone.grid(row=4, column=0, padx=10, pady=2, sticky='e')
+
+        entry_telefone = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_telefone.grid(row=4, column=1, padx=10, pady=2)
+
+        label_email = tk.Label(self, text="E-mail:", bg="#313131", fg="#ffffff", font=nunito_font)
+        label_email.grid(row=5, column=0, padx=10, pady=2, sticky='e')
+
+        entry_email = tk.Entry(self, bg="#efefef", fg="#000000", font=nunito_font)
+        entry_email.grid(row=5, column=1, padx=10, pady=2)
+
+        # Botão com fundo preto, letra verde e fonte em negrito
+        botao_salvar = tk.Button(self, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font)
+        botao_salvar.grid(row=6, columnspan=2, pady=10)
+
+        # Ajustando o alinhamento e preenchimento
+        for i in range(7):
+            self.grid_rowconfigure(i, weight=1)
+            self.grid_columnconfigure(0, weight=1)
+            self.grid_columnconfigure(1, weight=1)
+        
+        nome = self.entry_nome.get()
+        endereco = self.entry_endereco.get()
+        telefone = self.entry_telefone.get()
+        email = self.entry_email.get()
+
+        if nome  and endereco and telefone and email:
+            messagebox.showinfo("Informações alteradas!", 
+            f"Nome: {nome}\nEndereço: {endereco} \nTelefone: {telefone}\nE-mail: {email}")
+        else:
+            messagebox.showerror("Erro", "Por favor, preencha todos os campos!")
+
+        self.mainloop()
