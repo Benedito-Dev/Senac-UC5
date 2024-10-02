@@ -169,7 +169,10 @@ class Application(tk.Tk, Funções):
         title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
-        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12, ))
+        btn_voltar = tk.Button(frame_superior,text="LOG-OUT", fg="white",bg="#7fd350",command=self.realizar_login,font=("Arial",12))
+        btn_voltar.grid(side="right",padx=10)
+
+        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12,))
         plano_label.pack(side="right", padx=20)
 
         # Frame central para os botões
