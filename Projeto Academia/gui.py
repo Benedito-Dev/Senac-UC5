@@ -67,10 +67,6 @@ class Application(tk.Tk, Funções):
         check = tk.Checkbutton(frame, text="Mostrar senha", fg="white", bg="#313131", variable=self.check_senha, command=self.Exibir_senha)
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
-<<<<<<< HEAD
-        tk.Button(self, text="Cadastrar-se", command=self.validar_dados, font=("Arial", 12)).pack(pady=20)
-        tk.Button(self, text="Voltar", command=self.menu_inicial, font=("Arial", 10)).pack(pady=10)
-=======
         # Botão de validar
         tk.Button(frame, text="Login", fg="white", bg="#7fd350", command=self.validar_login, font=("Arial", 12)).grid(row=4, column=0, columnspan=2, pady=10)
 
@@ -155,7 +151,6 @@ class Application(tk.Tk, Funções):
     def escolher_plano(self):
         for widget in self.winfo_children():
             widget.destroy()    
->>>>>>> 1-feature-organizando-fluxo
 
         
     def Home(self):
