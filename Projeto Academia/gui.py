@@ -50,7 +50,7 @@ class Application(tk.Tk, Funções):
 
         # Título
         titulo = tk.Label(frame, text="Realizar login", fg="white", bg="#313131", font=("Arial", 20))
-        titulo.grid(row=0, column=0, columnspan=2, pady=10)
+        titulo.grid(row=0, column=0, columnspan=2, pady=10, padx=20)
 
         # Nome do usuário
         tk.Label(frame, text="Nome:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
