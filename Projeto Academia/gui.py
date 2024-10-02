@@ -47,22 +47,22 @@ class Application(tk.Tk, Funções):
         self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
         # Frame para centralizar o conteúdo
-        frame = tk.Frame(self, bg="#313131")
+        frame = tk.Frame(self, bg="#313131", highlightthickness=4, highlightbackground="#7fd350", highlightcolor="#7fd350")
         frame.grid(row=1, column=0, columnspan=2)
 
         # Título
         titulo = tk.Label(frame, text="Realizar login", fg="white", bg="#313131", font=("Arial", 20))
-        titulo.grid(row=0, column=0, columnspan=2, pady=10)
+        titulo.grid(row=0, column=0, columnspan=2, pady=10, padx=20)
 
         # Nome do usuário
         tk.Label(frame, text="Nome:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
         self.entry_nome = tk.Entry(frame)
-        self.entry_nome.grid(row=1, column=1, pady=5)
+        self.entry_nome.grid(row=1, column=1, pady=5, padx=20)
 
         # Senha
         tk.Label(frame, text="Senha:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=2, column=0, sticky="e", padx=10)
         self.entry_senha = tk.Entry(frame, show="*")
-        self.entry_senha.grid(row=2, column=1, pady=5)
+        self.entry_senha.grid(row=2, column=1, pady=5, padx=20)
 
         # Checkbutton para mostrar senha
         self.check_senha = tk.IntVar()
@@ -72,11 +72,11 @@ class Application(tk.Tk, Funções):
         # Botão de validar
         tk.Button(frame, text="Login", fg="white", bg="#7fd350", command=self.validar_login, font=("Arial", 12)).grid(row=4, column=0, columnspan=2, pady=10)
 
-    # Botão de criar conta
-        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 10)).grid(row=5, column=0, columnspan=2, pady=10)
+        # Botão de criar conta
+        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 12)).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10)).grid(row=6, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 12)).grid(row=6, column=0, columnspan=2, pady=10)
 
     def cadastrar_cliente(self):
         # Remove widgets existentes
@@ -90,12 +90,12 @@ class Application(tk.Tk, Funções):
         self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
         # Frame para centralizar o conteúdo
-        frame = tk.Frame(self, bg="#313131")
+        frame = tk.Frame(self,bg='#313131',highlightthickness=4,highlightbackground='#7fd350',highlightcolor='#7fd350')
         frame.grid(row=1, column=0, columnspan=2)
 
         # Título
         title = tk.Label(frame, text="Cadastrar Cliente", fg="white", bg="#313131", font=('Arial', 20))
-        title.grid(row=0, column=0, columnspan=2, pady=10)
+        title.grid(row=0, column=0, columnspan=5, pady=10)
 
         # Nome
         tk.Label(frame, text="Nome:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
@@ -127,11 +127,33 @@ class Application(tk.Tk, Funções):
         self.entry_endereco = tk.Entry(frame)
         self.entry_endereco.grid(row=6, column=1, pady=5)
 
+        #CPF 
+        tk.Label(frame, text="CPF", fg="white", bg="#313131", font=("Arial",10)).grid(row=7, column=0, sticky="e",padx=10)
+        self.entry_cpf = tk.Entry(frame)
+        self.entry_cpf.grid(row=7,column=1, pady=5)
+        
+        #Data de nascimento 
+        tk.Label(frame, text="Data de nascimento", fg="white", bg="#313131", font=("Arial",10)).grid(row=8,column=0, sticky="e", padx=10)
+        
+        self.entry_dataDeNascimento = tk.Entry(frame)
+        self.entry_dataDeNascimento.grid(row=8,column=1,pady=5)
+
+        btn_abrir_calendario = ttk.Button(frame, text="Escolher data", command=self.abrir_calendario)
+        btn_abrir_calendario.grid(row=8, column=2,padx=10)
+
         # Botão Cadastrar-se
-        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.validar_dados, font=("Arial", 12)).grid(row=7, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Cadastrar-se",fg='white',bg='#7fd350',command=self.validar_dados, font=("Arial", 12)).grid(row=9, column=1, pady=10)
+        
 
         # Botão Voltar
-        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.realizar_login, font=("Arial", 10)).grid(row=8, column=0, columnspan=2, pady=10)
+        tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.realizar_login, font=("Arial", 10)).grid(row=10, column=1,pady=10)
+
+
+
+    def escolher_plano(self):
+        for widget in self.winfo_children():
+            widget.destroy()    
+
         
     def Home(self):
         for widget in self.winfo_children():
@@ -486,7 +508,7 @@ class Application(tk.Tk, Funções):
         btn_deletar = tk.Button(self, text="Deletar Perfil", fg="white", bg="#7fd350", command=self.deletar_perfil)
         btn_deletar.pack(pady=10)
 
-        btn_voltar = tk.Button(self, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10))
+        btn_voltar = tk.Button(self, text="Cancelar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10))
         btn_voltar.pack(pady=10)
 
     def Perfil_usuario(self):
@@ -510,47 +532,42 @@ class Application(tk.Tk, Funções):
 
         # Label para o título
         titulo_label = tk.Label(frame_verde, text="Editar Informações", bg="#313131", fg="White", font=titulo_font)
-        titulo_label.grid(row=0, columnspan=2, pady=10)
+        titulo_label.grid(row=0, column=1, pady=10)
 
         # Labels e entradas
-        self.entry_nome = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
+        self.entry_nome = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_nome = tk.Label(frame_verde, text="Nome:", bg="#313131", fg="White", font=nunito_font)
         label_nome.grid(row=1, column=0, pady=2, sticky='e')
         self.entry_nome.grid(row=1, column=1, pady=2)
 
-        self.entry_datanasc = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
+        self.entry_nome.insert(0,self.entry_nome)
+
+        self.entry_dataDeNascimento = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_datanasc = tk.Label(frame_verde, text="Data de nascimento:", bg="#313131", fg="White", font=nunito_font)
         label_datanasc.grid(row=2, column=0, pady=2, sticky='e')
-        self.entry_datanasc.grid(row=2, column=1, pady=2)
+        self.entry_dataDeNascimento.grid(row=2, column=1, pady=2)
 
-        self.entry_endereco = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
+        self.btn_calendario = tk.Button(frame_verde, text="Escolher data", command=self.abrir_calendario)
+        self.btn_calendario.grid(row=2, column=2, padx=4)
+
+
+        self.entry_endereco = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_endereco = tk.Label(frame_verde, text="Endereço:", bg="#313131", fg="White", font=nunito_font)
         label_endereco.grid(row=3, column=0, pady=2, sticky='e')
         self.entry_endereco.grid(row=3, column=1, pady=2)
 
-        self.entry_telefone = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
+        self.entry_telefone = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_telefone = tk.Label(frame_verde, text="Telefone:", bg="#313131", fg="White", font=nunito_font)
         label_telefone.grid(row=4, column=0, pady=2, sticky='e')
         self.entry_telefone.grid(row=4, column=1, pady=2)
 
-        self.entry_email = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
+        self.entry_email = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_email = tk.Label(frame_verde, text="E-mail:", bg="#313131", fg="White", font=nunito_font)
         label_email.grid(row=5, column=0, pady=2, sticky='e')
         self.entry_email.grid(row=5, column=1, pady=2)
 
-        # Função para salvar informações
-        def salvar_informacoes():
-            nome = self.entry_nome.get()
-            endereco = self.entry_endereco.get()
-            telefone = self.entry_telefone.get()
-            email = self.entry_email.get()
+        self.btn_voltar = tk.Button(frame_verde, text="Voltar", command=self.Home, bg="#000000", fg="#FF0000")
+        self.btn_voltar.grid(row=7, column=1)
 
-            if nome and endereco and telefone and email:
-                messagebox.showinfo("Informações alteradas!", 
-                    f"Nome: {nome}\nEndereço: {endereco}\nTelefone: {telefone}\nE-mail: {email}")
-            else:
-                messagebox.showerror("Erro", "Por favor, preencha todos os campos!")
-
-        # Botão
-        botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=salvar_informacoes)
-        botao_salvar.grid(row=6, columnspan=2, pady=10)
+        botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.salvar_informacoes)
+        botao_salvar.grid(row=6, column=1, pady=10)
