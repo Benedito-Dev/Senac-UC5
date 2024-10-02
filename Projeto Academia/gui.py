@@ -508,7 +508,7 @@ class Application(tk.Tk, Funções):
         btn_deletar = tk.Button(self, text="Deletar Perfil", fg="white", bg="#7fd350", command=self.deletar_perfil)
         btn_deletar.pack(pady=10)
 
-        btn_voltar = tk.Button(self, text="Cancelar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10))
+        btn_voltar = tk.Button(self, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10))
         btn_voltar.pack(pady=10)
 
     def Perfil_usuario(self):
@@ -566,7 +566,7 @@ class Application(tk.Tk, Funções):
         label_email.grid(row=5, column=0, pady=2, sticky='e')
         self.entry_email.grid(row=5, column=1, pady=2)
 
-        self.btn_voltar = tk.Button(frame_verde, text="Voltar", command=self.Home, bg="#000000", fg="#FF0000")
+        self.btn_voltar = tk.Button(frame_verde, text="Cancelar", command=self.Home, bg="#000000", fg="#FF0000")
         self.btn_voltar.grid(row=7, column=1)
 
         botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.salvar_informacoes)
