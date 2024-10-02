@@ -492,10 +492,16 @@ class Application(tk.Tk, Funções):
     def Perfil_usuario(self):
         for widget in self.winfo_children():
             widget.destroy()
+        
+        # Configurações da janela para centralização
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
+        self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
         # Criando o frame verde
-        frame_verde = tk.Frame(self, bg="#609746", padx=20, pady=20)
-        frame_verde.pack(padx=50, pady=50)
+        frame_verde = tk.Frame(self, bg="#313131", padx=20, pady=20, highlightthickness=4, highlightcolor="green", highlightbackground="green")
+        frame_verde.grid(row=1, column=0, columnspan=2)
 
         # Criando a fonte Nunito
         nunito_font = font.Font(family="Nunito", size=10)
@@ -503,32 +509,32 @@ class Application(tk.Tk, Funções):
         botao_font = font.Font(family="Nunito", size=10, weight="bold")
 
         # Label para o título
-        titulo_label = tk.Label(frame_verde, text="Editar Informações", bg="#609746", fg="White", font=titulo_font)
+        titulo_label = tk.Label(frame_verde, text="Editar Informações", bg="#313131", fg="White", font=titulo_font)
         titulo_label.grid(row=0, columnspan=2, pady=10)
 
         # Labels e entradas
         self.entry_nome = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
-        label_nome = tk.Label(frame_verde, text="Nome:", bg="#609746", fg="White", font=nunito_font)
+        label_nome = tk.Label(frame_verde, text="Nome:", bg="#313131", fg="White", font=nunito_font)
         label_nome.grid(row=1, column=0, pady=2, sticky='e')
         self.entry_nome.grid(row=1, column=1, pady=2)
 
         self.entry_datanasc = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
-        label_datanasc = tk.Label(frame_verde, text="Data de nascimento:", bg="#609746", fg="White", font=nunito_font)
+        label_datanasc = tk.Label(frame_verde, text="Data de nascimento:", bg="#313131", fg="White", font=nunito_font)
         label_datanasc.grid(row=2, column=0, pady=2, sticky='e')
         self.entry_datanasc.grid(row=2, column=1, pady=2)
 
         self.entry_endereco = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
-        label_endereco = tk.Label(frame_verde, text="Endereço:", bg="#609746", fg="White", font=nunito_font)
+        label_endereco = tk.Label(frame_verde, text="Endereço:", bg="#313131", fg="White", font=nunito_font)
         label_endereco.grid(row=3, column=0, pady=2, sticky='e')
         self.entry_endereco.grid(row=3, column=1, pady=2)
 
         self.entry_telefone = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
-        label_telefone = tk.Label(frame_verde, text="Telefone:", bg="#609746", fg="White", font=nunito_font)
+        label_telefone = tk.Label(frame_verde, text="Telefone:", bg="#313131", fg="White", font=nunito_font)
         label_telefone.grid(row=4, column=0, pady=2, sticky='e')
         self.entry_telefone.grid(row=4, column=1, pady=2)
 
         self.entry_email = tk.Entry(frame_verde, bg="#ffffff", fg="White", font=nunito_font)
-        label_email = tk.Label(frame_verde, text="E-mail:", bg="#609746", fg="White", font=nunito_font)
+        label_email = tk.Label(frame_verde, text="E-mail:", bg="#313131", fg="White", font=nunito_font)
         label_email.grid(row=5, column=0, pady=2, sticky='e')
         self.entry_email.grid(row=5, column=1, pady=2)
 
