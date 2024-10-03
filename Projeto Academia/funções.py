@@ -20,16 +20,6 @@ class Funções():
         super().ajustes()
 
 
-    # Funnções do menu de Treinos
-    def next_page(self):
-        self.current_page += 1
-        self.Exibir_Treinos()
-
-
-    def previous_page(self):
-        self.current_page -= 1
-        self.Exibir_Treinos()
-
 # Funções para Guias Interativas
     def carregar_perfis(self):
         try:
@@ -179,6 +169,7 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Login Efetuado")
                 nome = nome.lower()
                 self.nome_usuario = nome.capitalize()
+                self.senha_usuario = senha
                 self.after(500, self.Home)
             else:
                 messagebox.showerror("Erro", "Nome ou senha inválidos")
@@ -203,6 +194,12 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Perfil deletado com sucesso!")
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
+
+
+    def puxar_informações(self):
+        user_name = self.nome_usuario.get().strip()
+
+
 
 
     def Encerrar_programa(self):
