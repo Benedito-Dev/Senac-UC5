@@ -35,6 +35,7 @@ class Application(tk.Tk, Funções):
         btn_Encerrar = tk.Button(self, text="Encerrar Programa", fg="white", bg="#7fd350", command=self.Encerrar_programa, font=("Arial", 12))
         btn_Encerrar.pack(pady=20, padx=5)
 
+
     def realizar_login(self):
         # Remove widgets existentes
         for widget in self.winfo_children():
@@ -77,6 +78,7 @@ class Application(tk.Tk, Funções):
 
         # Botão de voltar
         tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 12)).grid(row=6, column=0, columnspan=2, pady=10)
+
 
     def cadastrar_cliente(self):
         # Remove widgets existentes
@@ -149,12 +151,11 @@ class Application(tk.Tk, Funções):
         tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.realizar_login, font=("Arial", 10)).grid(row=10, column=1,pady=10)
 
 
-
     def escolher_plano(self):
         for widget in self.winfo_children():
             widget.destroy()    
+   
 
-        
     def Home(self):
         for widget in self.winfo_children():
             widget.destroy()
@@ -168,6 +169,9 @@ class Application(tk.Tk, Funções):
 
         title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
+
+        log_out = tk.Button(frame_superior, text="Log Out", fg="white", bg="black", command=self.realizar_login)
+        log_out.pack(side="right", padx=10)
 
         plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12, ))
         plano_label.pack(side="right", padx=20)
@@ -191,6 +195,7 @@ class Application(tk.Tk, Funções):
         central_frame.grid_columnconfigure(0, weight=1)
         central_frame.grid_columnconfigure(1, weight=1)
         central_frame.grid_columnconfigure(2, weight=1)
+
 
     def Treinos(self):
         for widget in self.winfo_children():
@@ -235,6 +240,7 @@ class Application(tk.Tk, Funções):
 
         tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Home).grid(row=2, column=0, columnspan=2, pady=10, sticky="s")
 
+
     def Superiores(self):
         for widget in self.winfo_children():
             widget.destroy()
@@ -278,6 +284,7 @@ class Application(tk.Tk, Funções):
         btn_voltar = tk.Button(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
         btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
 
+
     def Inferiores(self):
         for widget in self.winfo_children():
             widget.destroy()
@@ -320,6 +327,7 @@ class Application(tk.Tk, Funções):
         # Botão Voltar
         btn_voltar = tk.Button(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
         btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
+
 
     def Peito(self):
         # Dicionário de músculos e exercícios
@@ -368,6 +376,7 @@ class Application(tk.Tk, Funções):
         # Botão Voltar
         tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Superiores).pack(pady=20)
 
+
     def Costas(self):
         # Dicionário de músculos e exercícios
         treinos = {
@@ -415,6 +424,7 @@ class Application(tk.Tk, Funções):
         # Botão Voltar
         tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Superiores).pack(pady=20)
 
+
     def Quadriceps(self):
         # Dicionário de exercícios para Quadríceps
         treinos = {
@@ -450,6 +460,7 @@ class Application(tk.Tk, Funções):
 
         # Botão Voltar
         tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Inferiores).pack(pady=20)
+
 
     def Perna(self):
         # Dicionário de exercícios para Perna
@@ -510,6 +521,7 @@ class Application(tk.Tk, Funções):
 
         btn_voltar = tk.Button(self, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10))
         btn_voltar.pack(pady=10)
+
 
     def Perfil_usuario(self):
 
