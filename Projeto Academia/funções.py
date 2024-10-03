@@ -8,27 +8,7 @@ from datetime import datetime
 
 
 class Funções():
-        
-    # Funções da Home e Paralelas
-    def perfil(self):
-        super().perfil()
-
-    def treinos(self):
-        super().treinos()
-
-    def ajustes(self):
-        super().ajustes()
-
-
-    # Funnções do menu de Treinos
-    def next_page(self):
-        self.current_page += 1
-        self.Exibir_Treinos()
-
-
-    def previous_page(self):
-        self.current_page -= 1
-        self.Exibir_Treinos()
+    
 
 # Funções para Guias Interativas
     def carregar_perfis(self):
@@ -127,6 +107,7 @@ class Funções():
             # Retorna False se o formato da data for inválido
             return False
     
+
     def enviar_dados(self):
         nome = self.entry_nome.get()
         nome = nome.upper()
@@ -179,6 +160,7 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Login Efetuado")
                 nome = nome.lower()
                 self.nome_usuario = nome.capitalize()
+                self.senha_usuario = senha
                 self.after(500, self.Home)
             else:
                 messagebox.showerror("Erro", "Nome ou senha inválidos")
@@ -203,6 +185,21 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Perfil deletado com sucesso!")
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
+
+
+    def puxar_informações(self):
+        user_name = self.nome_usuario.strip().upper()
+
+        if not user_name:
+            messagebox.showerror("Erro", "Nenhum nome de Usuario Fornecido")
+        
+        try:
+            user = self.db.get_user_by_name(user_name)
+
+            print(user)
+        
+        except Exception as e:
+            messagebox.showerror("Erro", f"Erro ao buscar informações {e}")
 
 
     def Encerrar_programa(self):
