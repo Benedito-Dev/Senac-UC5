@@ -81,7 +81,20 @@ class Database:
             return users
         except SQLAlchemyError as e:
             raise e
-         
+    
+
+    def get_user_by_name(self, nome):
+        """Busca o usuário no banco de dados pelo nome"""
+        session = self.Session()
+        try:
+            user = session.query(self.usuarios_table).filter_by(nome=nome).first()
+            return user
+        except SQLAlchemyError as e:
+            print(f"Erro ao buscar usuário: {e}")
+        finally:
+            session.close()
+
+
 # Fechar Banco de Dados
     def close(self):
         self.connection.close()

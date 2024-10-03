@@ -8,27 +8,20 @@ from datetime import datetime
 
 
 class Funções():
-        
-    # Funções da Home e Paralelas
-    def perfil(self):
-        super().perfil()
+    
 
-    def treinos(self):
-        super().treinos()
+    # Funções para acresentar placeholder
+    def on_entry_click(event):
+        if len(entry.get()) > 0:  # type: ignore # Texto do placeholder
+            entry.delete(0, ctk.END)  # type: ignore # Limpa o placeholder
+            entry.configure(fg_color='white')  # type: ignore # Muda a cor de fundo para branco
+            entry.configure(fg='black')  # type: ignore # Muda a cor do texto
 
-    def ajustes(self):
-        super().ajustes()
-
-
-    # Funnções do menu de Treinos
-    def next_page(self):
-        self.current_page += 1
-        self.Exibir_Treinos()
-
-
-    def previous_page(self):
-        self.current_page -= 1
-        self.Exibir_Treinos()
+    def on_focusout(event):
+        if entry.get() == '':  # type: ignore # Se o campo estiver vazio
+            entry.insert(0, 'Digite aqui...')  # type: ignore # Reinsere o placeholder
+            entry.configure(fg_color='grey')  # type: ignore # Muda a cor de fundo para cinza
+            entry.configure(fg='grey')  # type: ignore # Muda a cor do texto
 
 # Funções para Guias Interativas
     def carregar_perfis(self):
@@ -127,6 +120,7 @@ class Funções():
             # Retorna False se o formato da data for inválido
             return False
     
+
     def enviar_dados(self):
         nome = self.entry_nome.get()
         nome = nome.upper()
@@ -179,6 +173,7 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Login Efetuado")
                 nome = nome.lower()
                 self.nome_usuario = nome.capitalize()
+                self.senha_usuario = senha
                 self.after(500, self.Home)
             else:
                 messagebox.showerror("Erro", "Nome ou senha inválidos")
@@ -203,6 +198,30 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Perfil deletado com sucesso!")
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
+
+
+    def puxar_informações(self):
+        user_name = self.nome_usuario.strip().upper()
+
+        if not user_name:
+            messagebox.showerror("Erro", "Nenhum nome de Usuario Fornecido")
+        
+        try:
+            self.informações = []
+            user = self.db.get_user_by_name(user_name)
+
+            for i in user:
+                self.informações.append(i)
+        
+        except Exception as e:
+            messagebox.showerror("Erro", f"Erro ao buscar informações {e}")
+    
+    def get_informacao(self, index):
+        """Método para obter uma informação específica."""
+        if index < len(self.informações):
+            return self.informações[index]
+        else:
+            raise IndexError("Índice fora do intervalo.")
 
 
     def Encerrar_programa(self):
