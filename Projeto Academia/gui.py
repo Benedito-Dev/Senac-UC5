@@ -187,7 +187,7 @@ class Application(tk.Tk, Funções):
         btn_treinos = tk.Button(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 12, "bold"), width=15, height=5)
         btn_treinos.grid(row=0, column=1, padx=20, pady=20)
 
-        btn_ajustes = tk.Button(central_frame, text="Ajustes", command=self.ajustes, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_ajustes = tk.Button(central_frame, text="Ajustes", command=self.Treinos, font=("Arial", 12, "bold"), width=15, height=5)
         btn_ajustes.grid(row=0, column=2, padx=20, pady=20)
 
 
@@ -581,5 +581,5 @@ class Application(tk.Tk, Funções):
         self.btn_voltar = tk.Button(frame_verde, text="Cancelar", command=self.Home, bg="#000000", fg="#FF0000")
         self.btn_voltar.grid(row=6, column=1, pady=10)
 
-        botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.Encerrar_programa)
+        botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.puxar_informações)
         botao_salvar.grid(row=7, column=1, pady=10)

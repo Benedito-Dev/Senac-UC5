@@ -8,17 +8,7 @@ from datetime import datetime
 
 
 class Funções():
-        
-    # Funções da Home e Paralelas
-    def perfil(self):
-        super().perfil()
-
-    def treinos(self):
-        super().treinos()
-
-    def ajustes(self):
-        super().ajustes()
-
+    
 
 # Funções para Guias Interativas
     def carregar_perfis(self):
@@ -117,6 +107,7 @@ class Funções():
             # Retorna False se o formato da data for inválido
             return False
     
+
     def enviar_dados(self):
         nome = self.entry_nome.get()
         nome = nome.upper()
@@ -197,9 +188,18 @@ class Funções():
 
 
     def puxar_informações(self):
-        user_name = self.nome_usuario.get().strip()
+        user_name = self.nome_usuario.strip().upper()
 
+        if not user_name:
+            messagebox.showerror("Erro", "Nenhum nome de Usuario Fornecido")
+        
+        try:
+            user = self.db.get_user_by_name(user_name)
 
+            print(user)
+        
+        except Exception as e:
+            messagebox.showerror("Erro", f"Erro ao buscar informações {e}")
 
 
     def Encerrar_programa(self):
