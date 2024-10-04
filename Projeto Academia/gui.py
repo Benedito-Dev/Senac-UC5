@@ -549,47 +549,47 @@ class Application(tk.Tk, Funções):
         titulo_label.grid(row=0, column=1, pady=10)
 
         # Labels e entradas
-        self.entry_nome = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        self.entry_novo_nome = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_nome = tk.Label(frame_verde, text="Nome:", bg="#313131", fg="White", font=nunito_font)
         label_nome.grid(row=1, column=0, pady=2, sticky='e')
-        self.entry_nome.grid(row=1, column=1, pady=2)
+        self.entry_novo_nome.grid(row=1, column=1, pady=2)
 
-        self.entry_nome.insert(0, f'{self.get_informacao(1)}')  # Adiciona o placeholder
+        self.entry_novo_nome.insert(0, f'{self.get_informacao(1).lower().capitalize()}')  # Adiciona o placeholder
 
-        self.entry_dataDeNascimento = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        self.entry_nova_dataDeNascimento = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_datanasc = tk.Label(frame_verde, text="Data de nascimento:", bg="#313131", fg="White", font=nunito_font)
         label_datanasc.grid(row=2, column=0, pady=2, sticky='e')
-        self.entry_dataDeNascimento.grid(row=2, column=1, pady=2)
+        self.entry_nova_dataDeNascimento.grid(row=2, column=1, pady=2)
 
-        self.entry_dataDeNascimento.insert(0, f'{self.get_informacao(7)}')  # Adiciona o placeholder
+        self.entry_nova_dataDeNascimento.insert(0, f'{self.get_informacao(7)}')  # Adiciona o placeholder
 
         self.btn_calendario = tk.Button(frame_verde, text="Escolher data", command=self.abrir_calendario)
         self.btn_calendario.grid(row=2, column=2, padx=4)
 
 
-        self.entry_endereco = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        self.entry_novo_endereco = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_endereco = tk.Label(frame_verde, text="Endereço:", bg="#313131", fg="White", font=nunito_font)
         label_endereco.grid(row=3, column=0, pady=2, sticky='e')
-        self.entry_endereco.grid(row=3, column=1, pady=2)
+        self.entry_novo_endereco.grid(row=3, column=1, pady=2)
 
-        self.entry_endereco.insert(0, f'{self.get_informacao(5)}')  # Adiciona o placeholder
+        self.entry_novo_endereco.insert(0, f'{self.get_informacao(5)}')  # Adiciona o placeholder
 
-        self.entry_telefone = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        self.entry_novo_telefone = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_telefone = tk.Label(frame_verde, text="Telefone:", bg="#313131", fg="White", font=nunito_font)
         label_telefone.grid(row=4, column=0, pady=2, sticky='e')
-        self.entry_telefone.grid(row=4, column=1, pady=2)
+        self.entry_novo_telefone.grid(row=4, column=1, pady=2)
 
-        self.entry_telefone.insert(0, f'{self.get_informacao(4)}')  # Adiciona o placeholder
+        self.entry_novo_telefone.insert(0, f'{self.get_informacao(4)}')  # Adiciona o placeholder
 
-        self.entry_email = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        self.entry_novo_email = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
         label_email = tk.Label(frame_verde, text="E-mail:", bg="#313131", fg="White", font=nunito_font)
         label_email.grid(row=5, column=0, pady=2, sticky='e')
-        self.entry_email.grid(row=5, column=1, pady=2)
+        self.entry_novo_email.grid(row=5, column=1, pady=2)
 
-        self.entry_email.insert(0, f'{self.get_informacao(2)}')  # Adiciona o placeholder
+        self.entry_novo_email.insert(0, f'{self.get_informacao(2)}')  # Adiciona o placeholder
 
         self.btn_voltar = tk.Button(frame_verde, text="Cancelar", command=self.Home, bg="#000000", fg="#FF0000")
         self.btn_voltar.grid(row=6, column=1, pady=10)
 
-        botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.puxar_informações)
+        botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.salvar_alterações)
         botao_salvar.grid(row=7, column=1, pady=10)

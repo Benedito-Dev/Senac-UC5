@@ -222,6 +222,21 @@ class Funções():
             return self.informações[index]
         else:
             raise IndexError("Índice fora do intervalo.")
+    
+    def salvar_alterações(self):
+        novo_nome = self.entry_novo_nome.get().strip().upper()
+        nova_data_de_nascimento = self.entry_nova_dataDeNascimento.get().strip()
+        novo_endereco = self.entry_novo_endereco.get()
+        novo_telefone = self.entry_novo_telefone.get().strip()
+        novo_email = self.entry_novo_email.get().strip()
+
+        try:
+            self.db.update_user(self.get_informacao(0), nome=novo_nome, email=novo_email, telefone=novo_telefone, endereco = novo_endereco, data_de_nascimento = nova_data_de_nascimento)
+            messagebox.showinfo("Sucesso", "Alterações salvas com sucesso!")
+            self.nome_usuario = novo_nome
+        
+        except Exception as e:
+            messagebox.showerror("Erro", f"Erro ao salvar alterações: {e}")
 
 
     def Encerrar_programa(self):

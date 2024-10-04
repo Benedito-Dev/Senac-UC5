@@ -88,12 +88,41 @@ class Database:
         session = self.Session()
         try:
             user = session.query(self.usuarios_table).filter_by(nome=nome).first()
-            return user
+            return user if user else None
         except SQLAlchemyError as e:
             print(f"Erro ao buscar usuário: {e}")
         finally:
             session.close()
 
+    def update_user(self, user_id, nome=None, email=None, telefone=None, endereco=None, data_de_nascimento=None):
+        try:
+            # Inicializando a query de atualização
+            query = self.usuarios_table.update().where(self.usuarios_table.c.id == user_id)
+            update_data = {}
+
+            # Adicionando apenas os campos que não estão vazios (alteráveis)
+            if nome:
+                update_data['nome'] = nome
+            if email:
+                update_data['email'] = email
+            if telefone:
+                update_data['telefone'] = telefone
+            if endereco:
+                update_data['endereco'] = endereco
+            if data_de_nascimento:
+                update_data['Data_de_Nascimento'] = data_de_nascimento
+
+            # Verifica se existe algum dado a ser atualizado
+            if update_data:
+                with self.Session() as session:
+                    query = query.values(**update_data)
+                    session.execute(query)
+                    session.commit()
+            else:
+                raise Exception("Nenhuma informação fornecida para atualização.")
+
+        except Exception as e:
+            raise Exception(f"Erro ao atualizar usuário: {e}")
 
 # Fechar Banco de Dados
     def close(self):
