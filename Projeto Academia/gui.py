@@ -606,11 +606,9 @@ class Application(tk.Tk, Funções):
         optionmenu_meta = tk.OptionMenu(frame, Meta_var, * Meta)
         optionmenu_meta.grid(row=5, column=1, padx=10)
 
-
         # Botão Cadastrar-se
         tk.Button(frame, text="Salvar Alterações",fg='white', bg='#7fd350',command=self.Home, font=("Arial", 12)).grid(row=6, column=0, columnspan=5, pady=10, padx=20)
         
-
         # Botão Voltar
         tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.Home, font=("Arial", 10)).grid(row=7, column=0, columnspan=5, pady=10)
 
