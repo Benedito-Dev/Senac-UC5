@@ -612,6 +612,7 @@ class Application(tk.Tk, Funções):
         # Botão Voltar
         tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.Home, font=("Arial", 10)).grid(row=7, column=0, columnspan=5, pady=10)
 
+
     def Perfil_usuario(self):
         for widget in self.winfo_children():
             widget.destroy()
