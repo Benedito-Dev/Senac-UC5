@@ -234,9 +234,14 @@ class Funções():
             self.db.update_user(self.get_informacao(0), nome=novo_nome, email=novo_email, telefone=novo_telefone, endereco = novo_endereco, data_de_nascimento = nova_data_de_nascimento)
             messagebox.showinfo("Sucesso", "Alterações salvas com sucesso!")
             self.nome_usuario = novo_nome
+            self.after(500, self.Home)
         
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao salvar alterações: {e}")
+
+
+    def printar(self):
+        print(f"Você selecionou a opção {self.opcao.get()}")
 
 
     def Encerrar_programa(self):

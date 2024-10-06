@@ -187,7 +187,7 @@ class Application(tk.Tk, Funções):
         btn_treinos = tk.Button(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 12, "bold"), width=15, height=5)
         btn_treinos.grid(row=0, column=1, padx=20, pady=20)
 
-        btn_ajustes = tk.Button(central_frame, text="Ajustes", command=self.Treinos, font=("Arial", 12, "bold"), width=15, height=5)
+        btn_ajustes = tk.Button(central_frame, text="Ajustes", command=self.Ajustes, font=("Arial", 12, "bold"), width=15, height=5)
         btn_ajustes.grid(row=0, column=2, padx=20, pady=20)
 
 
@@ -522,6 +522,97 @@ class Application(tk.Tk, Funções):
         btn_voltar = tk.Button(self, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10))
         btn_voltar.pack(pady=10)
 
+    def Ajustes(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
+        self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
+
+        # Frame para centralizar o conteúdo
+        frame = tk.Frame(self,bg='#313131',highlightthickness=4,highlightbackground='#7fd350',highlightcolor='#7fd350')
+        frame.grid(row=1, column=0, columnspan=2)
+
+        # Título
+        title = tk.Label(frame, text="Ajustes", fg="white", bg="#313131", font=('Arial', 20))
+        title.grid(row=0, column=0, columnspan=5, pady=10)
+
+
+        #Label Notificações - 01
+        notificacoes = tk.Label(frame, text="Notificações : ", fg="white", bg="#313131", font=('Arial', 14))
+        notificacoes.grid(row=1, column=0, pady=10, padx=10)
+
+        Notificacoes = ["Exibir", "Não Exibir"]
+
+        notificacoes_var = tk.StringVar()
+        notificacoes_var.set(Notificacoes[0])  
+
+        optionmenu_notificacoes = tk.OptionMenu(frame, notificacoes_var, * Notificacoes)
+        optionmenu_notificacoes.grid(row=1, column=1, padx=10)
+
+
+        # Label Idioma - 02
+        Idioma = tk.Label(frame, text="Idioma : ", fg="white", bg="#313131", font=('Arial', 14))
+        Idioma.grid(row=2, column=0, pady=10, padx=10)
+
+        Idiomas = ["Português Brasil"]
+
+        idiomas_var = tk.StringVar()
+        idiomas_var.set(Idiomas[0])  
+
+        optionmenu_idiomas = tk.OptionMenu(frame, idiomas_var, * Idiomas)
+        optionmenu_idiomas.grid(row=2, column=1, padx=10)
+
+
+        # Label Unidade de Medida - 03
+        und_medida = tk.Label(frame, text="Unidade de Medida : ", fg="white", bg="#313131", font=('Arial', 14))
+        und_medida.grid(row=3, column=0, pady=10, padx=10)
+
+
+        Unidades_med = ["Kg", "LB"]
+
+        Unidades_med_var = tk.StringVar()
+        Unidades_med_var.set(Unidades_med[0])  
+
+        optionmenu_cidades = tk.OptionMenu(frame, Unidades_med_var, * Unidades_med)
+        optionmenu_cidades.grid(row=3, column=1, padx=10)
+
+
+        # Label Frequencia - 04
+        Frequencia = tk.Label(frame, text="Frquencia de Treinos :", fg="white", bg="#313131", font=('Arial', 14))
+        Frequencia.grid(row=4, column=0, pady=10, padx=10)
+
+
+        Frequencia = ["5 Dias na semana", "3 Dias na semana", "4 Dias na semana"]
+
+        Frequencia_var = tk.StringVar()
+        Frequencia_var.set(Frequencia[0])  
+
+        optionmenu_frequencia = tk.OptionMenu(frame, Frequencia_var, * Frequencia)
+        optionmenu_frequencia.grid(row=4, column=1, padx=10)
+
+        # Label Meta - 5
+        Meta = tk.Label(frame, text="Meta :", fg="white", bg="#313131", font=('Arial', 14))
+        Meta.grid(row=5, column=0, pady=10, padx=10)
+
+
+        Meta = ["Ganho de Massa", "Hipertrofia", "Perca de Peso"]
+
+        Meta_var = tk.StringVar()
+        Meta_var.set(Meta[0])  
+
+        optionmenu_meta = tk.OptionMenu(frame, Meta_var, * Meta)
+        optionmenu_meta.grid(row=5, column=1, padx=10)
+
+
+        # Botão Cadastrar-se
+        tk.Button(frame, text="Salvar Alterações",fg='white', bg='#7fd350',command=self.Home, font=("Arial", 12)).grid(row=6, column=0, columnspan=5, pady=10, padx=20)
+        
+
+        # Botão Voltar
+        tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.Home, font=("Arial", 10)).grid(row=7, column=0, columnspan=5, pady=10)
 
     def Perfil_usuario(self):
         for widget in self.winfo_children():
