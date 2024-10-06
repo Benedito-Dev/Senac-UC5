@@ -1,12 +1,16 @@
 import psycopg2
-from sqlalchemy import Table, Column, String, Integer, Date
+from sqlalchemy import create_engine, MetaData, Table, Column, String, Integer, select, func, Date
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm import sessionmaker
 from psycopg2 import sql
 from model import usuario
 
 class RepositoryUsuario:
      def __init__(self, db_config):
-          self.connection = psycopg2.connect(**db_config)
+          self.engine = create_engine(db_config)
+          self.Session = sessionmaker(bind=self.engine)
+          self.metadata = MetaData()
+          self.connection = self.engine.connect()
 
      def create_table(self):
         self.usuarios_table = Table('clientes', self.metadata,

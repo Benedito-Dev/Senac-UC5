@@ -1,5 +1,3 @@
-from sqlalchemy import Table, Column, String, Integer, Date
-
 class Usuario:
     def __init__(self, id, nome, cpf, endereco, telefone, data_de_nascimento , email, senha):
         self.id = id

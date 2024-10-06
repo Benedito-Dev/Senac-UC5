@@ -2,7 +2,7 @@ import tkinter as tk
 from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
-from funções import Funções
+from view.funcoes import Funções
 from tkinter import messagebox
 from tkinter import font
 

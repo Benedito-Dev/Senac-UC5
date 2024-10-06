@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkcalendar import Calendar
 from datetime import datetime
+from controller.usuario_controler import UsuarioController
 
 
 class Funções():
@@ -139,7 +140,7 @@ class Funções():
             return
 
         try:
-            self.db.insert_user(nome, email, senha, telefone, endereco, cpf, data_de_nascimento)
+            UsuarioController.criar_usuario(nome, email, senha, telefone, endereco, cpf, data_de_nascimento)
             messagebox.showinfo("Sucesso", "Cadastro realizado com sucesso!")
             self.after(500, self.menu_inicial)
         except Exception as e:

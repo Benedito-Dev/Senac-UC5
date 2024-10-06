@@ -1,7 +1,1 @@
-db_config = {
-    'dbname': 'postgres',
-    'user': 'postgres',
-    'password': 'postgres',
-    'host': 'localhost', 
-    'port': '5432',       
-}
+db_config = "postgresql://postgres:postgres@localhost:5432/postgres"

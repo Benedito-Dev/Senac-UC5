@@ -6,6 +6,9 @@ class UsuarioController:
     def __init__(self):
         self.repository = RepositoryUsuario(db_config)
 
+    def criar_tabela(self):
+        self.repository.create_table()
+
     def criar_usuario(self, nome, idade, profissao, cidade, genero, email, senha):
         novo_usuario = Usuario(None, nome, idade, profissao, cidade, genero, email, senha)
         self.repository.insert_user(novo_usuario)

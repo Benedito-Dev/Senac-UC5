@@ -8,7 +8,7 @@ def main():
     usuario_controller = UsuarioController()
 
     # Cria a tabela de usuários no banco de dados
-    usuario_controller.repository.create_table()
+    usuario_controller.criar_tabela()
 
     # Inicializa a interface gráfica
     app = Application(usuario_controller)  # Passa o controlador para a aplicação
