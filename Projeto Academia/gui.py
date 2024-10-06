@@ -2,7 +2,7 @@ import tkinter as tk
 from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
-from funções import Funções
+from funcoes import Funções
 from tkinter import messagebox
 from tkinter import font
 
@@ -683,3 +683,4 @@ class Application(tk.Tk, Funções):
 
         botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.salvar_alterações)
         botao_salvar.grid(row=7, column=1, pady=10)
+
