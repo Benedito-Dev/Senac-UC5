@@ -10,6 +10,19 @@ from datetime import datetime
 class Funções():
     
 
+    # Funções para acresentar placeholder
+    def on_entry_click(event):
+        if len(entry.get()) > 0:  # type: ignore # Texto do placeholder
+            entry.delete(0, ctk.END)  # type: ignore # Limpa o placeholder
+            entry.configure(fg_color='white')  # type: ignore # Muda a cor de fundo para branco
+            entry.configure(fg='black')  # type: ignore # Muda a cor do texto
+
+    def on_focusout(event):
+        if entry.get() == '':  # type: ignore # Se o campo estiver vazio
+            entry.insert(0, 'Digite aqui...')  # type: ignore # Reinsere o placeholder
+            entry.configure(fg_color='grey')  # type: ignore # Muda a cor de fundo para cinza
+            entry.configure(fg='grey')  # type: ignore # Muda a cor do texto
+
 # Funções para Guias Interativas
     def carregar_perfis(self):
         try:
@@ -30,9 +43,9 @@ class Funções():
 
     def Exibir_senha(self):
         if self.check_senha.get() == 1:
-            self.entry_senha.config(show="")
+            self.entry_senha.configure(show="")
         else:
-            self.entry_senha.config(show="*")
+            self.entry_senha.configure(show="*")
 
 
     def validar_dados(self):
@@ -194,12 +207,41 @@ class Funções():
             messagebox.showerror("Erro", "Nenhum nome de Usuario Fornecido")
         
         try:
+            self.informações = []
             user = self.db.get_user_by_name(user_name)
 
-            print(user)
+            for i in user:
+                self.informações.append(i)
         
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao buscar informações {e}")
+    
+    def get_informacao(self, index):
+        """Método para obter uma informação específica."""
+        if index < len(self.informações):
+            return self.informações[index]
+        else:
+            raise IndexError("Índice fora do intervalo.")
+    
+    def salvar_alterações(self):
+        novo_nome = self.entry_novo_nome.get().strip().upper()
+        nova_data_de_nascimento = self.entry_nova_dataDeNascimento.get().strip()
+        novo_endereco = self.entry_novo_endereco.get()
+        novo_telefone = self.entry_novo_telefone.get().strip()
+        novo_email = self.entry_novo_email.get().strip()
+
+        try:
+            self.db.update_user(self.get_informacao(0), nome=novo_nome, email=novo_email, telefone=novo_telefone, endereco = novo_endereco, data_de_nascimento = nova_data_de_nascimento)
+            messagebox.showinfo("Sucesso", "Alterações salvas com sucesso!")
+            self.nome_usuario = novo_nome
+            self.after(500, self.Home)
+        
+        except Exception as e:
+            messagebox.showerror("Erro", f"Erro ao salvar alterações: {e}")
+
+
+    def printar(self):
+        print(f"Você selecionou a opção {self.opcao.get()}")
 
 
     def Encerrar_programa(self):
