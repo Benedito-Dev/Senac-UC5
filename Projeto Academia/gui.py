@@ -3,6 +3,7 @@ from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
 import customtkinter as ctk
+from PIL import Image, ImageTk
 from funcoes import Funções
 from tkinter import messagebox
 from tkinter import font
@@ -22,7 +23,7 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
         
-        border_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=10)
+        border_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
         border_frame.pack(fill='both', expand=True)
         
         label_menu = tk.Label(border_frame, text="4 Fitness", fg="white", bg="#313131", font=("Arial", 24))
@@ -44,31 +45,44 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
 
-        # Configurações da janela para centralização
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
-        self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
-        self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
+
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill="both", expand=True)
+
+        background_frame.grid_columnconfigure(0, weight=1)
+        background_frame.grid_columnconfigure(1, weight=0)
+        background_frame.grid_rowconfigure(2, weight=1)
+
+        #Imagem
+        try:
+            # Carregar a imagem
+            self.imagem = Image.open("img/Logo.png")
+            self.imagem = self.imagem.resize((100, 100), Image.LANCZOS)  # Corrigido para LANCZOS
+            self.imagem_tk = ImageTk.PhotoImage(self.imagem)
+        except FileNotFoundError:
+            print("Arquivo não encontrado. Verifique o caminho.")
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
 
         #Border Frame
-        border_frame = ctk.CTkFrame(self, fg_color="#7fd350", corner_radius=10)  # Cor da "borda"
-        border_frame.grid(row=0, column=0, columnspan=2, padx=20, pady=20)
+        border_frame = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=10)
+        border_frame.grid(row=2, column=0, columnspan=5,padx=20, pady=20)
 
         # Frame para centralizar o conteúdo
         frame = ctk.CTkFrame(border_frame, fg_color="#313131", corner_radius=10)
-        frame.grid(padx=10, pady=10)
+        frame.grid(row=0, column=1, padx=10, pady=10)
 
         # Título
         titulo = ctk.CTkLabel(frame, text="Realizar login", text_color="white", font=("Arial", 20))
         titulo.grid(row=0, column=0, columnspan=2, pady=10)
 
         # Nome do usuário
-        ctk.CTkLabel(frame, text="Nome:", text_color="white", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Nome:", text_color="white", font=("Arial", 14)).grid(row=1, column=0, sticky="e", padx=10)
         self.entry_nome = ctk.CTkEntry(frame)
         self.entry_nome.grid(row=1, column=1, pady=5, padx=20)
 
         # Senha
-        ctk.CTkLabel(frame, text="Senha:", text_color="white", font=("Arial", 10)).grid(row=2, column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Senha:", text_color="white", font=("Arial", 14)).grid(row=2, column=0, sticky="e", padx=10)
         self.entry_senha = ctk.CTkEntry(frame, show="*")
         self.entry_senha.grid(row=2, column=1, pady=5, padx=20)
 
@@ -78,13 +92,13 @@ class Application(tk.Tk, Funções):
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
         # Botão de validar
-        ctk.CTkButton(frame, text="Login", hover_color="#55a630", command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Login", command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
 
         # Botão de criar conta
-        ctk.CTkButton(frame, text="Cadastrar-se", hover_color="#55a630", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Cadastrar-se", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        ctk.CTkButton(frame, text="Voltar", hover_color="#55a630", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Voltar", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
 
 
     def cadastrar_cliente(self):
