@@ -2,6 +2,7 @@ import tkinter as tk
 from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
+import customtkinter as ctk
 from funcoes import Funções
 from tkinter import messagebox
 from tkinter import font
@@ -21,19 +22,21 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
         
-        self.configure(bg="#313131")
+        border_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=10)
+        border_frame.pack(fill='both', expand=True)
         
-        label_menu = tk.Label(self, text="4 Fitness", fg="white", bg="#313131", font=("Arial", 24))
+        label_menu = tk.Label(border_frame, text="4 Fitness", fg="white", bg="#313131", font=("Arial", 24))
         label_menu.pack(pady=50)
 
-        btn_login = tk.Button(self,text="Login", fg="white", bg="#7fd350", command=self.realizar_login, font=("Arial", 12))
+        btn_login = tk.Button(border_frame,text="Login", fg="white", bg="#7fd350", command=self.realizar_login, font=("Arial", 12))
         btn_login.pack(pady=20)
 
-        btn_gerenciador = tk.Button(self, text="Gerenciar Perfis", fg="white", bg="#7fd350", command=self.Exibir_perfis, font=("Arial", 12))
+        btn_gerenciador = tk.Button(border_frame, text="Gerenciar Perfis", fg="white", bg="#7fd350", command=self.Exibir_perfis, font=("Arial", 12))
         btn_gerenciador.pack(pady=20)
 
-        btn_Encerrar = tk.Button(self, text="Encerrar Programa", fg="white", bg="#7fd350", command=self.Encerrar_programa, font=("Arial", 12))
+        btn_Encerrar = tk.Button(border_frame, text="Encerrar Programa", fg="white", bg="#7fd350", command=self.Encerrar_programa, font=("Arial", 12))
         btn_Encerrar.pack(pady=20, padx=5)
+
 
 
     def realizar_login(self):
@@ -47,37 +50,41 @@ class Application(tk.Tk, Funções):
         self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
         self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
+        #Border Frame
+        border_frame = ctk.CTkFrame(self, fg_color="#7fd350", corner_radius=10)  # Cor da "borda"
+        border_frame.grid(row=0, column=0, columnspan=2, padx=20, pady=20)
+
         # Frame para centralizar o conteúdo
-        frame = tk.Frame(self, bg="#313131", highlightthickness=4, highlightbackground="#7fd350", highlightcolor="#7fd350")
-        frame.grid(row=1, column=0, columnspan=2)
+        frame = ctk.CTkFrame(border_frame, fg_color="#313131", corner_radius=10)
+        frame.grid(padx=10, pady=10)
 
         # Título
-        titulo = tk.Label(frame, text="Realizar login", fg="white", bg="#313131", font=("Arial", 20))
-        titulo.grid(row=0, column=0, columnspan=2, pady=10, padx=20)
+        titulo = ctk.CTkLabel(frame, text="Realizar login", text_color="white", font=("Arial", 20))
+        titulo.grid(row=0, column=0, columnspan=2, pady=10)
 
         # Nome do usuário
-        tk.Label(frame, text="Nome:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
-        self.entry_nome = tk.Entry(frame)
+        ctk.CTkLabel(frame, text="Nome:", text_color="white", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
+        self.entry_nome = ctk.CTkEntry(frame)
         self.entry_nome.grid(row=1, column=1, pady=5, padx=20)
 
         # Senha
-        tk.Label(frame, text="Senha:", fg="white", bg="#313131", font=("Arial", 10)).grid(row=2, column=0, sticky="e", padx=10)
-        self.entry_senha = tk.Entry(frame, show="*")
+        ctk.CTkLabel(frame, text="Senha:", text_color="white", font=("Arial", 10)).grid(row=2, column=0, sticky="e", padx=10)
+        self.entry_senha = ctk.CTkEntry(frame, show="*")
         self.entry_senha.grid(row=2, column=1, pady=5, padx=20)
 
         # Checkbutton para mostrar senha
-        self.check_senha = tk.IntVar()
-        check = tk.Checkbutton(frame, text="Mostrar senha", fg="white", bg="#313131", variable=self.check_senha, command=self.Exibir_senha)
+        self.check_senha = ctk.IntVar()
+        check = ctk.CTkCheckBox(frame, text="Mostrar senha", text_color="white", variable=self.check_senha, command=self.Exibir_senha)
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
         # Botão de validar
-        tk.Button(frame, text="Login", fg="white", bg="#7fd350", command=self.validar_login, font=("Arial", 12)).grid(row=4, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Login", hover_color="#55a630", command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
 
-    # Botão de criar conta
-        tk.Button(frame, text="Cadastrar-se", fg="white", bg="#7fd350", command=self.cadastrar_cliente, font=("Arial", 12)).grid(row=5, column=0, columnspan=2, pady=10)
+        # Botão de criar conta
+        ctk.CTkButton(frame, text="Cadastrar-se", hover_color="#55a630", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        tk.Button(frame, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 12)).grid(row=6, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Voltar", hover_color="#55a630", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
 
 
     def cadastrar_cliente(self):
@@ -151,11 +158,6 @@ class Application(tk.Tk, Funções):
         tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.realizar_login, font=("Arial", 10)).grid(row=10, column=1,pady=10)
 
 
-    def escolher_plano(self):
-        for widget in self.winfo_children():
-            widget.destroy()    
-   
-  
     def Home(self):
         for widget in self.winfo_children():
             widget.destroy()
@@ -683,4 +685,3 @@ class Application(tk.Tk, Funções):
 
         botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.salvar_alterações)
         botao_salvar.grid(row=7, column=1, pady=10)
-

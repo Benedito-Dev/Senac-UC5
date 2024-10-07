@@ -43,9 +43,9 @@ class Funções():
 
     def Exibir_senha(self):
         if self.check_senha.get() == 1:
-            self.entry_senha.config(show="")
+            self.entry_senha.configure(show="")
         else:
-            self.entry_senha.config(show="*")
+            self.entry_senha.configure(show="*")
 
 
     def validar_dados(self):
