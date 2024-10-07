@@ -92,14 +92,18 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
 
-        # Configurações da janela para centralização
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
-        self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
-        self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
+
+        backgorund_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        backgorund_frame.pack(fill="both", expand=True)
+
+                # Configurações da janela para centralização
+        backgorund_frame.grid_columnconfigure(0, weight=1)
+        backgorund_frame.grid_columnconfigure(1, weight=1)
+        backgorund_frame.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
+        backgorund_frame.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
         
-        border_frame = ctk.CTkFrame(self,fg_color="#7fd350",corner_radius=10)
+        border_frame = ctk.CTkFrame(backgorund_frame,fg_color="#7fd350",corner_radius=10)
         border_frame.grid(row=0,column=0,columnspan=2,padx=20,pady=20)
         
         
