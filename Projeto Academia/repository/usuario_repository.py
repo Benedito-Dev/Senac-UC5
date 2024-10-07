@@ -77,7 +77,7 @@ class RepositoryUsuario:
 # Obter Todos os Usuarios do Banco de Dados
      def get_all_users(self):
         try:
-            query = self.usuarios_table.select()
+            query = select(self.usuarios_table)
             with self.Session() as session:
                 result = session.execute(query)
                 users = result.fetchall()

@@ -1,7 +1,5 @@
-from config.db_config import db_config  # Importa a configuração do banco de dados
 from view.gui import Application  # Importa a interface gráfica
 from controller.usuario_controler import UsuarioController  # Importa o controlador
-from repository.usuario_repository import RepositoryUsuario  # Importa o repositório
 
 def main():
     # Cria uma instância do controlador, que gerenciará a lógica dos usuários
