@@ -28,7 +28,7 @@ class Funções():
     def carregar_perfis(self):
         try:
             # Obtendo os dados da tabela
-            users = self.db.get_all_users()
+            users = UsuarioController.listar_usuarios(self)
 
             # Inserindo os dados na ordem correta no TreeView
             for user in users:
