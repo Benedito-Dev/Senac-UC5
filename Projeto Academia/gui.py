@@ -22,7 +22,8 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
         
-        self.configure(bg="#313131")
+        border_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=10)
+        border_frame.pack(fill='both', expand=True)
         
         label_menu = tk.Label(self, text="4 Fitness", fg="white", bg="#313131", font=("Arial", 24))
         label_menu.pack(pady=50)
