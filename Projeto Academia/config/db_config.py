@@ -1,1 +1,0 @@
-db_config = "postgresql://postgres:postgres@localhost:5432/postgres"
