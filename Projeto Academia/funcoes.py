@@ -239,9 +239,9 @@ class Funções():
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao salvar alterações: {e}")
 
-
-    def printar(self):
-        print(f"Você selecionou a opção {self.opcao.get()}")
+    def salvar_ajustes(self):
+        messagebox.showinfo("Sucesso", "Ajustes Salvos com sucesso!")
+        self.after(200, self.Home)
 
 
     def Encerrar_programa(self):
