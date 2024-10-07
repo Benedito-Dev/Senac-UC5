@@ -25,16 +25,16 @@ class Application(tk.Tk, Funções):
         border_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=10)
         border_frame.pack(fill='both', expand=True)
         
-        label_menu = tk.Label(self, text="4 Fitness", fg="white", bg="#313131", font=("Arial", 24))
+        label_menu = tk.Label(border_frame, text="4 Fitness", fg="white", bg="#313131", font=("Arial", 24))
         label_menu.pack(pady=50)
 
-        btn_login = tk.Button(self,text="Login", fg="white", bg="#7fd350", command=self.realizar_login, font=("Arial", 12))
+        btn_login = tk.Button(border_frame,text="Login", fg="white", bg="#7fd350", command=self.realizar_login, font=("Arial", 12))
         btn_login.pack(pady=20)
 
-        btn_gerenciador = tk.Button(self, text="Gerenciar Perfis", fg="white", bg="#7fd350", command=self.Exibir_perfis, font=("Arial", 12))
+        btn_gerenciador = tk.Button(border_frame, text="Gerenciar Perfis", fg="white", bg="#7fd350", command=self.Exibir_perfis, font=("Arial", 12))
         btn_gerenciador.pack(pady=20)
 
-        btn_Encerrar = tk.Button(self, text="Encerrar Programa", fg="white", bg="#7fd350", command=self.Encerrar_programa, font=("Arial", 12))
+        btn_Encerrar = tk.Button(border_frame, text="Encerrar Programa", fg="white", bg="#7fd350", command=self.Encerrar_programa, font=("Arial", 12))
         btn_Encerrar.pack(pady=20, padx=5)
 
 
@@ -158,11 +158,6 @@ class Application(tk.Tk, Funções):
         tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.realizar_login, font=("Arial", 10)).grid(row=10, column=1,pady=10)
 
 
-    def escolher_plano(self):
-        for widget in self.winfo_children():
-            widget.destroy()    
-   
-  
     def Home(self):
         for widget in self.winfo_children():
             widget.destroy()
