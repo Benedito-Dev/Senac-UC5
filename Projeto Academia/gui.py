@@ -49,9 +49,13 @@ class Application(tk.Tk, Funções):
         self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
         self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
+        #Border Frame
+        border_frame = ctk.CTkFrame(self, fg_color="#7fd350", corner_radius=10)  # Cor da "borda"
+        border_frame.grid(row=0, column=0, columnspan=2, padx=20, pady=20)
+
         # Frame para centralizar o conteúdo
-        frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=10)
-        frame.grid(row=1, column=0, columnspan=2, padx=20, pady=20)
+        frame = ctk.CTkFrame(border_frame, fg_color="#313131", corner_radius=10)
+        frame.grid(padx=10, pady=10)
 
         # Título
         titulo = ctk.CTkLabel(frame, text="Realizar login", text_color="white", font=("Arial", 20))
@@ -73,13 +77,13 @@ class Application(tk.Tk, Funções):
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
         # Botão de validar
-        ctk.CTkButton(frame, text="Login", command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Login", hover_color="#55a630", command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
 
         # Botão de criar conta
-        ctk.CTkButton(frame, text="Cadastrar-se", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Cadastrar-se", hover_color="#55a630", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        ctk.CTkButton(frame, text="Voltar", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Voltar", hover_color="#55a630", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
 
 
     def cadastrar_cliente(self):
