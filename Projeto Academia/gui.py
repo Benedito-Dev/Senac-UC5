@@ -39,38 +39,34 @@ class Application(tk.Tk, Funções):
         btn_Encerrar.pack(pady=20, padx=5)
 
 
-
     def realizar_login(self):
         # Remove widgets existentes
         for widget in self.winfo_children():
             widget.destroy()
 
-
+        # Criação do frame de fundo
         background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
-        background_frame.pack(fill="both", expand=True)
-
+        background_frame.pack(fill='both', expand=True)
+        
+        # Configuração de colunas e linhas para centralizar
         background_frame.grid_columnconfigure(0, weight=1)
-        background_frame.grid_columnconfigure(1, weight=0)
-        background_frame.grid_rowconfigure(2, weight=1)
+        background_frame.grid_rowconfigure(0, weight=0)  # Para centralizar verticalmente
 
-        #Imagem
-        try:
-            # Carregar a imagem
-            self.imagem = Image.open("img/Logo.png")
-            self.imagem = self.imagem.resize((100, 100), Image.LANCZOS)  # Corrigido para LANCZOS
-            self.imagem_tk = ImageTk.PhotoImage(self.imagem)
-        except FileNotFoundError:
-            print("Arquivo não encontrado. Verifique o caminho.")
-        except Exception as e:
-            print(f"Ocorreu um erro: {e}")
+        # Imagem
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+        self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
-        #Border Frame
+        # Criar um Label para exibir a imagem
+        self.label_image = ctk.CTkLabel(background_frame, image=self.logo_image, text="")
+        self.label_image.grid(row=0, column=0, pady=0)
+
+        # Frame para a borda
         border_frame = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=10)
-        border_frame.grid(row=2, column=0, columnspan=5,padx=20, pady=20)
+        border_frame.grid(row=1, column=0, padx=20, pady=20)
 
         # Frame para centralizar o conteúdo
         frame = ctk.CTkFrame(border_frame, fg_color="#313131", corner_radius=10)
-        frame.grid(row=0, column=1, padx=10, pady=10)
+        frame.grid(row=0, column=0, padx=10, pady=10)
 
         # Título
         titulo = ctk.CTkLabel(frame, text="Realizar login", text_color="white", font=("Arial", 20))
@@ -99,7 +95,6 @@ class Application(tk.Tk, Funções):
 
         # Botão de voltar
         ctk.CTkButton(frame, text="Voltar", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
-
 
     def cadastrar_cliente(self):
         # Remove widgets existentes
