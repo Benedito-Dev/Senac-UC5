@@ -256,10 +256,10 @@ class Application(tk.Tk, Funções):
             widget.destroy()
 
             
-        self.configure(bg="#313131")
+        background_frame = ctk.CTkFrame(self, bg="#313131").pack(fill='both', expand=True)
 
         # Frame superior com o título e plano
-        frame_superior = tk.Frame(self, bg="#7fd350")
+        frame_superior = tk.Frame(background_frame, bg="#7fd350")
         frame_superior.pack(side="top", fill="x", pady=10)
 
         title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
@@ -272,8 +272,8 @@ class Application(tk.Tk, Funções):
         home_button.pack(side="right", padx=10)
 
         # Frame central para os botões
-        central_frame = tk.Frame(self, bg="#313131")
-        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)# Centralizando o frame
+        central_frame = tk.Frame(background_frame, bg="#313131")
+        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER) # Centralizando o frame
 
         # Colocando os botões lado a lado usando grid
 
