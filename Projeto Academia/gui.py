@@ -23,20 +23,36 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
         
-        border_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
-        border_frame.pack(fill='both', expand=True)
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill='both', expand=True)
+
+        background_frame.grid_columnconfigure(0, weight=1)
+        background_frame.grid_rowconfigure(0, weight=0) 
+
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+        self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
+
+        # Criar um Label para exibir a imagem
+        self.label_image = ctk.CTkLabel(background_frame, image=self.logo_image, text="")
+        self.label_image.grid(row=0, column=0, pady=0)
+
+        border_frame = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=10)
+        border_frame.grid(row=1, column=0, padx=20, pady=20)
+
+        # Frame para centralizar o conteúdo
+        frame = ctk.CTkFrame(border_frame, fg_color="#313131", corner_radius=10)
+        frame.grid(row=0, column=0, padx=10, pady=10)
         
-        label_menu = tk.Label(border_frame, text="4 Fitness", fg="white", bg="#313131", font=("Arial", 24))
-        label_menu.pack(pady=50)
+        #Titulo
+        titulo = ctk.CTkLabel(frame, text="4 FITNESS", text_color="white", font=("Arial", 20))
+        titulo.grid(row=0, column=0, columnspan=2, pady=10)
 
-        btn_login = tk.Button(border_frame,text="Login", fg="white", bg="#7fd350", command=self.realizar_login, font=("Arial", 12))
-        btn_login.pack(pady=20)
+        #Botoes
+        ctk.CTkButton(frame, text="Login", command=self.realizar_login).grid(row=1, column=0, columnspan=2, pady=20, padx=40)
 
-        btn_gerenciador = tk.Button(border_frame, text="Gerenciar Perfis", fg="white", bg="#7fd350", command=self.Exibir_perfis, font=("Arial", 12))
-        btn_gerenciador.pack(pady=20)
-
-        btn_Encerrar = tk.Button(border_frame, text="Encerrar Programa", fg="white", bg="#7fd350", command=self.Encerrar_programa, font=("Arial", 12))
-        btn_Encerrar.pack(pady=20, padx=5)
+        ctk.CTkButton(frame, text="Gerenciar Perfis", command=self.Exibir_perfis).grid(row=2, column=0, columnspan=2, pady=20, padx=40)
+        
+        ctk.CTkButton(frame, text="Encerrar Programa", command=self.Encerrar_programa).grid(row=3, column=0, columnspan=2, pady=20, padx=40)
 
 
     def realizar_login(self):
@@ -177,41 +193,62 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
 
-        # Estilização da Janela
-        self.configure(bg="#313131")
+        # Criando Fundo com CustomTkinter
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill="both", expand=True)
 
-        # Frame superior com o título e plano
-        frame_superior = tk.Frame(self, bg="#7fd350")
+        # Frame superior com o título e plano (usando CustomTkinter)
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
-        log_out = tk.Button(frame_superior, text="Log Out", fg="white", bg="black", command=self.realizar_login)
+        log_out = ctk.CTkButton(frame_superior, text="Log Out", text_color="white", command=self.realizar_login)
         log_out.pack(side="right", padx=10)
 
-        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12, ))
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
         plano_label.pack(side="right", padx=20)
 
-        # Frame central para os botões
-        central_frame = tk.Frame(self, bg="#313131")
-        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
+        # Frame central para os botões (usando CustomTkinter)
+        central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
+        central_frame.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)  # Centralizando o frame
 
-        # Colocando os botões lado a lado usando grid
-        btn_perfil = tk.Button(central_frame, text="Perfil", command=self.Perfil_usuario, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_perfil.grid(row=0, column=0, padx=20, pady=20)
+        #Imagem Perfil
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Perfil.png"
+        self.logo_image_perfil = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
-        btn_treinos = tk.Button(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_treinos.grid(row=0, column=1, padx=20, pady=20)
+        # Criar um Label para exibir a imagem
+        self.label_image_perfil = ctk.CTkLabel(central_frame, image=self.logo_image_perfil, text="")
+        self.label_image_perfil.grid(row=0, column=0, pady=0)
 
-        btn_ajustes = tk.Button(central_frame, text="Ajustes", command=self.Ajustes, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_ajustes.grid(row=0, column=2, padx=20, pady=20)
+        # Colocando os botões lado a lado usando grid (CustomTkinter)
+        btn_perfil = ctk.CTkButton(central_frame, text="Perfil", command=self.Perfil_usuario, font=("Arial", 12, "bold"), width=150, height=50)
+        btn_perfil.grid(row=0, column=0, pady=(250, 00))
 
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
+        self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
-        # Configurar expansão de colunas
-        central_frame.grid_columnconfigure(0, weight=1)
-        central_frame.grid_columnconfigure(1, weight=1)
-        central_frame.grid_columnconfigure(2, weight=1)
+        # Criar um Label para exibir a imagem
+        self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
+        self.label_image_treinos.grid(row=0, column=1, pady=0)
+
+        btn_treinos = ctk.CTkButton(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 12, "bold"), width=150, height=50)
+        btn_treinos.grid(row=0, column=1, pady=(250, 00))
+
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Ajustes.png"
+        self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
+
+        # Criar um Label para exibir a imagem
+        self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
+        self.label_image_ajustes.grid(row=0, column=2, pady=0)
+
+        btn_ajustes = ctk.CTkButton(central_frame, text="Ajustes", command=self.Ajustes, font=("Arial", 12, "bold"), width=150, height=50)
+        btn_ajustes.grid(row=0, column=2, pady=(250, 00))
+
+        # Frame inferior (usando CustomTkinter)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
+        frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
     def Treinos(self):
@@ -519,12 +556,20 @@ class Application(tk.Tk, Funções):
     def Exibir_perfis(self):
         for widget in self.winfo_children():
             widget.destroy()
+
+        # Criação do frame de fundo
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill='both', expand=True)
         
-        title = tk.Label(self, text="Perfis dos Clientes", fg="white", bg="#313131", font=("Arial", 20))
+        # Configuração de colunas e linhas para centralizar
+        background_frame.grid_columnconfigure(0, weight=1)
+        background_frame.grid_rowconfigure(0, weight=0)  # Para centralizar verticalmente
+        
+        title = tk.Label(background_frame, text="Perfis dos Clientes", fg="white", bg="#313131", font=("Arial", 20))
         title.pack(pady=20)
 
         colunas = ("ID", "Nome", "Email", "Telefone", "Endereço") 
-        self.tree = ttk.Treeview(self, columns=colunas, show='headings')
+        self.tree = ttk.Treeview(background_frame, columns=colunas, show='headings')
         self.tree.heading("ID", text="ID")
         self.tree.heading("Nome", text="Nome")
         self.tree.heading("Email", text="Email")
@@ -533,11 +578,8 @@ class Application(tk.Tk, Funções):
         self.tree.pack(pady=0, fill=tk.BOTH, expand=True)
         self.carregar_perfis()
 
-        btn_deletar = tk.Button(self, text="Deletar Perfil", fg="white", bg="#7fd350", command=self.deletar_perfil)
-        btn_deletar.pack(pady=10)
-
-        btn_voltar = tk.Button(self, text="Voltar", fg="white", bg="#7fd350", command=self.menu_inicial, font=("Arial", 10))
-        btn_voltar.pack(pady=10)
+        ctk.CTkButton(background_frame, text="Deletar Perfil", command=self.deletar_perfil).pack(pady=10)
+        ctk.CTkButton(background_frame, text="Voltar", command=self.menu_inicial).pack(pady=10)
 
     def Ajustes(self):
         for widget in self.winfo_children():
