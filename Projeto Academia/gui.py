@@ -252,90 +252,101 @@ class Application(tk.Tk, Funções):
 
 
     def Treinos(self):
-        for widget in self.winfo_children():
-            widget.destroy()
+            for widget in self.winfo_children():
+                widget.destroy()
 
-            
-        background_frame = ctk.CTkFrame(self, bg="#313131").pack(fill='both', expand=True)
+            background_frame = ctk.CTkFrame(self, fg_color="#313131")
+            background_frame.pack(fill='both', expand=True)
 
-        # Frame superior com o título e plano
-        frame_superior = tk.Frame(background_frame, bg="#7fd350")
-        frame_superior.pack(side="top", fill="x", pady=10)
+            # Frame superior com o título e plano
+            frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350")
+            frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
-        title.pack(side="left", padx=20)
+            title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", font=("Arial", 18, 'bold'))
+            title.pack(side="left", padx=20)
 
-        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12, ))
-        plano_label.pack(side="right", padx=20)
+            plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", font=("Arial", 12))
+            plano_label.pack(side="right", padx=20)
 
-        home_button = tk.Button(frame_superior, text="🏠", fg="white", bg="black", command=self.Home)
-        home_button.pack(side="right", padx=10)
+            home_button = ctk.CTkButton(frame_superior, text="🏠", text_color="white", width=5,command=self.Home)
+            home_button.pack(side="right", padx=10)
 
-        # Frame central para os botões
-        central_frame = tk.Frame(background_frame, bg="#313131")
-        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER) # Centralizando o frame
+            # Frame central para os botões
+            central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
+            central_frame.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)  # Centralizando o frame
 
-        # Colocando os botões lado a lado usando grid
+            image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
+            self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(300, 300))  # Ajuste o tamanho da imagem
 
-        btn_treinos = tk.Button(central_frame, text="Superiores", command=self.Superiores, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_treinos.grid(row=0, column=0, padx=20, pady=20)
+            # Criar um Label para exibir a imagem
+            self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
+            self.label_image_treinos.grid(row=0, column=0, pady=0)
+    
+            # Colocando os botões lado a lado usando grid
+            btn_superiores = ctk.CTkButton(central_frame, text="Superiores", command=self.Superiores, font=("Arial", 12, "bold"), height=50)
+            btn_superiores.grid(row=0, column=0, padx=20, pady=(250, 00))
 
-        btn_ajustes = tk.Button(central_frame, text="Inferiores", command=self.Inferiores, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_ajustes.grid(row=0, column=1, padx=20, pady=20)
+            image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
+            self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(300, 300))  # Ajuste o tamanho da imagem
 
-        btn_voltar = tk.Button(central_frame, text="Voltar", command=self.Home, font=("Arial", 12, "bold"))
-        btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
+            # Criar um Label para exibir a imagem
+            self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
+            self.label_image_treinos.grid(row=0, column=1, pady=0)
 
+            btn_inferiores = ctk.CTkButton(central_frame, text="Inferiores", command=self.Inferiores, font=("Arial", 12, "bold"), height=50)
+            btn_inferiores.grid(row=0, column=1, padx=20, pady=(250, 00))
 
-        # Configurar expansão de colunas
-        central_frame.grid_columnconfigure(0, weight=1)
-        central_frame.grid_columnconfigure(1, weight=1)
-        central_frame.grid_columnconfigure(2, weight=1)
+            btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Home, font=("Arial", 12, "bold"))
+            btn_voltar.grid(row=2, column=0, columnspan=2, padx=60, pady=50)
 
-        tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Home).grid(row=2, column=0, columnspan=2, pady=10, sticky="s")
+            # Configurar expansão de colunas
+            central_frame.grid_columnconfigure(0, weight=1)
+            central_frame.grid_columnconfigure(1, weight=1)
+            central_frame.grid_columnconfigure(2, weight=1)
 
 
     def Superiores(self):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.configure(bg="#313131")
+        background_frame = ctk.CTkFrame(self, fg_color="#313131")
+        background_frame.pack(fill='both', expand=True)
 
         # Frame superior com o título e plano
-        frame_superior = tk.Frame(self, bg="#7fd350")
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350")
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
-        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12))
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", font=("Arial", 12))
         plano_label.pack(side="right", padx=20)
 
-        home_button = tk.Button(frame_superior, text="🏠", fg="white", bg="black", command=self.Home)
+        home_button = ctk.CTkButton(frame_superior, text="🏠", text_color="white", width=5 ,command=self.Home)
         home_button.pack(side="right", padx=10)
 
         # Frame central para os botões
-        central_frame = tk.Frame(self, bg="#313131")
+        central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
 
         # Colocando os botões lado a lado usando grid com borda colorida
-        
-        # Frame para o botão Perna com borda colorida
-        peito_frame = tk.Frame(central_frame, highlightbackground="#7fd350", highlightthickness=4)
+
+        # Frame para o botão Peito com borda colorida
+        peito_frame = ctk.CTkFrame(central_frame, fg_color="#313131", border_color="#7fd350", border_width=4)
         peito_frame.grid(row=0, column=0, padx=20, pady=20)
-        
-        btn_Peito = tk.Button(peito_frame, text="Peito", command=self.Peito, bd=0, font=("Arial", 12, "bold"), width=15, height=5)
+
+        btn_Peito = ctk.CTkButton(peito_frame, text="Peito", command=self.Peito, font=("Arial", 12, "bold"), width=150, height=100)
         btn_Peito.pack()
 
-        # Frame para o botão Quadriceps com borda colorida
-        Costas_frame = tk.Frame(central_frame, highlightbackground="#7fd350", highlightthickness=4)
-        Costas_frame.grid(row=0, column=1, padx=20, pady=20)
-        
-        btn_Costas = tk.Button(Costas_frame, text="Costas", command=self.Costas, bd=0, font=("Arial", 12, "bold"), width=15, height=5)
+        # Frame para o botão Costas com borda colorida
+        costas_frame = ctk.CTkFrame(central_frame, fg_color="#313131", border_color="#7fd350", border_width=4)
+        costas_frame.grid(row=0, column=1, padx=20, pady=20)
+
+        btn_Costas = ctk.CTkButton(costas_frame, text="Costas", command=self.Costas, font=("Arial", 12, "bold"), width=150, height=100)
         btn_Costas.pack()
 
         # Botão Voltar
-        btn_voltar = tk.Button(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
         btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
 
 
@@ -343,43 +354,44 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.configure(bg="#313131")
+        background_frame = ctk.CTkFrame(self, fg_color="#313131")
+        background_frame.pack(fill='both', expand=True)
 
         # Frame superior com o título e plano
-        frame_superior = tk.Frame(self, bg="#7fd350")
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350")
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = tk.Label(frame_superior, text="4 FITNESS", fg="white", bg="#7fd350", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
-        plano_label = tk.Label(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", fg="white", bg="#7fd350", font=("Arial", 12))
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", font=("Arial", 12))
         plano_label.pack(side="right", padx=20)
 
-        home_button = tk.Button(frame_superior, text="🏠", fg="white", bg="black", command=self.Home)
+        home_button = ctk.CTkButton(frame_superior, text="🏠", text_color="white", width=5 ,command=self.Home)
         home_button.pack(side="right", padx=10)
 
         # Frame central para os botões
-        central_frame = tk.Frame(self, bg="#313131")
+        central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
 
         # Colocando os botões lado a lado usando grid com borda colorida
-        
-        # Frame para o botão Perna com borda colorida
-        perna_frame = tk.Frame(central_frame, highlightbackground="#7fd350", highlightthickness=4)
-        perna_frame.grid(row=0, column=0, padx=20, pady=20)
-        
-        btn_Perna = tk.Button(perna_frame, text="Perna", command=self.Perna, bd=0, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_Perna.pack()
 
-        # Frame para o botão Quadriceps com borda colorida
-        quadriceps_frame = tk.Frame(central_frame, highlightbackground="#7fd350", highlightthickness=4)
+        # Frame para o botão Peito com borda colorida
+        perna_frame = ctk.CTkFrame(central_frame, fg_color="#313131", border_color="#7fd350", border_width=4)
+        perna_frame.grid(row=0, column=0, padx=20, pady=20)
+
+        btn_perna = ctk.CTkButton(perna_frame, text="Perna", command=self.Perna, font=("Arial", 12, "bold"), width=150, height=100)
+        btn_perna.pack()
+
+        # Frame para o botão Costas com borda colorida
+        quadriceps_frame = ctk.CTkFrame(central_frame, fg_color="#313131", border_color="#7fd350", border_width=4)
         quadriceps_frame.grid(row=0, column=1, padx=20, pady=20)
-        
-        btn_Quadriceps = tk.Button(quadriceps_frame, text="Quadriceps", command=self.Quadriceps, bd=0, font=("Arial", 12, "bold"), width=15, height=5)
-        btn_Quadriceps.pack()
+
+        btn_quadriceps = ctk.CTkButton(quadriceps_frame, text="Quadriceps", command=self.Quadriceps, font=("Arial", 12, "bold"), width=150, height=100)
+        btn_quadriceps.pack()
 
         # Botão Voltar
-        btn_voltar = tk.Button(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
         btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
 
 
