@@ -14,7 +14,7 @@ class Application(tk.Tk, Funções):
         self.title("4 FITNESS")
         self.geometry("800x600")
         self.current_page = 0
-        self.menu_inicial()
+        self.Ajustes()
 
 # Janelas
 
@@ -22,7 +22,7 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
         
-        border_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        border_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=10)
         border_frame.pack(fill='both', expand=True)
         
         label_menu = tk.Label(border_frame, text="4 Fitness", fg="white", bg="#313131", font=("Arial", 24))
@@ -113,20 +113,20 @@ class Application(tk.Tk, Funções):
 
         # Título
         title = ctk.CTkLabel(frame,text="Realizar cadastro", text_color="white",font=("Arial", 20))
-        title.grid(row=0,column=1,pady=10)
+        title.grid(row=0,column=0,columnspan=2,pady=10)
 
         # Nome
-        ctk.CTkLabel(frame, text="Nome:",text_color="white", font=("Arial", 14)).grid(row=1, column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Nome:",text_color="white", font=("Arial", 10)).grid(row=1, column=0, sticky="e", padx=10)
         self.entry_nome = ctk.CTkEntry(frame)
         self.entry_nome.grid(row=1, column=1, pady=5)
 
         # Email
-        ctk.CTkLabel(frame, text="Email:", text_color="white", font=("Arial", 14)).grid(row=2, column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Email:", text_color="white", font=("Arial", 10)).grid(row=2, column=0, sticky="e", padx=10)
         self.entry_email = ctk.CTkEntry(frame)
         self.entry_email.grid(row=2, column=1, pady=5)
 
         # Senha
-        ctk.CTkLabel(frame, text="Senha:", text_color="white", font=("Arial", 14)).grid(row=3, column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Senha:", text_color="white", font=("Arial", 10)).grid(row=3, column=0, sticky="e", padx=10)
         self.entry_senha = ctk.CTkEntry(frame, show="*")
         self.entry_senha.grid(row=3, column=1, pady=5)
 
@@ -136,22 +136,22 @@ class Application(tk.Tk, Funções):
         check_button.grid(row=4, column=1, sticky="w", padx=10)  # Posicionando à esquerda
 
         # Telefone
-        ctk.CTkLabel(frame, text="Telefone:", text_color="white", font=("Arial", 14)).grid(row=5, column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Telefone:", text_color="white", font=("Arial", 10)).grid(row=5, column=0, sticky="e", padx=10)
         self.entry_telefone = ctk.CTkEntry(frame)
         self.entry_telefone.grid(row=5, column=1, pady=5)
 
         # Endereço
-        ctk.CTkLabel(frame, text="Endereço:", text_color="white", font=("Arial", 14)).grid(row=6, column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Endereço:", text_color="white", font=("Arial", 10)).grid(row=6, column=0, sticky="e", padx=10)
         self.entry_endereco = ctk.CTkEntry(frame)
         self.entry_endereco.grid(row=6, column=1, pady=5)
 
         #CPF 
-        ctk.CTkLabel(frame, text="CPF", text_color="white", font=("Arial", 14)).grid(row=7, column=0, sticky="e",padx=10)
+        ctk.CTkLabel(frame, text="CPF", text_color="white", font=("Arial",10)).grid(row=7, column=0, sticky="e",padx=10)
         self.entry_cpf = ctk.CTkEntry(frame)
         self.entry_cpf.grid(row=7,column=1, pady=5)
         
         #Data de nascimento 
-        ctk.CTkLabel(frame, text="Data de nascimento", text_color="white", font=("Arial", 14)).grid(row=8,column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Data de nascimento", text_color="white", font=("Arial",10)).grid(row=8,column=0, sticky="e", padx=10)
         
         self.entry_dataDeNascimento = ctk.CTkEntry(frame)
         self.entry_dataDeNascimento.grid(row=8,column=1,pady=5)
@@ -537,91 +537,87 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
 
+        backgorund_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        backgorund_frame.pack(fill="both", expand=True)
+   
+        backgorund_frame.grid_columnconfigure(0, weight=1)
+        backgorund_frame.grid_columnconfigure(1, weight=1)
+        backgorund_frame.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
+        backgorund_frame.grid_rowconfigure(6, weight=1) 
+        
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
         self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
 
         # Frame para centralizar o conteúdo
-        frame = tk.Frame(self,bg='#313131',highlightthickness=4,highlightbackground='#7fd350',highlightcolor='#7fd350')
+        frame = tk.Frame(backgorund_frame, bg='#313131', highlightthickness=4, highlightbackground='#7fd350', highlightcolor='#7fd350')
         frame.grid(row=1, column=0, columnspan=2)
 
         # Título
         title = tk.Label(frame, text="Ajustes", fg="white", bg="#313131", font=('Arial', 20))
         title.grid(row=0, column=0, columnspan=5, pady=10)
 
-
-        #Label Notificações - 01
-        notificacoes = tk.Label(frame, text="Notificações : ", fg="white", bg="#313131", font=('Arial', 14))
+        # Label Notificações
+        notificacoes = ctk.CTkLabel(frame, text="Notificações :", text_color="white", font=('Arial', 14))
         notificacoes.grid(row=1, column=0, pady=10, padx=10)
 
-        Notificacoes = ["Exibir", "Não Exibir"]
+        notificacoes = ["Exibir", "Não exibir"]
 
-        notificacoes_var = tk.StringVar()
-        notificacoes_var.set(Notificacoes[0])  
+        notificaoes_selecionada = ctk.StringVar(value=notificacoes[0])
 
-        optionmenu_notificacoes = tk.OptionMenu(frame, notificacoes_var, * Notificacoes)
+        optionmenu_notificacoes = ctk.CTkOptionMenu(frame, variable=notificaoes_selecionada, values=notificacoes)
         optionmenu_notificacoes.grid(row=1, column=1, padx=10)
 
-
-        # Label Idioma - 02
-        Idioma = tk.Label(frame, text="Idioma : ", fg="white", bg="#313131", font=('Arial', 14))
+        # Label Idioma
+        Idioma = ctk.CTkLabel(frame, text="Idioma : ", text_color="white", font=('Arial', 14))
         Idioma.grid(row=2, column=0, pady=10, padx=10)
 
-        Idiomas = ["Português Brasil"]
+        idiomas = ["Português-BR"]
 
-        idiomas_var = tk.StringVar()
-        idiomas_var.set(Idiomas[0])  
+        idioma_selecionado = ctk.StringVar(value=idiomas[0])
 
-        optionmenu_idiomas = tk.OptionMenu(frame, idiomas_var, * Idiomas)
-        optionmenu_idiomas.grid(row=2, column=1, padx=10)
+        optionmenu_idioma = ctk.CTkOptionMenu(frame,variable=idioma_selecionado,values=idiomas)
+        optionmenu_idioma.grid(row=2, column=1, padx=10)   
 
-
-        # Label Unidade de Medida - 03
-        und_medida = tk.Label(frame, text="Unidade de Medida : ", fg="white", bg="#313131", font=('Arial', 14))
+        # Label Unidade de Medida
+        und_medida = ctk.CTkLabel(frame, text="Unidade de Medida : ", text_color="white", font=('Arial', 14))
         und_medida.grid(row=3, column=0, pady=10, padx=10)
 
+        unidades = ["KG", "LB"]
 
-        Unidades_med = ["Kg", "LB"]
+        unidade_selecionada = ctk.StringVar(value=unidades[0])
+        
+        optionmenu_unidade = ctk.CTkOptionMenu(frame,variable=unidade_selecionada,values=unidades)
+        optionmenu_unidade.grid(row=3, column=1, padx=10)
 
-        Unidades_med_var = tk.StringVar()
-        Unidades_med_var.set(Unidades_med[0])  
+        # Label Frequência
+        frequencia = ctk.CTkLabel(frame, text="Frequência de Treinos :", text_color="white", font=('Arial', 14))
+        frequencia.grid(row=4, column=0, pady=10, padx=10)
 
-        optionmenu_cidades = tk.OptionMenu(frame, Unidades_med_var, * Unidades_med)
-        optionmenu_cidades.grid(row=3, column=1, padx=10)
+        Frequencias = ["5 Dias na semana", "3 Dias na semana", "4 Dias na semana"]
 
-
-        # Label Frequencia - 04
-        Frequencia = tk.Label(frame, text="Frquencia de Treinos :", fg="white", bg="#313131", font=('Arial', 14))
-        Frequencia.grid(row=4, column=0, pady=10, padx=10)
-
-
-        Frequencia = ["5 Dias na semana", "3 Dias na semana", "4 Dias na semana"]
-
-        Frequencia_var = tk.StringVar()
-        Frequencia_var.set(Frequencia[0])  
-
-        optionmenu_frequencia = tk.OptionMenu(frame, Frequencia_var, * Frequencia)
+        Frequencia_var = ctk.StringVar(value=Frequencias[0])  
+        optionmenu_frequencia = ctk.CTkOptionMenu(frame,variable=Frequencia_var, values=Frequencias)
         optionmenu_frequencia.grid(row=4, column=1, padx=10)
 
-        # Label Meta - 5
-        Meta = tk.Label(frame, text="Meta :", fg="white", bg="#313131", font=('Arial', 14))
-        Meta.grid(row=5, column=0, pady=10, padx=10)
+        # Label Meta
+        meta = ctk.CTkLabel(frame, text="Meta :", text_color="white", font=('Arial', 14))
+        meta.grid(row=5, column=0, pady=10, padx=10)
 
+        Metas = ["Ganho de Massa", "Hipertrofia", "Perda de Peso"]
 
-        Meta = ["Ganho de Massa", "Hipertrofia", "Perca de Peso"]
-
-        Meta_var = tk.StringVar()
-        Meta_var.set(Meta[0])  
-
-        optionmenu_meta = tk.OptionMenu(frame, Meta_var, * Meta)
+        Meta_var = ctk.StringVar(value=Metas[0])  
+        optionmenu_meta = ctk.CTkOptionMenu(frame, variable=Meta_var, values=Metas)
         optionmenu_meta.grid(row=5, column=1, padx=10)
 
         # Botão Cadastrar-se
-        tk.Button(frame, text="Salvar Alterações",fg='white', bg='#7fd350',command=self.Home, font=("Arial", 12)).grid(row=6, column=0, columnspan=5, pady=10, padx=20)
+        ctk.CTkButton(frame, text="Salvar Alterações",fg_color="#696767", command=self.Home).grid(row=6, column=0, columnspan=5, pady=10, padx=20)
         
         # Botão Voltar
-        tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.Home, font=("Arial", 10)).grid(row=7, column=0, columnspan=5, pady=10)
+        ctk.CTkButton(frame, text="Voltar", fg_color="#696767",command=self.Home).grid(row=7, column=0, columnspan=5, pady=10)
+
+
 
 
     def Perfil_usuario(self):
