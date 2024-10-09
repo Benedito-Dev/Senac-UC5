@@ -29,7 +29,7 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(0, weight=1)
         background_frame.grid_rowconfigure(0, weight=0) 
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -68,7 +68,8 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(0, weight=1)
         background_frame.grid_rowconfigure(0, weight=0)  # Para centralizar verticalmente
         # Imagem
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+        
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -214,7 +215,7 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
         #Imagem Perfil
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Perfil.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Perfil.png"
         self.logo_image_perfil = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -225,7 +226,7 @@ class Application(tk.Tk, Funções):
         btn_perfil = ctk.CTkButton(central_frame, text="Perfil", command=self.Perfil_usuario, font=("Arial", 18, "bold"), width=150, height=50)
         btn_perfil.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -235,7 +236,7 @@ class Application(tk.Tk, Funções):
         btn_treinos = ctk.CTkButton(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_treinos.grid(row=0, column=1, pady=(250, 00))
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Ajustes.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Ajustes.png"
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -275,7 +276,7 @@ class Application(tk.Tk, Funções):
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Puxador.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Puxador.png"
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -285,7 +286,7 @@ class Application(tk.Tk, Funções):
         btn_superiores = ctk.CTkButton(central_frame, text="Superiores", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_superiores.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Leg-press.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Leg-press.png"
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -328,7 +329,7 @@ class Application(tk.Tk, Funções):
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Peito.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Peito.png"
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -338,7 +339,7 @@ class Application(tk.Tk, Funções):
         btn_Peito = ctk.CTkButton(central_frame, text="Peito", command=self.Peito, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Peito.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Costas.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Costas.png"
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -381,7 +382,7 @@ class Application(tk.Tk, Funções):
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -391,7 +392,7 @@ class Application(tk.Tk, Funções):
         btn_Perna = ctk.CTkButton(central_frame, text="Perna", command=self.Perna, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Perna.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -698,73 +699,90 @@ class Application(tk.Tk, Funções):
         tk.Button(frame, text="Voltar",fg='white',bg='#7fd350', command=self.Home, font=("Arial", 10)).grid(row=7, column=0, columnspan=5, pady=10)
 
 
+
+
+
     def Perfil_usuario(self):
+        # Remove todos os widgets existentes
         for widget in self.winfo_children():
             widget.destroy()
 
         self.puxar_informações()
         
-        # Configurações da janela para centralização
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
-        self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
-        self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill="both", expand=True)
 
+        # Configurações da janela para centralização
+        background_frame.grid_columnconfigure(0, weight=1)
+        background_frame.grid_columnconfigure(1, weight=1)
+        background_frame.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
+        background_frame.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
+
+        # Ajusta o tamanho da tela
+        self.geometry("800x600")  # Largura e altura maiores para acomodar mais espaço
+        
         # Criando o frame verde
-        frame_verde = tk.Frame(self, bg="#313131", padx=20, pady=20, highlightthickness=4, highlightcolor="green", highlightbackground="green")
-        frame_verde.grid(row=1, column=0, columnspan=2)
+        frame_verde = ctk.CTkFrame(background_frame, fg_color="#313131", corner_radius=10, border_color="green", border_width=7)
+        frame_verde.grid(row=1, column=0, columnspan=2, padx=40, pady=40)  # Aumentei o padding
 
         # Criando a fonte Nunito
-        nunito_font = font.Font(family="Nunito", size=10)
-        titulo_font = font.Font(family="Nunito", size=14, weight="bold")
-        botao_font = font.Font(family="Nunito", size=10, weight="bold")
+        nunito_font = ("Nunito", 12)  # Fonte um pouco maior
+        titulo_font = ("Nunito", 16, "bold")
+        botao_font = ("Nunito", 12, "bold")
 
         # Label para o título
-        titulo_label = tk.Label(frame_verde, text="Editar Informações", bg="#313131", fg="White", font=titulo_font)
-        titulo_label.grid(row=0, column=1, pady=10)
+        titulo_label = ctk.CTkLabel(frame_verde, text="Editar Informações", text_color="White", font=titulo_font)
+        titulo_label.grid(row=0, column=1, pady=15)  # Mais espaço vertical
 
-        # Labels e entradas
-        self.entry_novo_nome = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
-        label_nome = tk.Label(frame_verde, text="Nome:", bg="#313131", fg="White", font=nunito_font)
-        label_nome.grid(row=1, column=0, pady=2, sticky='e')
-        self.entry_novo_nome.grid(row=1, column=1, pady=2)
+        # Labels e entradas para nome
+        self.entry_novo_nome = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        label_nome = ctk.CTkLabel(frame_verde, text="Nome:", text_color="White", font=nunito_font)
+        label_nome.grid(row=1, column=0, pady=10, sticky='e')  # Espaço vertical maior
+        self.entry_novo_nome.grid(row=1, column=1, pady=10)
+        self.entry_novo_nome.insert(0, f'{self.get_informacao(1).lower().capitalize()}')
 
-        self.entry_novo_nome.insert(0, f'{self.get_informacao(1).lower().capitalize()}')  # Adiciona o placeholder
+        # Labels e entradas para data de nascimento
+        self.entry_nova_dataDeNascimento = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        label_datanasc = ctk.CTkLabel(frame_verde, text="Data de nascimento:", text_color="White", font=nunito_font)
+        label_datanasc.grid(row=2, column=0, padx=10, pady=10, sticky='e')
+        self.entry_nova_dataDeNascimento.grid(row=2, column=1, pady=10)
+        self.entry_nova_dataDeNascimento.insert(0, f'{self.get_informacao(7)}')
 
-        self.entry_nova_dataDeNascimento = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
-        label_datanasc = tk.Label(frame_verde, text="Data de nascimento:", bg="#313131", fg="White", font=nunito_font)
-        label_datanasc.grid(row=2, column=0, pady=2, sticky='e')
-        self.entry_nova_dataDeNascimento.grid(row=2, column=1, pady=2)
+        # Botão do calendário com cor preta
+        self.btn_calendario = ctk.CTkButton(frame_verde, text="Escolher data", command=self.abrir_calendario, fg_color="#000000", text_color="#ffffff")
+        self.btn_calendario.grid(row=2, column=2, padx=10)  # Espaço lateral maior
 
-        self.entry_nova_dataDeNascimento.insert(0, f'{self.get_informacao(7)}')  # Adiciona o placeholder
+        # Labels e entradas para endereço
+        self.entry_novo_endereco = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        label_endereco = ctk.CTkLabel(frame_verde, text="Endereço:", text_color="White", font=nunito_font)
+        label_endereco.grid(row=3, column=0, pady=10, sticky='e')
+        self.entry_novo_endereco.grid(row=3, column=1, pady=10)
+        self.entry_novo_endereco.insert(0, f'{self.get_informacao(5)}')
 
-        self.btn_calendario = tk.Button(frame_verde, text="Escolher data", command=self.abrir_calendario)
-        self.btn_calendario.grid(row=2, column=2, padx=4)
+        # Labels e entradas para telefone
+        self.entry_novo_telefone = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        label_telefone = ctk.CTkLabel(frame_verde, text="Telefone:", text_color="White", font=nunito_font)
+        label_telefone.grid(row=4, column=0, pady=10, sticky='e')
+        self.entry_novo_telefone.grid(row=4, column=1, pady=10)
+        self.entry_novo_telefone.insert(0, f'{self.get_informacao(4)}')
 
+        # Labels e entradas para email
+        self.entry_novo_email = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        label_email = ctk.CTkLabel(frame_verde, text="E-mail:", text_color="White", font=nunito_font)
+        label_email.grid(row=5, column=0, pady=10, sticky='e')
+        self.entry_novo_email.grid(row=5, column=1, pady=10)
+        self.entry_novo_email.insert(0, f'{self.get_informacao(2)}')
 
-        self.entry_novo_endereco = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
-        label_endereco = tk.Label(frame_verde, text="Endereço:", bg="#313131", fg="White", font=nunito_font)
-        label_endereco.grid(row=3, column=0, pady=2, sticky='e')
-        self.entry_novo_endereco.grid(row=3, column=1, pady=2)
+        # Labels e entradas para nova senha
+        label_nova_senha = ctk.CTkLabel(frame_verde, text="Nova senha:", text_color="White", font=nunito_font)
+        label_nova_senha.grid(row=6, column=0, pady=10, sticky='e')
+        self.entry_nova_senha = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, show='*')
+        self.entry_nova_senha.grid(row=6, column=1, pady=10)
 
-        self.entry_novo_endereco.insert(0, f'{self.get_informacao(5)}')  # Adiciona o placeholder
+        # Botão de cancelar
+        self.btn_voltar = ctk.CTkButton(frame_verde, text="Cancelar", command=self.Home, fg_color="#000000", text_color="#FF0000")
+        self.btn_voltar.grid(row=7, column=1, pady=15)
 
-        self.entry_novo_telefone = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
-        label_telefone = tk.Label(frame_verde, text="Telefone:", bg="#313131", fg="White", font=nunito_font)
-        label_telefone.grid(row=4, column=0, pady=2, sticky='e')
-        self.entry_novo_telefone.grid(row=4, column=1, pady=2)
-
-        self.entry_novo_telefone.insert(0, f'{self.get_informacao(4)}')  # Adiciona o placeholder
-
-        self.entry_novo_email = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
-        label_email = tk.Label(frame_verde, text="E-mail:", bg="#313131", fg="White", font=nunito_font)
-        label_email.grid(row=5, column=0, pady=2, sticky='e')
-        self.entry_novo_email.grid(row=5, column=1, pady=2)
-
-        self.entry_novo_email.insert(0, f'{self.get_informacao(2)}')  # Adiciona o placeholder
-
-        self.btn_voltar = tk.Button(frame_verde, text="Cancelar", command=self.Home, bg="#000000", fg="#FF0000")
-        self.btn_voltar.grid(row=6, column=1, pady=10)
-
-        botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.salvar_alterações)
-        botao_salvar.grid(row=7, column=1, pady=10)
+        # Botão de salvar alterações
+        botao_salvar = ctk.CTkButton(frame_verde, text="Salvar alterações", fg_color="#000000", text_color="#00ff00", font=botao_font, command=self.salvar_alterações)
+        botao_salvar.grid(row=8, column=1, pady=15)
