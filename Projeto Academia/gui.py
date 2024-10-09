@@ -29,7 +29,7 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(0, weight=1)
         background_frame.grid_rowconfigure(0, weight=0) 
 
-        image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -48,11 +48,11 @@ class Application(tk.Tk, Funções):
         titulo.grid(row=0, column=0, columnspan=2, pady=20)
 
         #Botoes
-        ctk.CTkButton(frame, text="Login", font=("Arial", 14), command=self.realizar_login).grid(row=1, column=0, columnspan=2, pady=30, padx=80)
+        ctk.CTkButton(frame, text="Login", font=("Arial", 18), width=160, command=self.realizar_login).grid(row=1, column=0, columnspan=2, pady=30, padx=60)
 
-        ctk.CTkButton(frame, text="Gerenciar Perfis", font=("Arial", 14), command=self.Exibir_perfis).grid(row=2, column=0, columnspan=2, pady=30, padx=80)
+        ctk.CTkButton(frame, text="Gerenciar Perfis", font=("Arial", 18), width=160, command=self.Exibir_perfis).grid(row=2, column=0, columnspan=2, pady=30, padx=60)
         
-        ctk.CTkButton(frame, text="Encerrar Programa", font=("Arial", 14), command=self.Encerrar_programa).grid(row=3, column=0, columnspan=2, pady=30, padx=80)
+        ctk.CTkButton(frame, text="Encerrar Programa", font=("Arial", 18), width=160, command=self.Encerrar_programa).grid(row=3, column=0, columnspan=2, pady=30, padx=60)
 
 
     def realizar_login(self):
@@ -68,7 +68,7 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(0, weight=1)
         background_frame.grid_rowconfigure(0, weight=0)  # Para centralizar verticalmente
         # Imagem
-        image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -89,12 +89,12 @@ class Application(tk.Tk, Funções):
 
         # Nome do usuário
         ctk.CTkLabel(frame, text="Nome:", text_color="white", font=("Arial", 14)).grid(row=1, column=0, sticky="e", padx=10)
-        self.entry_nome = ctk.CTkEntry(frame)
+        self.entry_nome = ctk.CTkEntry(frame, placeholder_text="Nome")
         self.entry_nome.grid(row=1, column=1, pady=5, padx=20)
 
         # Senha
         ctk.CTkLabel(frame, text="Senha:", text_color="white", font=("Arial", 14)).grid(row=2, column=0, sticky="e", padx=10)
-        self.entry_senha = ctk.CTkEntry(frame, show="*")
+        self.entry_senha = ctk.CTkEntry(frame, show="*", placeholder_text="Senha")
         self.entry_senha.grid(row=2, column=1, pady=5, padx=20)
 
         # Checkbutton para mostrar senha
@@ -103,13 +103,13 @@ class Application(tk.Tk, Funções):
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
         # Botão de validar
-        ctk.CTkButton(frame, text="Login", command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Login", font=("Arial", 18), width=160, command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
 
         # Botão de criar conta
-        ctk.CTkButton(frame, text="Cadastrar-se", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Cadastrar-se", font=("Arial", 18), width=160, command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        ctk.CTkButton(frame, text="Voltar", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Voltar", font=("Arial", 18), width=160, command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
 
 
     def cadastrar_cliente(self):
@@ -211,10 +211,10 @@ class Application(tk.Tk, Funções):
 
         # Frame central para os botões (usando CustomTkinter)
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
-        central_frame.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)  # Centralizando o frame
+        central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
         #Imagem Perfil
-        image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Perfil.png"
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Perfil.png"
         self.logo_image_perfil = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -225,7 +225,7 @@ class Application(tk.Tk, Funções):
         btn_perfil = ctk.CTkButton(central_frame, text="Perfil", command=self.Perfil_usuario, font=("Arial", 18, "bold"), width=150, height=50)
         btn_perfil.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -235,7 +235,7 @@ class Application(tk.Tk, Funções):
         btn_treinos = ctk.CTkButton(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_treinos.grid(row=0, column=1, pady=(250, 00))
 
-        image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Ajustes.png"
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Ajustes.png"
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -251,149 +251,162 @@ class Application(tk.Tk, Funções):
 
 
     def Treinos(self):
-            for widget in self.winfo_children():
-                widget.destroy()
+        for widget in self.winfo_children():
+            widget.destroy()
 
-            background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
-            background_frame.pack(fill='both', expand=True)
+        # Criando Fundo com CustomTkinter
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill="both", expand=True)
 
-            # Frame superior com o título e plano
-            frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
-            frame_superior.pack(side="top", fill="x", pady=10)
+        # Frame superior com o título e plano (usando CustomTkinter)
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
+        frame_superior.pack(side="top", fill="x", pady=10)
 
-            title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", font=("Arial", 18, 'bold'))
-            title.pack(side="left", padx=20)
+        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        title.pack(side="left", padx=20)
 
-            plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", font=("Arial", 12))
-            plano_label.pack(side="top")
+        home_button = ctk.CTkButton(frame_superior, text="🏠 Home", font=("Arial", 14, 'bold'), text_color="white", height=20 ,command=self.Home)
+        home_button.pack(side="right", padx=10)
 
-            home_button = ctk.CTkButton(frame_superior, text="🏠", width=10, font=("Arial", 16), command=self.Home)
-            home_button.pack(side="right", padx=10)
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        plano_label.pack(side="top")
 
-            # Frame central para os botões
-            central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
-            central_frame.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)  # Centralizando o frame
+        # Frame central para os botões (usando CustomTkinter)
+        central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
+        central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-            image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
-            self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Puxador.png"
+        self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
-            # Criar um Label para exibir a imagem
-            self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
-            self.label_image_treinos.grid(row=0, column=0, pady=0)
-    
-            # Colocando os botões lado a lado usando grid
-            btn_superiores = ctk.CTkButton(central_frame, text="Superiores", command=self.Superiores, font=("Arial", 12, "bold"), height=50)
-            btn_superiores.grid(row=0, column=0, padx=20, pady=(250, 00))
+        # Criar um Label para exibir a imagem
+        self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
+        self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-            image_path = "C:\\Users\\Usuario\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
-            self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
+        btn_superiores = ctk.CTkButton(central_frame, text="Superiores", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_superiores.grid(row=0, column=0, pady=(250, 00))
 
-            # Criar um Label para exibir a imagem
-            self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
-            self.label_image_treinos.grid(row=0, column=1, pady=0)
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Leg-press.png"
+        self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
-            btn_inferiores = ctk.CTkButton(central_frame, text="Inferiores", command=self.Inferiores, font=("Arial", 12, "bold"), height=50)
-            btn_inferiores.grid(row=0, column=1, padx=20, pady=(250, 00))
+        # Criar um Label para exibir a imagem
+        self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
+        self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-            btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Home, font=("Arial", 12, "bold"))
-            btn_voltar.grid(row=2, column=0, columnspan=2, padx=60, pady=50)
+        btn_inferiores = ctk.CTkButton(central_frame, text="Inferiores", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_inferiores.grid(row=0, column=1, pady=(250, 00))
 
-            # Configurar expansão de colunas
-            central_frame.grid_columnconfigure(0, weight=1)
-            central_frame.grid_columnconfigure(1, weight=1)
-            central_frame.grid_columnconfigure(2, weight=1)
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Home, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
+
+        # Frame inferior (usando CustomTkinter)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
+        frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
     def Superiores(self):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.nome_usuario = 'Testando'
-
+        # Criando Fundo com CustomTkinter
         background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
-        background_frame.pack(fill='both', expand=True)
+        background_frame.pack(fill="both", expand=True)
 
-        # Frame superior com o título e plano
-        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0)
+        # Frame superior com o título e plano (usando CustomTkinter)
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
-        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", font=("Arial", 12))
-        plano_label.pack(side="right", padx=20)
-
-        home_button = ctk.CTkButton(frame_superior, text="🏠", text_color="white", width=5 ,command=self.Home)
+        home_button = ctk.CTkButton(frame_superior, text="🏠 Home", font=("Arial", 14, 'bold'), text_color="white", height=20 ,command=self.Home)
         home_button.pack(side="right", padx=10)
 
-        # Frame central para os botões
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        plano_label.pack(side="top")
+
+        # Frame central para os botões (usando CustomTkinter)
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
-        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
+        central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        # Colocando os botões lado a lado usando grid com borda colorida
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Peito.png"
+        self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
-        # Frame para o botão Peito com borda colorida
-        peito_frame = ctk.CTkFrame(central_frame, fg_color="#313131", border_color="#7fd350", border_width=4)
-        peito_frame.grid(row=0, column=0, padx=20, pady=20)
+        # Criar um Label para exibir a imagem
+        self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
+        self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_Peito = ctk.CTkButton(peito_frame, text="Peito", command=self.Peito, font=("Arial", 12, "bold"), height=50)
-        btn_Peito.pack()
+        btn_Peito = ctk.CTkButton(central_frame, text="Peito", command=self.Peito, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Peito.grid(row=0, column=0, pady=(250, 00))
 
-        # Frame para o botão Costas com borda colorida
-        costas_frame = ctk.CTkFrame(central_frame, fg_color="#313131", border_color="#7fd350", border_width=4)
-        costas_frame.grid(row=0, column=1, padx=20, pady=20)
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Costas.png"
+        self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
-        btn_Costas = ctk.CTkButton(costas_frame, text="Costas", command=self.Costas, font=("Arial", 12, "bold"), height=50)
-        btn_Costas.pack()
+        # Criar um Label para exibir a imagem
+        self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
+        self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-        # Botão Voltar
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
-        btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
+        btn_Costas = ctk.CTkButton(central_frame, text="Costas", command=self.Costas, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Costas.grid(row=0, column=1, pady=(250, 00))
+
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
+
+        # Frame inferior (usando CustomTkinter)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
+        frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
     def Inferiores(self):
         for widget in self.winfo_children():
             widget.destroy()
 
-        background_frame = ctk.CTkFrame(self, fg_color="#313131")
-        background_frame.pack(fill='both', expand=True)
+        # Criando Fundo com CustomTkinter
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill="both", expand=True)
 
-        # Frame superior com o título e plano
-        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350")
+        # Frame superior com o título e plano (usando CustomTkinter)
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
-        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", font=("Arial", 12))
-        plano_label.pack(side="right", padx=20)
-
-        home_button = ctk.CTkButton(frame_superior, text="🏠", text_color="white", width=5 ,command=self.Home)
+        home_button = ctk.CTkButton(frame_superior, text="🏠 Home", font=("Arial", 14, 'bold'), text_color="white", height=20 ,command=self.Home)
         home_button.pack(side="right", padx=10)
 
-        # Frame central para os botões
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        plano_label.pack(side="top")
+
+        # Frame central para os botões (usando CustomTkinter)
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
-        central_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)  # Centralizando o frame
+        central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        # Colocando os botões lado a lado usando grid com borda colorida
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
+        self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
-        # Frame para o botão Peito com borda colorida
-        perna_frame = ctk.CTkFrame(central_frame, fg_color="#313131", border_color="#7fd350", border_width=4)
-        perna_frame.grid(row=0, column=0, padx=20, pady=20)
+        # Criar um Label para exibir a imagem
+        self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
+        self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_perna = ctk.CTkButton(perna_frame, text="Perna", command=self.Perna, font=("Arial", 12, "bold"), width=150, height=100)
-        btn_perna.pack()
+        btn_Perna = ctk.CTkButton(central_frame, text="Perna", command=self.Perna, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Perna.grid(row=0, column=0, pady=(250, 00))
 
-        # Frame para o botão Costas com borda colorida
-        quadriceps_frame = ctk.CTkFrame(central_frame, fg_color="#313131", border_color="#7fd350", border_width=4)
-        quadriceps_frame.grid(row=0, column=1, padx=20, pady=20)
+        image_path = "C:\\Users\\Benedito\\Documents\\Visual Studio Code\\GIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
+        self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
-        btn_quadriceps = ctk.CTkButton(quadriceps_frame, text="Quadriceps", command=self.Quadriceps, font=("Arial", 12, "bold"), width=150, height=100)
-        btn_quadriceps.pack()
+        # Criar um Label para exibir a imagem
+        self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
+        self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-        # Botão Voltar
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 12, "bold"))
-        btn_voltar.grid(row=1, column=0, columnspan=2, padx=60, pady=20)
+        btn_quadriceps = ctk.CTkButton(central_frame, text="Quadriceps", command=self.Quadriceps, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_quadriceps.grid(row=0, column=1, pady=(250, 00))
+
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Home, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
+
+        # Frame inferior (usando CustomTkinter)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
+        frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
     def Peito(self):
