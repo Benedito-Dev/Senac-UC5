@@ -199,6 +199,19 @@ class Funções():
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
 
+        # Função para salvar informações
+    def salvar_informacoes(self):
+        nome = self.entry_nome.get()
+        endereco = self.entry_endereco.get()
+        telefone = self.entry_telefone.get()
+        email = self.entry_email.get()
+
+        if nome and endereco and telefone and email:
+            messagebox.showinfo("Informações alteradas!", 
+        f"Nome: {nome}\nEndereço: {endereco}\nTelefone: {telefone}\nE-mail: {email}")
+        else:
+            messagebox.showerror("Erro", "Por favor, preencha todos os campos!")
+
 
     def puxar_informações(self):
         user_name = self.nome_usuario.strip().upper()
