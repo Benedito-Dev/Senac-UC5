@@ -29,7 +29,7 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(0, weight=1)
         background_frame.grid_rowconfigure(0, weight=0) 
 
-        image_path = "Projeto Academia\\img\\Logo.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -48,11 +48,11 @@ class Application(tk.Tk, Funções):
         titulo.grid(row=0, column=0, columnspan=2, pady=20)
 
         #Botoes
-        ctk.CTkButton(frame, text="Login", font=("Arial", 18), width=160, command=self.realizar_login).grid(row=1, column=0, columnspan=2, pady=30, padx=60)
+        ctk.CTkButton(frame, text="Login", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.realizar_login).grid(row=1, column=0, columnspan=2, pady=30, padx=60)
 
-        ctk.CTkButton(frame, text="Gerenciar Perfis", font=("Arial", 18), width=160, command=self.Exibir_perfis).grid(row=2, column=0, columnspan=2, pady=30, padx=60)
+        ctk.CTkButton(frame, text="Gerenciar Perfis", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.Exibir_perfis).grid(row=2, column=0, columnspan=2, pady=30, padx=60)
         
-        ctk.CTkButton(frame, text="Encerrar Programa", font=("Arial", 18), width=160, command=self.Encerrar_programa).grid(row=3, column=0, columnspan=2, pady=30, padx=60)
+        ctk.CTkButton(frame, text="Encerrar Programa", font=("Arial", 18), width=160, fg_color="#808080",  hover_color="#A9A9A9", command=self.Encerrar_programa).grid(row=3, column=0, columnspan=2, pady=30, padx=60)
 
 
     def realizar_login(self):
@@ -68,7 +68,9 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(0, weight=1)
         background_frame.grid_rowconfigure(0, weight=0)  # Para centralizar verticalmente
         # Imagem
-        image_path = "Projeto Academia\\img\\Logo.png"
+
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -103,13 +105,13 @@ class Application(tk.Tk, Funções):
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
         # Botão de validar
-        ctk.CTkButton(frame, text="Login", font=("Arial", 18), width=160, command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Acessar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
 
         # Botão de criar conta
-        ctk.CTkButton(frame, text="Cadastrar-se", font=("Arial", 18), width=160, command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Cadastrar", font=("Arial", 18), width=160, fg_color="#808080",  hover_color="#A9A9A9", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        ctk.CTkButton(frame, text="Voltar", font=("Arial", 18), width=160, command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Voltar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
 
 
     def cadastrar_cliente(self):
@@ -183,10 +185,10 @@ class Application(tk.Tk, Funções):
         btn_abrir_calendario.grid(row=8, column=2,padx=10)
 
         # Botão Cadastrar-se
-        ctk.CTkButton(frame,text="Cadastrar-se",command=self.validar_dados).grid(row=9,column=1,pady=10)
+        ctk.CTkButton(frame,text="Cadastrar-se",fg_color="#609746", hover_color="#A9A9A9", command=self.validar_dados).grid(row=9,column=1,pady=10)
 
         # Botão Voltar
-        ctk.CTkButton(frame, text="Voltar",command=self.realizar_login).grid(row=10, column=1,pady=10)
+        ctk.CTkButton(frame, text="Voltar",fg_color="#808080", hover_color="#A9A9A9", command=self.realizar_login).grid(row=10, column=1,pady=10)
 
     def Home(self):
         for widget in self.winfo_children():
@@ -214,7 +216,9 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
         #Imagem Perfil
-        image_path = "Projeto Academia\\img\\Home\\Perfil.png"
+
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Home\\Perfil.png"
+
         self.logo_image_perfil = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -222,27 +226,30 @@ class Application(tk.Tk, Funções):
         self.label_image_perfil.grid(row=0, column=0, pady=0)
 
         # Colocando os botões lado a lado usando grid (CustomTkinter)
-        btn_perfil = ctk.CTkButton(central_frame, text="Perfil", command=self.Perfil_usuario, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_perfil = ctk.CTkButton(central_frame, text="Perfil", fg_color="#808080", hover_color="#A9A9A9", command=self.Perfil_usuario, font=("Arial", 18, "bold"), width=150, height=50)
         btn_perfil.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "Projeto Academia\\img\\Home\\Treinos.png"
+
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
+
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=1, pady=0)
 
-        btn_treinos = ctk.CTkButton(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_treinos = ctk.CTkButton(central_frame, text="Treinos", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_treinos.grid(row=0, column=1, pady=(250, 00))
 
-        image_path = "Projeto Academia\\img\\Home\\Ajustes.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Home\\Ajustes.png"
+
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
         self.label_image_ajustes.grid(row=0, column=2, pady=0)
 
-        btn_ajustes = ctk.CTkButton(central_frame, text="Ajustes", command=self.Ajustes, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_ajustes = ctk.CTkButton(central_frame, text="Ajustes", fg_color="#808080", hover_color="#A9A9A9", command=self.Ajustes, font=("Arial", 18, "bold"), width=150, height=50)
         btn_ajustes.grid(row=0, column=2, pady=(250, 00))
 
         # Frame inferior (usando CustomTkinter)
@@ -275,27 +282,30 @@ class Application(tk.Tk, Funções):
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        image_path = "Projeto Academia\\img\\Treinos\\Puxador.png"
+
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Puxador.png"
+
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_superiores = ctk.CTkButton(central_frame, text="Superiores", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_superiores = ctk.CTkButton(central_frame, text="Superiores", fg_color="#808080", hover_color="#A9A9A9", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_superiores.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "Projeto Academia\\img\\Treinos\\Leg-press.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Leg-press.png"
+
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
         self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-        btn_inferiores = ctk.CTkButton(central_frame, text="Inferiores", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_inferiores = ctk.CTkButton(central_frame, text="Inferiores", fg_color="#808080", hover_color="#A9A9A9", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_inferiores.grid(row=0, column=1, pady=(250, 00))
 
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Home, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Home, font=("Arial", 18, "bold"), width=150, height=50)
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
@@ -328,27 +338,29 @@ class Application(tk.Tk, Funções):
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Peito.png"
+
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_Peito = ctk.CTkButton(central_frame, text="Peito", command=self.Peito, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Peito = ctk.CTkButton(central_frame, text="Peito", fg_color="#808080", hover_color="#A9A9A9", command=self.Peito, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Peito.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Costas.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Costas.png"
+
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
         self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-        btn_Costas = ctk.CTkButton(central_frame, text="Costas", command=self.Costas, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Costas = ctk.CTkButton(central_frame, text="Costas", fg_color="#808080", hover_color="#A9A9A9", command=self.Costas, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Costas.grid(row=0, column=1, pady=(250, 00))
 
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
@@ -381,27 +393,32 @@ class Application(tk.Tk, Funções):
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
+
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_Perna = ctk.CTkButton(central_frame, text="Perna", command=self.Perna, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Perna = ctk.CTkButton(central_frame, text="Perna", fg_color="#808080", hover_color="#A9A9A9", command=self.Perna, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Perna.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
+
+        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
+
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
         self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-        btn_quadriceps = ctk.CTkButton(central_frame, text="Quadriceps", command=self.Quadriceps, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_quadriceps = ctk.CTkButton(central_frame, text="Quadriceps", fg_color="#808080", hover_color="#A9A9A9", command=self.Quadriceps, font=("Arial", 18, "bold"), width=150, height=50)
         btn_quadriceps.grid(row=0, column=1, pady=(250, 00))
 
+
         btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
+
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
