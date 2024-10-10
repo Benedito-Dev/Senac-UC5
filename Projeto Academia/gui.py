@@ -29,7 +29,8 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(0, weight=1)
         background_frame.grid_rowconfigure(0, weight=0) 
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -69,7 +70,7 @@ class Application(tk.Tk, Funções):
         background_frame.grid_rowconfigure(0, weight=0)  # Para centralizar verticalmente
         # Imagem
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Logo.png"
 
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
@@ -217,7 +218,7 @@ class Application(tk.Tk, Funções):
 
         #Imagem Perfil
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Home\\Perfil.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Perfil.png"
 
         self.logo_image_perfil = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -230,7 +231,7 @@ class Application(tk.Tk, Funções):
         btn_perfil.grid(row=0, column=0, pady=(250, 00))
 
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Treinos.png"
 
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -241,7 +242,7 @@ class Application(tk.Tk, Funções):
         btn_treinos = ctk.CTkButton(central_frame, text="Treinos", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_treinos.grid(row=0, column=1, pady=(250, 00))
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Home\\Ajustes.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Home\\Ajustes.png"
 
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -283,7 +284,7 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Puxador.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Puxador.png"
 
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -294,7 +295,7 @@ class Application(tk.Tk, Funções):
         btn_superiores = ctk.CTkButton(central_frame, text="Superiores", fg_color="#808080", hover_color="#A9A9A9", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_superiores.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Leg-press.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Leg-press.png"
 
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -338,7 +339,7 @@ class Application(tk.Tk, Funções):
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Peito.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Peito.png"
 
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -349,7 +350,7 @@ class Application(tk.Tk, Funções):
         btn_Peito = ctk.CTkButton(central_frame, text="Peito", fg_color="#808080", hover_color="#A9A9A9", command=self.Peito, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Peito.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Costas.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Superiores\\Costas.png"
 
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -394,7 +395,7 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -405,7 +406,7 @@ class Application(tk.Tk, Funções):
         btn_Perna.grid(row=0, column=0, pady=(250, 00))
 
 
-        image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
+        image_path = "D:\\Users\\Aluno\\Documents\\GUILPROGIT\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
 
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
