@@ -401,7 +401,7 @@ class Application(tk.Tk, Funções):
         btn_quadriceps = ctk.CTkButton(central_frame, text="Quadriceps", command=self.Quadriceps, font=("Arial", 18, "bold"), width=150, height=50)
         btn_quadriceps.grid(row=0, column=1, pady=(250, 00))
 
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Home, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
