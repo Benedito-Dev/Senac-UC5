@@ -1,7 +1,7 @@
 db_config = {
-    'dbname': 'postgres',
-    'user': 'postgres',
-    'password': 'postgres',
-    'host': 'localhost', 
-    'port': '5432',
+    'dbname' : 'senac',
+    'user' : 'postgres',
+    'password' : 'postgres',
+    'host' : 'localhost',
+    'port' : '5432'
 }
