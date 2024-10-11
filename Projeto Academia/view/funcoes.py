@@ -91,7 +91,7 @@ class Funções():
             return
 
         # Se todos os dados estiverem válidos, prosseguir com a lógica de envio
-        self.enviar_dados()
+        self.enviar_dados(nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco, cpf=cpf, data_de_nascimento=data_de_nascimento)
 
     # Função para validar a idade do novo usuário
     def validar_data(self, data_nascimento_str):
@@ -116,29 +116,9 @@ class Funções():
             # Retorna False se o formato da data for inválido
             return False
 
-    def enviar_dados(self):
-        nome = self.entry_nome.get().upper()
-        email = self.entry_email.get()
-        senha = self.entry_senha.get()
-        telefone = self.entry_telefone.get()
-        endereco = self.entry_endereco.get()
-        cpf = self.entry_cpf.get()
-        data_de_nascimento = self.entry_dataDeNascimento.get()
-
-        # Convertendo data de nascimento para formato Correto
-        data_de_nascimento = datetime.strptime(data_de_nascimento, '%d/%m/%Y').date()
-
-        if not nome or not email:
-            messagebox.showerror("Erro", "Por favor preencha todos os campos")
-            return
-
-        try:
-            # Mudado de self.db para self.controler
-            self.controler.criar_usuario(nome, email, senha, telefone, endereco, cpf, data_de_nascimento)
-            messagebox.showinfo("Sucesso", "Cadastro realizado com sucesso!")
+    def enviar_dados(self, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
+        if self.controler.adicionar_usuario(nome.upper(), email, senha, telefone, endereco, cpf, data_de_nascimento):
             self.after(500, self.menu_inicial)
-        except Exception as e:
-            messagebox.showerror("Erro", f"Erro ao cadastrar usuário: {e}")
 
     def abrir_calendario(self):
         janela_calendario = tk.Toplevel(self)

@@ -28,6 +28,7 @@ class ClienteRepository():
         )
         self.session.add(novo_cliente)
         self.session.commit()
+        return True
 
     def validar_login(self, nome, senha):
         try:
