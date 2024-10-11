@@ -24,22 +24,22 @@ class Funções():
             entry.configure(fg_color='grey')  # type: ignore # Muda a cor de fundo para cinza
             entry.configure(fg='grey')  # type: ignore # Muda a cor do texto
 
-    # Funções para Guias Interativas
     def carregar_perfis(self):
         try:
-            # Obtendo os dados da tabela
-            users = self.controler.listar_usuarios()  # Alterado de listar_produtos para listar_usuarios
+            # Obtendo os dados da tabela através do controlador
+            users = self.controler.listar_usuarios()
 
             # Inserindo os dados na ordem correta no TreeView
             for user in users:
-                id = user[0]  # Supondo que o id é a primeira coluna
-                nome = user[1]  # Supondo que o nome é a segunda coluna
-                email = user[2]  # Supondo que o email é a terceira coluna
-                telefone = user[4]  # Supondo que o telefone é a quarta coluna
-                endereco = user[5]  # Supondo que o endereço é a quinta coluna
-                self.tree.insert('', tk.END, values=(id, nome, email, telefone, endereco))
+                id = user.id  # Acessando o atributo 'id'
+                nome = user.nome  # Acessando o atributo 'nome'
+                email = user.email  # Acessando o atributo 'email'
+                telefone = user.telefone  # Acessando o atributo 'telefone' # Acessando o atributo 'endereco'
+                self.tree.insert('', tk.END, values=(id, nome, email, telefone))
+
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao carregar perfis: {e}")
+
 
     def Exibir_senha(self):
         if self.check_senha.get() == 1:
@@ -156,13 +156,13 @@ class Funções():
         btn_selecionar_data = ttk.Button(janela_calendario, text="Selecionar", command=pegar_data)
         btn_selecionar_data.pack(pady=10)
 
-    def validar_login(self):
+    def validando_login(self):
         nome = self.entry_nome.get().strip().upper()
         senha = self.entry_senha.get()
 
         try:
             # Mudado de self.db para self.controler
-            if self.controler.validar_login(nome, senha):
+            if self.controler.fazer_login(nome, senha):
                 messagebox.showinfo("Sucesso", "Login Efetuado")
                 self.nome_usuario = nome.capitalize()
                 self.senha_usuario = senha

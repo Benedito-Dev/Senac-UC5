@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.exc import NoResultFound
 from Model.models import Base, Cliente
 from config.config import Config
 
@@ -27,6 +28,14 @@ class ClienteRepository():
         )
         self.session.add(novo_cliente)
         self.session.commit()
+
+    def validar_login(self, nome, senha):
+        try:
+            # Busca o cliente com o nome e senha fornecidos
+            cliente = self.session.query(Cliente).filter_by(nome=nome, senha=senha).one()
+            return True  # Login válido
+        except NoResultFound:
+            return False 
 
     # Função para obter todos os clientes
     def obter_usuarios(self):

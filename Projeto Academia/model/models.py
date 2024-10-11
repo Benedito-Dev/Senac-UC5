@@ -12,6 +12,7 @@ class Cliente(Base):
     email = Column(String, nullable=False, unique=True)
     senha = Column(String, nullable=False)
     telefone = Column(String, nullable=False)
+    endereco = Column(String, nullable=False)
     cpf = Column(String, nullable=False, unique=True)
     data_de_nascimento = Column(Date, nullable=False)
 

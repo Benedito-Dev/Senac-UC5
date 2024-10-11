@@ -110,7 +110,7 @@ class Application(tk.Tk, Funções):
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
         # Botão de validar
-        ctk.CTkButton(frame, text="Acessar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Acessar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.validando_login).grid(row=4, column=0, columnspan=2, pady=10)
 
         # Botão de criar conta
         ctk.CTkButton(frame, text="Cadastrar", font=("Arial", 18), width=160, fg_color="#808080",  hover_color="#A9A9A9", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
