@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model.models import Base, Cliente
+from Model.models import Base, Cliente
 from config.config import Config
 
 class ClienteRepository():

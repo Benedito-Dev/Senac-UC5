@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 from view.funcoes import Funções
 from tkinter import messagebox
 from tkinter import font
-from controller.controllers import UsuarioController
+from Controller.controllers import UsuarioController
 
 # Configurações do CustomTkinter
 ctk.set_appearance_mode("Dark")
