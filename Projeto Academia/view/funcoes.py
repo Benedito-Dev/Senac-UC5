@@ -157,20 +157,16 @@ class Funções():
         btn_selecionar_data.pack(pady=10)
 
     def validando_login(self):
-        nome = self.entry_nome.get().strip().upper()
-        senha = self.entry_senha.get()
-
-        try:
-            # Mudado de self.db para self.controler
-            if self.controler.fazer_login(nome, senha):
-                messagebox.showinfo("Sucesso", "Login Efetuado")
-                self.nome_usuario = nome.capitalize()
-                self.senha_usuario = senha
-                self.after(500, self.Home)
-            else:
-                messagebox.showerror("Erro", "Nome ou senha inválidos")
-        except Exception as e:
-            messagebox.showerror("Erro", f"Erro em nosso sistema, aguarde... {e}")
+        nome = self.entry_nome.get().strip()
+        senha = self.entry_senha.get().strip()
+        
+        # Chama o método do controlador para validar o login
+        if self.controler.fazer_login(nome.upper(), senha) :
+            self.nome_usuario = nome.capitalize()
+            self.senha_usuario = senha
+            self.after(500, self.Home)
+        else:
+            pass
 
     def deletar_perfil(self):
         selected_item = self.tree.selection()

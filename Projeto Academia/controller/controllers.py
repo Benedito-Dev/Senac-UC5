@@ -1,4 +1,5 @@
 from repository.repositories import ClienteRepository
+from tkinter import messagebox
 
 class UsuarioController:
     def __init__(self):
@@ -10,13 +11,14 @@ class UsuarioController:
 
     def fazer_login(self, nome, senha):
         # Chama a função validar_login do repository
-        if self.repository.validar_login(nome, senha):
-            print("Login bem-sucedido!")
-            return True
-            # Aqui você pode adicionar outras lógicas, como redirecionar o usuário para a página principal.
-        else:
-            print("Nome ou senha incorretos!")
-            # Aqui você pode mostrar uma mensagem de erro ao usuário ou redirecioná-lo de volta ao login
+            try:
+                if self.repository.validar_login(nome, senha):
+                    messagebox.showinfo("Sucesso", "Login Efetuado")
+                    return True
+                else :
+                    messagebox.showerror("Erro", "Login Não encontrado")
+            except Exception as e:
+                messagebox.showerror("Erro", f"Erro em nosso sistema, aguarde... {e}")
             
 
     # Controlador responsável por obter os produtos para exibir na interface
