@@ -1,21 +1,15 @@
-from view.gui import Application  # Importa a interface gráfica
-from controller.usuario_controler import UsuarioController  # Importa o controlador
+from repository.repositories import ClienteRepository
+from view.app import Application
 
 def main():
-    # Cria uma instância do controlador, que gerenciará a lógica dos usuários
-    usuario_controller = UsuarioController()
+    # Inicializar o banco de dados
+    repository = ClienteRepository()
+    repository.init_db()
 
-    # Cria a tabela de usuários no banco de dados
-    usuario_controller.criar_tabela()
-
-    # Inicializa a interface gráfica
-    app = Application(usuario_controller)  # Passa o controlador para a aplicação
-
-    # Inicia o loop da interface gráfica
+    # Inicializar a interface gráfica
+    app = Application()
     app.mainloop()
 
-    # Fecha a conexão com o banco de dados ao finalizar a aplicação
-    usuario_controller.fechar_conexao()
-
+# Executar a função main
 if __name__ == "__main__":
     main()
