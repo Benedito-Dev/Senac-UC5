@@ -238,7 +238,7 @@ class Funções():
     
     def salvar_alterações(self):
         novo_nome = self.entry_novo_nome.get().strip().upper()
-        nova_data_de_nascimento = self.entry_nova_dataDeNascimento.get().strip()
+        nova_data_de_nascimento = self.entry_dataDeNascimento.get().strip()
         novo_endereco = self.entry_novo_endereco.get()
         novo_telefone = self.entry_novo_telefone.get().strip()
         novo_email = self.entry_novo_email.get().strip()
