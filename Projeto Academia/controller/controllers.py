@@ -39,8 +39,22 @@ class UsuarioController:
         return self.repository.obter_usuario(nome)
 
     # Controlador responsável por atualizar um produto
-    def atualizar_produto(self, product_id, name, description, price):
-        self.repository.atualizar_cliente(product_id, name, description, price)
+    def atualizar_usuario(self, nome=None, data_de_nascimento=None, endereco=None, telefone=None, email=None, senha=None):
+        try:
+            usuario_atual = self.repository.obter_usuario(self.nome_usuario)
+
+            nome = nome or usuario_atual.nome
+            data_de_nascimento = data_de_nascimento or usuario_atual.data_de_nascimento
+            endereco = endereco or usuario_atual.endereco
+            telefone = telefone or usuario_atual.telefone
+            email = email or usuario_atual.email
+            senha = senha or usuario_atual.senha
+
+
+            self.repository.atualizar_cliente(usuario_atual.id ,nome, data_de_nascimento, endereco, telefone, email, senha)
+
+        except Exception as e:
+            raise Exception(f"Erro ao atualizar usuário: {e}")
 
     # Controlador responsável por deletar um produto
     def deletar_usuario(self, usuario_id):
