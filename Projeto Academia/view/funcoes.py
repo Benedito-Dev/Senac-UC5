@@ -109,6 +109,10 @@ class Funções():
             # Obtém a data atual
             data_atual = datetime.now()
 
+            # Verifica se a data de nascimento é no futuro
+            if data_nascimento > data_atual:
+                return False
+
             # Calcula a diferença de anos
             idade = data_atual.year - data_nascimento.year
 
@@ -173,15 +177,22 @@ class Funções():
         return getattr(self.informacoes, informacao, None)
     
     def salvar_alterações(self):
-        novo_nome = self.entry_novo_nome.get().strip().upper() or None
-        nova_data_de_nascimento = self.entry_nova_dataDeNascimento.get().strip() or None
-        novo_endereco = self.entry_novo_endereco.get() or None
-        novo_telefone = self.entry_novo_telefone.get().strip() or None
-        novo_email = self.entry_novo_email.get().strip() or None
-        nova_senha = self.entry_nova_senha.get().strip() or None
+
+        id = self.get_informacao("id")
+
+        novo_nome = self.entry_novo_nome.get().strip().upper() or self.get_informacao("nome").upper()
+        nova_data_de_nascimento = self.entry_dataDeNascimento.get().strip() or self.get_informacao("data_de_nascimento")
+        novo_endereco = self.entry_novo_endereco.get() or self.get_informacao("endereco")
+        novo_telefone = self.entry_novo_telefone.get().strip() or self.get_informacao("telefone")
+        novo_email = self.entry_novo_email.get().strip() or self.get_informacao("email")
+        nova_senha = self.entry_nova_senha.get().strip() or self.get_informacao("senha")
+
+        if nova_data_de_nascimento:
+            messagebox.showerror("Erro", "Data de nascimento inválida")
+            return
 
         try :
-            self.controler.atualizar_usuario(nome=novo_nome, data_de_nascimento=nova_data_de_nascimento, endereco=novo_endereco, telefone=novo_telefone, email=novo_email, senha=nova_senha)
+            self.controler.atualizar_usuario(id=id, nome=novo_nome, data_de_nascimento=nova_data_de_nascimento, endereco=novo_endereco, telefone=novo_telefone, email=novo_email, senha=nova_senha)
         
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao salvar alterações: {e}")

@@ -59,6 +59,8 @@ class ClienteRepository():
             cliente.telefone = telefone
             cliente.endereco = endereco
             cliente.cpf = cpf
+            if not data_de_nascimento:
+                raise ValueError("Data de nascimento não pode estar vazia")
             cliente.data_de_nascimento = data_de_nascimento
             self.session.commit()
 

@@ -750,10 +750,10 @@ class Application(tk.Tk, Funções):
         self.entry_novo_nome.grid(row=1, column=1, pady=10)
 
         # Labels e entradas para data de nascimento
-        self.entry_nova_dataDeNascimento = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("data_de_nascimento"))
+        self.entry_dataDeNascimento = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("data_de_nascimento"))
         label_datanasc = ctk.CTkLabel(frame_verde, text="Data de nascimento:", text_color="White", font=nunito_font)
         label_datanasc.grid(row=2, column=0, padx=10, pady=10, sticky='e')
-        self.entry_nova_dataDeNascimento.grid(row=2, column=1, pady=10)
+        self.entry_dataDeNascimento.grid(row=2, column=1, pady=10)
 
         # Botão do calendário com cor preta
         self.btn_calendario = ctk.CTkButton(frame_verde, text="Escolher data", command=self.abrir_calendario, fg_color="#000000", text_color="#ffffff")

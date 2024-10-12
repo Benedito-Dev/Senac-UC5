@@ -8,13 +8,13 @@ class Cliente(Base):
     
     # Campos da tabela 'clientes'
     id = Column(Integer, primary_key=True)
-    nome = Column(String, nullable=False)
-    email = Column(String, nullable=False)
-    senha = Column(String, nullable=False)
-    telefone = Column(String, nullable=False)
-    endereco = Column(String, nullable=False)
-    cpf = Column(String, nullable=False)
-    data_de_nascimento = Column(Date, nullable=False)
+    nome = Column(String)
+    email = Column(String)
+    senha = Column(String)
+    telefone = Column(String)
+    endereco = Column(String)
+    cpf = Column(String)
+    data_de_nascimento = Column(Date)
 
     def __repr__(self):
         return f'<Cliente {self.nome}>'
