@@ -43,9 +43,9 @@ class Funções():
 
     def Exibir_senha(self):
         if self.check_senha.get() == 1:
-            self.entry_senha.config(show="")
+            self.entry_senha.configure(show="")
         else:
-            self.entry_senha.config(show="*")
+            self.entry_senha.configure(show="*")
 
 
     def validar_dados(self):
@@ -198,6 +198,19 @@ class Funções():
                 messagebox.showinfo("Sucesso", "Perfil deletado com sucesso!")
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
+
+        # Função para salvar informações
+    def salvar_informacoes(self):
+        nome = self.entry_nome.get()
+        endereco = self.entry_endereco.get()
+        telefone = self.entry_telefone.get()
+        email = self.entry_email.get()
+
+        if nome and endereco and telefone and email:
+            messagebox.showinfo("Informações alteradas!", 
+        f"Nome: {nome}\nEndereço: {endereco}\nTelefone: {telefone}\nE-mail: {email}")
+        else:
+            messagebox.showerror("Erro", "Por favor, preencha todos os campos!")
 
 
     def puxar_informações(self):
