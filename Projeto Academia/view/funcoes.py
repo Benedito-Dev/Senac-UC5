@@ -187,7 +187,7 @@ class Funções():
         novo_email = self.entry_novo_email.get().strip() or self.get_informacao("email")
         nova_senha = self.entry_nova_senha.get().strip() or self.get_informacao("senha")
 
-        if nova_data_de_nascimento:
+        if not nova_data_de_nascimento:
             messagebox.showerror("Erro", "Data de nascimento inválida")
             return
 
