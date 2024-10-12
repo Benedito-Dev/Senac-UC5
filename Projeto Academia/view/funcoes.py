@@ -197,6 +197,7 @@ class Funções():
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao salvar alterações: {e}")
 
+
     def deletar_perfil(self):
         # Verifica se há algum item selecionado
         if not (selected_item := self.tree.selection()):
