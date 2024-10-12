@@ -545,7 +545,7 @@ class Application(tk.Tk, Funções):
             label_mergulho_text.pack()
 
             # Exercício 3: Puxada de tríceps na polia
-            puxada_polia_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\img\\triceps_polia.jfif" 
+            puxada_polia_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\triceps_testa.png" 
             self.puxada_polia_image = ctk.CTkImage(light_image=Image.open(puxada_polia_image_path), size=(150, 150))
             puxada_polia_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
             puxada_polia_frame.grid(row=5, column=2, padx=20, pady=20)
