@@ -394,16 +394,15 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
 
-        image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
+        image_path ="Projeto Academia\\img\\Treinos\\Inferiores\\Perna.png"
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_Perna = ctk.CTkButton(central_frame, text="Perna", fg_color="#808080", hover_color="#A9A9A9", command=self.Perna, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Perna = ctk.CTkButton(central_frame, text="Perna", fg_color="#808080", hover_color="#A9A9A9", command=self.Pernas, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Perna.grid(row=0, column=0, pady=(250, 00))
-
 
         image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
 
@@ -413,7 +412,7 @@ class Application(tk.Tk, Funções):
         self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
         self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-        btn_quadriceps = ctk.CTkButton(central_frame, text="Quadriceps", fg_color="#808080", hover_color="#A9A9A9", command=self.Quadriceps, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_quadriceps = ctk.CTkButton(central_frame, text="Quadríceps", fg_color="#808080", hover_color="#A9A9A9", command=self.Quadriceps, font=("Arial", 18, "bold"), width=150, height=50)
         btn_quadriceps.grid(row=0, column=1, pady=(250, 00))
 
 
@@ -424,6 +423,8 @@ class Application(tk.Tk, Funções):
         # Frame inferior (usando CustomTkinter)
         frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
         frame_inferior.pack(side="bottom", fill="x", pady=10)
+
+
 
 
     def Peito(self):
@@ -441,7 +442,7 @@ class Application(tk.Tk, Funções):
             label_peito.grid(row=0, column=0, columnspan=3, pady=10)
 
             #Exercicio 1
-            supino_image_path = "Projeto Academia\\img\\supino reto.jpg" 
+            supino_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\supino reto.jpg" 
             self.supino_image = ctk.CTkImage(light_image=Image.open(supino_image_path), size=(150, 150))
             supino_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
             supino_frame.grid(row=1, column=0, padx=20, pady=20)
@@ -452,7 +453,7 @@ class Application(tk.Tk, Funções):
             label_supino_text = ctk.CTkLabel(supino_frame, text="Supino reto com barra\n3x15 reps", text_color="white", font=("Arial", 16))
             label_supino_text.pack()
             
-            crucifixo_image_path = "Projeto Academia\\img\\crucifixo inclinado.jpg" 
+            crucifixo_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\crucifixo inclinado.jpg" 
             self.crucifixo_image = ctk.CTkImage(light_image=Image.open(crucifixo_image_path), size=(150, 150))
             crucifixo_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30, width=200, height=200)
             crucifixo_frame.grid(row=1, column=1, padx=20, pady=20)
@@ -464,7 +465,7 @@ class Application(tk.Tk, Funções):
             label_crucifixo_text.pack()
 
             # Exercício 3: Crucifixo no crossover polia alta
-            crossover_image_path = "Projeto Academia\\img\\crossover-musculos-.jpg" 
+            crossover_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\crossover-musculos-.jpg" 
             self.crossover_image = ctk.CTkImage(light_image=Image.open(crossover_image_path), size=(150, 150))
             crossover_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
             crossover_frame.grid(row=1, column=2, padx=20, pady=20)
@@ -481,7 +482,7 @@ class Application(tk.Tk, Funções):
             label_ombros.grid(row=2, column=0, columnspan=3, pady=10)
 
             # Exercício 1: Elevação lateral com halteres
-            elevacao_lateral_image_path = "Projeto Academia\\img\\elevacao_lateral.jpg" 
+            elevacao_lateral_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\elevacao_lateral.jpg" 
             self.elevacao_lateral_image = ctk.CTkImage(light_image=Image.open(elevacao_lateral_image_path), size=(150, 150))
             elevacao_lateral_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
             elevacao_lateral_frame.grid(row=3, column=0, padx=20, pady=20)
@@ -493,7 +494,7 @@ class Application(tk.Tk, Funções):
             label_elevacao_lateral_text.pack()
 
             # Exercício 2: Desenvolvimento com halteres
-            desenvolvimento_image_path = "Projeto Academia\\img\\desenvolvimento_halteres.jpg" 
+            desenvolvimento_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\desenvolvimento_halteres.jpg" 
             self.desenvolvimento_image = ctk.CTkImage(light_image=Image.open(desenvolvimento_image_path), size=(150, 150))
             desenvolvimento_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
             desenvolvimento_frame.grid(row=3, column=1, padx=20, pady=20)
@@ -505,7 +506,7 @@ class Application(tk.Tk, Funções):
             label_desenvolvimento_text.pack()
 
             # Exercício 3: Remada alta com barra
-            remada_alta_image_path = "Projeto Academia\\img\\remada_alta_barra.jpg" 
+            remada_alta_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\remada_alta_barra.jpg" 
             self.remada_alta_image = ctk.CTkImage(light_image=Image.open(remada_alta_image_path), size=(150, 150))
             remada_alta_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
             remada_alta_frame.grid(row=3, column=2, padx=20, pady=20)
@@ -520,7 +521,7 @@ class Application(tk.Tk, Funções):
             label_triceps.grid(row=4, column=0, columnspan=3, pady=10)
 
             # Exercício 1: Tríceps testa
-            triceps_testa_image_path = "Projeto Academia\\img\\triceps_testa.png" 
+            triceps_testa_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\triceps_testa.png" 
             self.triceps_testa_image = ctk.CTkImage(light_image=Image.open(triceps_testa_image_path), size=(150, 150))
             triceps_testa_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
             triceps_testa_frame.grid(row=5, column=0, padx=20, pady=20)
@@ -532,7 +533,7 @@ class Application(tk.Tk, Funções):
             label_triceps_testa_text.pack()
 
             # Exercício 2: Mergulho em bancos
-            mergulho_image_path = "Projeto Academia\\img\\mergulho_bancos.jpg" 
+            mergulho_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\mergulho_bancos.jpg" 
             self.mergulho_image = ctk.CTkImage(light_image=Image.open(mergulho_image_path), size=(150, 150))
             mergulho_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
             mergulho_frame.grid(row=5, column=1, padx=20, pady=20)
@@ -544,7 +545,7 @@ class Application(tk.Tk, Funções):
             label_mergulho_text.pack()
 
             # Exercício 3: Puxada de tríceps na polia
-            puxada_polia_image_path = "Projeto Academia\\img\\triceps_polia.jfif" 
+            puxada_polia_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito\\img\\triceps_polia.jfif" 
             self.puxada_polia_image = ctk.CTkImage(light_image=Image.open(puxada_polia_image_path), size=(150, 150))
             puxada_polia_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
             puxada_polia_frame.grid(row=5, column=2, padx=20, pady=20)
@@ -564,11 +565,6 @@ class Application(tk.Tk, Funções):
             btn_voltar.pack(pady=10)
 
                 
-
-
-
-
-
 
     def Costas(self):
         # Dicionário de músculos e exercícios
@@ -617,79 +613,195 @@ class Application(tk.Tk, Funções):
         # Botão Voltar
         tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Superiores).pack(pady=20)
 
-
     def Quadriceps(self):
-        # Dicionário de exercícios para Quadríceps
-        treinos = {
-            "Quadríceps": [
-                {"nome": "Agachamento livre", "reps": "3x12reps"},
-                {"nome": "Leg press 45°", "reps": "3x12reps"},
-                {"nome": "Extensão de pernas", "reps": "3x15reps"},
-            ]
-        }
-
         # Limpar a janela
         for widget in self.winfo_children():
             widget.destroy()
 
-        # Título
-        tk.Label(self, text="Treinos de Quadríceps", font=("Arial", 24), bg="#313131", fg="white").pack(pady=10)
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill="both", expand=True)
 
-        # Frame principal para treinos em pirâmide
-        main_frame = tk.Frame(self, bg="#282828")
-        main_frame.pack(pady=20, padx=20)
+        central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
+        central_frame.pack(pady=20)
 
-        # Exibindo o grupo muscular
-        col_frame = tk.Frame(main_frame, bg="#282828")
-        col_frame.pack(pady=20)
+        label_pernas = ctk.CTkLabel(central_frame, text="Treino de Quadríceps", text_color="white", font=("Arial", 22, 'bold'))
+        label_pernas.grid(row=0, column=0, columnspan=3, pady=10)
 
-        # Título do grupo muscular
-        tk.Label(col_frame, text="Quadríceps", font=("Arial", 14, "bold"), bg="#282828", fg="white").pack(pady=10)
+        # Exercício 1: Agachamento Smith
+        agachamento_smith_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\agachamento_smith.gif"
+        self.agachamento_smith_image = ctk.CTkImage(light_image=Image.open(agachamento_smith_image_path), size=(150, 150))
+        agachamento_smith_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
+        agachamento_smith_frame.grid(row=1, column=0, padx=20, pady=20)
 
-        # Exibindo os exercícios de Quadríceps
-        for exercicio in treinos["Quadríceps"]:
-            tk.Label(col_frame, text=exercicio["nome"], font=("Arial", 12), bg="#282828", fg="white").pack(pady=5)
-            tk.Label(col_frame, text=exercicio["reps"], font=("Arial", 12, "bold"), bg="#282828", fg="white").pack(pady=5)
+        label_agachamento_smith_img = ctk.CTkLabel(agachamento_smith_frame, image=self.agachamento_smith_image, text="")
+        label_agachamento_smith_img.pack()
 
-        # Botão Voltar
-        tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Inferiores).pack(pady=20)
+        label_agachamento_smith_text = ctk.CTkLabel(agachamento_smith_frame, text="Agachamento Smith \n3x12 reps", text_color="white", font=("Arial", 16))
+        label_agachamento_smith_text.pack()
+
+        # Exercício 2: Extensão de Pernas
+        extensao_pernas_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\extensao_pernas.gif"
+        self.extensao_pernas_image = ctk.CTkImage(light_image=Image.open(extensao_pernas_image_path), size=(150, 150))
+        extensao_pernas_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30, width=200, height=200)
+        extensao_pernas_frame.grid(row=1, column=1, padx=20, pady=20)
+
+        label_extensao_pernas_img = ctk.CTkLabel(extensao_pernas_frame, image=self.extensao_pernas_image, text="")
+        label_extensao_pernas_img.pack()
+
+        label_extensao_pernas_text = ctk.CTkLabel(extensao_pernas_frame, text="Extensão de Pernas \n3x12 reps", text_color="white", font=("Arial", 16))
+        label_extensao_pernas_text.pack()
+
+        # Exercício 3: Leg Press
+        leg_press_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\leg_press.gif"
+        self.leg_press_image = ctk.CTkImage(light_image=Image.open(leg_press_image_path), size=(150, 150))
+        leg_press_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
+        leg_press_frame.grid(row=1, column=2, padx=20, pady=20)
+
+        label_leg_press_img = ctk.CTkLabel(leg_press_frame, image=self.leg_press_image, text="")
+        label_leg_press_img.pack()
+
+        label_leg_press_text = ctk.CTkLabel(leg_press_frame, text="Leg Press \n3x12 reps", text_color="white", font=("Arial", 16))
+        label_leg_press_text.pack()
+
+        # Frame inferior com botão Voltar
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
+        frame_inferior.pack(side="bottom", fill="x")
+
+        btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar.pack(pady=10)
 
 
-    def Perna(self):
-        # Dicionário de exercícios para Perna
-        treinos = {
-            "Perna": [
-                {"nome": "Stiff", "reps": "3x12reps"},
-                {"nome": "Afundo com halteres", "reps": "3x12reps"},
-                {"nome": "Flexão de pernas na máquina", "reps": "3x15reps"},
-            ]
-        }
-
+    def Pernas(self):
         # Limpar a janela
         for widget in self.winfo_children():
             widget.destroy()
 
-        # Título
-        tk.Label(self, text="Treinos de Perna", font=("Arial", 24), bg="#313131", fg="white").pack(pady=10)
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill="both", expand=True)
 
-        # Frame principal para treinos em pirâmide
-        main_frame = tk.Frame(self, bg="#282828")
-        main_frame.pack(pady=20, padx=20)
+        central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
+        central_frame.pack(pady=20)
 
-        # Exibindo o grupo muscular
-        col_frame = tk.Frame(main_frame, bg="#282828")
-        col_frame.pack(pady=20)
+        label_pernas = ctk.CTkLabel(central_frame, text="Treino de Perna", text_color="white", font=("Arial", 22, 'bold'))
+        label_pernas.grid(row=0, column=0, columnspan=3, pady=10)
 
-        # Título do grupo muscular
-        tk.Label(col_frame, text="Perna", font=("Arial", 14, "bold"), bg="#282828", fg="white").pack(pady=10)
+        # Exercício 1: Stiff
+        stiff_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\stiff.webp"
+        self.stiff_image = ctk.CTkImage(light_image=Image.open(stiff_image_path), size=(150, 150))
+        stiff_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
+        stiff_frame.grid(row=1, column=0, padx=20, pady=20)
 
-        # Exibindo os exercícios de Perna
-        for exercicio in treinos["Perna"]:
-            tk.Label(col_frame, text=exercicio["nome"], font=("Arial", 12), bg="#282828", fg="white").pack(pady=5)
-            tk.Label(col_frame, text=exercicio["reps"], font=("Arial", 12, "bold"), bg="#282828", fg="white").pack(pady=5)
+        label_stiff_img = ctk.CTkLabel(stiff_frame, image=self.stiff_image, text="")
+        label_stiff_img.pack()
 
-        # Botão Voltar
-        tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Inferiores).pack(pady=20)
+        label_stiff_text = ctk.CTkLabel(stiff_frame, text="Stiff \n3x12 reps", text_color="white", font=("Arial", 16))
+        label_stiff_text.pack()
+
+        # Exercício 2: Afundo com Halteres
+        afundo_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\afundo_halteres.gif"
+        self.afundo_image = ctk.CTkImage(light_image=Image.open(afundo_image_path), size=(150, 150))
+        afundo_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30, width=200, height=200)
+        afundo_frame.grid(row=1, column=1, padx=20, pady=20)
+
+        label_afundo_img = ctk.CTkLabel(afundo_frame, image=self.afundo_image, text="")
+        label_afundo_img.pack()
+
+        label_afundo_text = ctk.CTkLabel(afundo_frame, text="Afundo com Halteres\n3x12 reps", text_color="white", font=("Arial", 16))
+        label_afundo_text.pack()
+
+        # Exercício 3: Flexão de Pernas na Máquina
+        pernas_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\pernas-na-maquina.webp"  # Corrigido aqui
+        self.pernas_image = ctk.CTkImage(light_image=Image.open(pernas_image_path), size=(150, 150))
+        pernas_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
+        pernas_frame.grid(row=1, column=2, padx=20, pady=20)
+
+        label_pernas_img = ctk.CTkLabel(pernas_frame, image=self.pernas_image, text="")
+        label_pernas_img.pack()
+
+        label_pernas_text = ctk.CTkLabel(pernas_frame, text="Flexão de Pernas na Máquina \n3x15 reps", text_color="white", font=("Arial", 16))
+        label_pernas_text.pack()
+
+        # Frame inferior com botão Voltar
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
+        frame_inferior.pack(side="bottom", fill="x")
+
+        btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar.pack(pady=10)
+
+
+
+    # def Quadriceps(self):
+    #     # Dicionário de exercícios para Quadríceps
+    #     treinos = {
+    #         "Quadríceps": [
+    #             {"nome": "Agachamento livre", "reps": "3x12reps"},
+    #             {"nome": "Leg press 45°", "reps": "3x12reps"},
+    #             {"nome": "Extensão de pernas", "reps": "3x15reps"},
+    #         ]
+    #     }
+
+    #     # Limpar a janela
+    #     for widget in self.winfo_children():
+    #         widget.destroy()
+
+    #     # Título
+    #     tk.Label(self, text="Treinos de Quadríceps", font=("Arial", 24), bg="#313131", fg="white").pack(pady=10)
+
+    #     # Frame principal para treinos em pirâmide
+    #     main_frame = tk.Frame(self, bg="#282828")
+    #     main_frame.pack(pady=20, padx=20)
+
+    #     # Exibindo o grupo muscular
+    #     col_frame = tk.Frame(main_frame, bg="#282828")
+    #     col_frame.pack(pady=20)
+
+    #     # Título do grupo muscular
+    #     tk.Label(col_frame, text="Quadríceps", font=("Arial", 14, "bold"), bg="#282828", fg="white").pack(pady=10)
+
+    #     # Exibindo os exercícios de Quadríceps
+    #     for exercicio in treinos["Quadríceps"]:
+    #         tk.Label(col_frame, text=exercicio["nome"], font=("Arial", 12), bg="#282828", fg="white").pack(pady=5)
+    #         tk.Label(col_frame, text=exercicio["reps"], font=("Arial", 12, "bold"), bg="#282828", fg="white").pack(pady=5)
+
+    #     # Botão Voltar
+    #     tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Inferiores).pack(pady=20)
+
+
+    # def Perna(self):
+    #     # Dicionário de exercícios para Perna
+    #     treinos = {
+    #         "Perna": [
+    #             {"nome": "Stiff", "reps": "3x12reps"},
+    #             {"nome": "Afundo com halteres", "reps": "3x12reps"},
+    #             {"nome": "Flexão de pernas na máquina", "reps": "3x15reps"},
+    #         ]
+    #     }
+
+    #     # Limpar a janela
+    #     for widget in self.winfo_children():
+    #         widget.destroy()
+
+    #     # Título
+    #     tk.Label(self, text="Treinos de Perna", font=("Arial", 24), bg="#313131", fg="white").pack(pady=10)
+
+    #     # Frame principal para treinos em pirâmide
+    #     main_frame = tk.Frame(self, bg="#282828")
+    #     main_frame.pack(pady=20, padx=20)
+
+    #     # Exibindo o grupo muscular
+    #     col_frame = tk.Frame(main_frame, bg="#282828")
+    #     col_frame.pack(pady=20)
+
+    #     # Título do grupo muscular
+    #     tk.Label(col_frame, text="Perna", font=("Arial", 14, "bold"), bg="#282828", fg="white").pack(pady=10)
+
+    #     # Exibindo os exercícios de Perna
+    #     for exercicio in treinos["Perna"]:
+    #         tk.Label(col_frame, text=exercicio["nome"], font=("Arial", 12), bg="#282828", fg="white").pack(pady=5)
+    #         tk.Label(col_frame, text=exercicio["reps"], font=("Arial", 12, "bold"), bg="#282828", fg="white").pack(pady=5)
+
+    #     # Botão Voltar
+    #     tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Inferiores).pack(pady=20)
 
 
     def Exibir_perfis(self):
