@@ -4,7 +4,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkcalendar import Calendar
 from datetime import datetime
-from Controller.controllers import UsuarioController
+from controller.controllers import UsuarioController
 
 
 class Funções():

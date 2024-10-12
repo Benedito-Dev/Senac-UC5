@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
-from Model.models import Base, Cliente
+from model.models import Base, Cliente
 from config.config import Config
 
 class ClienteRepository():
