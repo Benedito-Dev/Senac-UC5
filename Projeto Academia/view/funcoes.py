@@ -24,6 +24,13 @@ class Funções():
             entry.configure(fg_color='grey')  # type: ignore # Muda a cor de fundo para cinza
             entry.configure(fg='grey')  # type: ignore # Muda a cor do texto
 
+    def Exibir_senha(self):
+        if self.check_senha.get() == 1:
+            self.entry_senha.configure(show="")
+        else:
+            self.entry_senha.configure(show="*")
+
+
     def carregar_perfis(self):
         try:
             # Obtendo os dados da tabela através do controlador
@@ -40,12 +47,6 @@ class Funções():
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao carregar perfis: {e}")
 
-
-    def Exibir_senha(self):
-        if self.check_senha.get() == 1:
-            self.entry_senha.configure(show="")
-        else:
-            self.entry_senha.configure(show="*")
 
     def validar_dados(self):
         nome = self.entry_nome.get().strip()
@@ -94,6 +95,12 @@ class Funções():
         self.enviar_dados(nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco, cpf=cpf, data_de_nascimento=data_de_nascimento)
 
     # Função para validar a idade do novo usuário
+
+    def enviar_dados(self, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
+        if self.controler.adicionar_usuario(nome.upper(), email, senha, telefone, endereco, cpf, data_de_nascimento):
+            self.after(500, self.menu_inicial)
+
+            
     def validar_data(self, data_nascimento_str):
         try:
             # Converte a string em um objeto datetime
@@ -115,10 +122,7 @@ class Funções():
         except ValueError:
             # Retorna False se o formato da data for inválido
             return False
-
-    def enviar_dados(self, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
-        if self.controler.adicionar_usuario(nome.upper(), email, senha, telefone, endereco, cpf, data_de_nascimento):
-            self.after(500, self.menu_inicial)
+        
 
     def abrir_calendario(self):
         janela_calendario = tk.Toplevel(self)
@@ -147,64 +151,44 @@ class Funções():
             self.after(500, self.Home)
         else:
             pass
+    
+    def puxar_informacoes(self):
+        user_name = self.nome_usuario.strip().upper()
+
+        try:
+            user = self.controler.obter_usuario_por_nome(user_name)
+
+
+            if user:
+                self.informacoes = user
+
+
+            else:
+                messagebox.showinfo("Info", "Usuario não encontrado")
+        
+        except Exception as e:
+            messagebox.showerror("Erro", f"Ao buscar informações : {e}")
+
+    def get_informacao(self, informacao):
+        return getattr(self.informacoes, informacao, None)
 
     def deletar_perfil(self):
-        selected_item = self.tree.selection()
-        if not selected_item:
-            messagebox.showwarning("Aviso", "Nenhum perfil selecionado.")
-            return
+        # Verifica se há algum item selecionado
+        if not (selected_item := self.tree.selection()):
+            return messagebox.showwarning("Aviso", "Nenhum perfil selecionado.")
 
-        perfil_selecionado = self.tree.item(selected_item[0])['values']
-        user_id = perfil_selecionado[0]  # Supondo que o ID é o primeiro valor
+        user_id = self.tree.item(selected_item[0])['values'][0]  # Pega o ID do perfil selecionado
 
-        confirm = messagebox.askyesno("Confirmar", f"Você tem certeza que deseja deletar o perfil ID '{user_id}'?")
-        if confirm:
+        # Confirmação
+        if messagebox.askyesno("Confirmar", f"Você tem certeza que deseja deletar o perfil ID '{user_id}'?"):
             try:
-                # Mudado de self.db para self.controler
-                self.controler.deletar_usuario(user_id)  # Deleta o perfil do banco de dados
-                self.tree.delete(selected_item[0])  # Remove o perfil do Treeview
+                # Controlador lida com a exclusão no banco de dados e na visualização
+                self.controler.deletar_usuario(user_id)
+                self.tree.delete(selected_item[0])  # Remove o item da visualização
                 messagebox.showinfo("Sucesso", "Perfil deletado com sucesso!")
             except Exception as e:
                 messagebox.showerror("Erro", f"Erro ao deletar perfil: {e}")
 
-    def limpar_formulario(self):
-        self.entry_nome.delete(0, tk.END)
-        self.entry_email.delete(0, tk.END)
-        self.entry_senha.delete(0, tk.END)
-        self.entry_telefone.delete(0, tk.END)
-        self.entry_endereco.delete(0, tk.END)
-        self.entry_cpf.delete(0, tk.END)
-        self.entry_dataDeNascimento.delete(0, tk.END)
-        messagebox.showinfo("Limpeza", "Os campos foram limpos com sucesso.")
-
-    def atualizar_perfil(self):
-        selected_item = self.tree.selection()
-        if not selected_item:
-            messagebox.showwarning("Aviso", "Nenhum perfil selecionado.")
-            return
-
-        perfil_selecionado = self.tree.item(selected_item[0])['values']
-        user_id = perfil_selecionado[0]  # Supondo que o ID é o primeiro valor
-
-        # Pega os dados do formulário
-        novo_nome = self.entry_nome.get().upper()
-        novo_email = self.entry_email.get()
-        nova_senha = self.entry_senha.get()
-        novo_telefone = self.entry_telefone.get()
-        novo_endereco = self.entry_endereco.get()
-        novo_cpf = self.entry_cpf.get()
-        nova_data_de_nascimento = self.entry_dataDeNascimento.get()
-
-        # Confirmar com o usuário antes de atualizar
-        confirm = messagebox.askyesno("Confirmar", "Tem certeza que deseja atualizar este perfil?")
-        if confirm:
-            try:
-                # Mudado de self.db para self.controler
-                self.controler.atualizar_usuario(user_id, novo_nome, novo_email, nova_senha, novo_telefone, novo_endereco, novo_cpf, nova_data_de_nascimento)
-                messagebox.showinfo("Sucesso", "Perfil atualizado com sucesso!")
-                self.carregar_perfis()  # Atualiza a lista de perfis
-            except Exception as e:
-                messagebox.showerror("Erro", f"Erro ao atualizar perfil: {e}")
 
     def Encerrar_programa(self):
         self.destroy()

@@ -719,7 +719,7 @@ class Application(tk.Tk, Funções):
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.puxar_informações()
+        self.puxar_informacoes()
         
         background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
         background_frame.pack(fill="both", expand=True)
@@ -729,9 +729,6 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(1, weight=1)
         background_frame.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
         background_frame.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
-
-        # Ajusta o tamanho da tela
-        self.geometry("800x600")  # Largura e altura maiores para acomodar mais espaço
         
         # Criando o frame verde
         frame_verde = ctk.CTkFrame(background_frame, fg_color="#313131", corner_radius=10, border_color="green", border_width=7)
@@ -747,48 +744,43 @@ class Application(tk.Tk, Funções):
         titulo_label.grid(row=0, column=1, pady=15)  # Mais espaço vertical
 
         # Labels e entradas para nome
-        self.entry_novo_nome = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        self.entry_novo_nome = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("nome").lower().capitalize())
         label_nome = ctk.CTkLabel(frame_verde, text="Nome:", text_color="White", font=nunito_font)
         label_nome.grid(row=1, column=0, pady=10, sticky='e')  # Espaço vertical maior
         self.entry_novo_nome.grid(row=1, column=1, pady=10)
-        self.entry_novo_nome.insert(0, f'{self.get_informacao(1).lower().capitalize()}')
 
         # Labels e entradas para data de nascimento
-        self.entry_nova_dataDeNascimento = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        self.entry_nova_dataDeNascimento = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("data_de_nascimento"))
         label_datanasc = ctk.CTkLabel(frame_verde, text="Data de nascimento:", text_color="White", font=nunito_font)
         label_datanasc.grid(row=2, column=0, padx=10, pady=10, sticky='e')
         self.entry_nova_dataDeNascimento.grid(row=2, column=1, pady=10)
-        self.entry_nova_dataDeNascimento.insert(0, f'{self.get_informacao(7)}')
 
         # Botão do calendário com cor preta
         self.btn_calendario = ctk.CTkButton(frame_verde, text="Escolher data", command=self.abrir_calendario, fg_color="#000000", text_color="#ffffff")
         self.btn_calendario.grid(row=2, column=2, padx=10)  # Espaço lateral maior
 
         # Labels e entradas para endereço
-        self.entry_novo_endereco = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        self.entry_novo_endereco = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("endereco"))
         label_endereco = ctk.CTkLabel(frame_verde, text="Endereço:", text_color="White", font=nunito_font)
         label_endereco.grid(row=3, column=0, pady=10, sticky='e')
         self.entry_novo_endereco.grid(row=3, column=1, pady=10)
-        self.entry_novo_endereco.insert(0, f'{self.get_informacao(5)}')
 
         # Labels e entradas para telefone
-        self.entry_novo_telefone = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        self.entry_novo_telefone = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("telefone"))
         label_telefone = ctk.CTkLabel(frame_verde, text="Telefone:", text_color="White", font=nunito_font)
         label_telefone.grid(row=4, column=0, pady=10, sticky='e')
         self.entry_novo_telefone.grid(row=4, column=1, pady=10)
-        self.entry_novo_telefone.insert(0, f'{self.get_informacao(4)}')
 
         # Labels e entradas para email
-        self.entry_novo_email = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font)
+        self.entry_novo_email = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("email"))
         label_email = ctk.CTkLabel(frame_verde, text="E-mail:", text_color="White", font=nunito_font)
         label_email.grid(row=5, column=0, pady=10, sticky='e')
         self.entry_novo_email.grid(row=5, column=1, pady=10)
-        self.entry_novo_email.insert(0, f'{self.get_informacao(2)}')
 
         # Labels e entradas para nova senha
         label_nova_senha = ctk.CTkLabel(frame_verde, text="Nova senha:", text_color="White", font=nunito_font)
         label_nova_senha.grid(row=6, column=0, pady=10, sticky='e')
-        self.entry_nova_senha = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, show='*')
+        self.entry_nova_senha = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, show='*', placeholder_text="Nova Senha")
         self.entry_nova_senha.grid(row=6, column=1, pady=10)
 
         # Botão de cancelar

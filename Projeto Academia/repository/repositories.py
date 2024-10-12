@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import SQLAlchemyError
 from model.models import Base, Cliente
 from config.config import Config
 
@@ -41,6 +42,12 @@ class ClienteRepository():
     # Função para obter todos os clientes
     def obter_usuarios(self):
         return self.session.query(Cliente).all()
+
+    def obter_usuario(self, nome):
+        try:
+             return self.session.query(Cliente).filter_by(nome=nome).first()
+        except SQLAlchemyError as e:
+            print(f"Erro ao buscar usuário: {e}")
 
     # Função para atualizar um cliente
     def atualizar_cliente(self, cliente_id, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):

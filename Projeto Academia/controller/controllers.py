@@ -35,10 +35,13 @@ class UsuarioController:
     def listar_usuarios(self):
         return self.repository.obter_usuarios()
 
+    def obter_usuario_por_nome(self, nome):
+        return self.repository.obter_usuario(nome)
+
     # Controlador responsável por atualizar um produto
     def atualizar_produto(self, product_id, name, description, price):
         self.repository.atualizar_cliente(product_id, name, description, price)
 
     # Controlador responsável por deletar um produto
-    def deletar_produto(self, product_id):
-        self.repository.deletar_cliente(product_id)
+    def deletar_usuario(self, usuario_id):
+        self.repository.deletar_cliente(usuario_id)

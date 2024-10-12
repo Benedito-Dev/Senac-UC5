@@ -4,16 +4,16 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 class Cliente(Base):
-    __tablename__ = 'usuarios'
+    __tablename__ = 'Clientes'
     
     # Campos da tabela 'clientes'
     id = Column(Integer, primary_key=True)
     nome = Column(String, nullable=False)
-    email = Column(String, nullable=False, unique=True)
+    email = Column(String, nullable=False)
     senha = Column(String, nullable=False)
     telefone = Column(String, nullable=False)
     endereco = Column(String, nullable=False)
-    cpf = Column(String, nullable=False, unique=True)
+    cpf = Column(String, nullable=False)
     data_de_nascimento = Column(Date, nullable=False)
 
     def __repr__(self):
