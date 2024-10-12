@@ -629,6 +629,7 @@ class Application(tk.Tk, Funções):
         ctk.CTkButton(background_frame, text="Deletar Perfil", command=self.deletar_perfil).pack(pady=10)
         ctk.CTkButton(background_frame, text="Voltar", command=self.menu_inicial).pack(pady=10)
 
+
     def Ajustes(self):
         for widget in self.winfo_children():
             widget.destroy()
