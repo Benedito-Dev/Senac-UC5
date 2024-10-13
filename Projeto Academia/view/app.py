@@ -528,6 +528,9 @@ class Application(tk.Tk, Funções):
 
 
     def Quadriceps(self):
+        for widget in self.winfo_children():
+            widget.destroy()
+        
         background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
         background_frame.pack(fill="both", expand=True)
 
