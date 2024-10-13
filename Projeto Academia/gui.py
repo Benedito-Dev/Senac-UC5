@@ -4,22 +4,17 @@ from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
 import customtkinter as ctk
 from PIL import Image, ImageTk
-from view.funcoes import Funções
+from view import funcoes
 from tkinter import messagebox
 from tkinter import font
-from controller.controllers import UsuarioController
 
-# Configurações do CustomTkinter
-ctk.set_appearance_mode("Dark")
-ctk.set_default_color_theme("blue")
-
-class Application(tk.Tk, Funções):
-    def __init__(self):
+class Application(tk.Tk, funcoes):
+    def __init__(self, db):
         super().__init__()
+        self.db = db
         self.title("4 FITNESS")
         self.geometry("800x600")
         self.current_page = 0
-        self.controler = UsuarioController()
         self.menu_inicial()
 
 # Janelas
@@ -53,11 +48,11 @@ class Application(tk.Tk, Funções):
         titulo.grid(row=0, column=0, columnspan=2, pady=20)
 
         #Botoes
-        ctk.CTkButton(frame, text="Login", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.realizar_login).grid(row=1, column=0, columnspan=2, pady=30, padx=60)
+        ctk.CTkButton(frame, text="Login", font=("Arial", 18), width=160, command=self.realizar_login).grid(row=1, column=0, columnspan=2, pady=30, padx=60)
 
-        ctk.CTkButton(frame, text="Gerenciar Perfis", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.Exibir_perfis).grid(row=2, column=0, columnspan=2, pady=30, padx=60)
+        ctk.CTkButton(frame, text="Gerenciar Perfis", font=("Arial", 18), width=160, command=self.Exibir_perfis).grid(row=2, column=0, columnspan=2, pady=30, padx=60)
         
-        ctk.CTkButton(frame, text="Encerrar Programa", font=("Arial", 18), width=160, fg_color="#808080",  hover_color="#A9A9A9", command=self.Encerrar_programa).grid(row=3, column=0, columnspan=2, pady=30, padx=60)
+        ctk.CTkButton(frame, text="Encerrar Programa", font=("Arial", 18), width=160, command=self.Encerrar_programa).grid(row=3, column=0, columnspan=2, pady=30, padx=60)
 
 
     def realizar_login(self):
@@ -73,9 +68,7 @@ class Application(tk.Tk, Funções):
         background_frame.grid_columnconfigure(0, weight=1)
         background_frame.grid_rowconfigure(0, weight=0)  # Para centralizar verticalmente
         # Imagem
-
         image_path = "Projeto Academia\\img\\Logo.png"
-
         self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -110,13 +103,13 @@ class Application(tk.Tk, Funções):
         check.grid(row=3, column=0, columnspan=2, pady=5)
 
         # Botão de validar
-        ctk.CTkButton(frame, text="Acessar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.validando_login).grid(row=4, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Login", font=("Arial", 18), width=160, command=self.validar_login).grid(row=4, column=0, columnspan=2, pady=10)
 
         # Botão de criar conta
-        ctk.CTkButton(frame, text="Cadastrar", font=("Arial", 18), width=160, fg_color="#808080",  hover_color="#A9A9A9", command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Cadastrar-se", font=("Arial", 18), width=160, command=self.cadastrar_cliente).grid(row=5, column=0, columnspan=2, pady=10)
 
         # Botão de voltar
-        ctk.CTkButton(frame, text="Voltar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Voltar", font=("Arial", 18), width=160, command=self.menu_inicial).grid(row=6, column=0, columnspan=2, pady=10)
 
 
     def cadastrar_cliente(self):
@@ -190,10 +183,10 @@ class Application(tk.Tk, Funções):
         btn_abrir_calendario.grid(row=8, column=2,padx=10)
 
         # Botão Cadastrar-se
-        ctk.CTkButton(frame,text="Cadastrar-se",fg_color="#609746", hover_color="#A9A9A9", command=self.validar_dados).grid(row=9,column=1,pady=10)
+        ctk.CTkButton(frame,text="Cadastrar-se",command=self.validar_dados).grid(row=9,column=1,pady=10)
 
         # Botão Voltar
-        ctk.CTkButton(frame, text="Voltar",fg_color="#808080", hover_color="#A9A9A9", command=self.realizar_login).grid(row=10, column=1,pady=10)
+        ctk.CTkButton(frame, text="Voltar",command=self.realizar_login).grid(row=10, column=1,pady=10)
 
     def Home(self):
         for widget in self.winfo_children():
@@ -221,9 +214,7 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
         #Imagem Perfil
-
         image_path = "Projeto Academia\\img\\Home\\Perfil.png"
-
         self.logo_image_perfil = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
@@ -231,30 +222,27 @@ class Application(tk.Tk, Funções):
         self.label_image_perfil.grid(row=0, column=0, pady=0)
 
         # Colocando os botões lado a lado usando grid (CustomTkinter)
-        btn_perfil = ctk.CTkButton(central_frame, text="Perfil", fg_color="#808080", hover_color="#A9A9A9", command=self.Perfil_usuario, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_perfil = ctk.CTkButton(central_frame, text="Perfil", command=self.Perfil_usuario, font=("Arial", 18, "bold"), width=150, height=50)
         btn_perfil.grid(row=0, column=0, pady=(250, 00))
 
-
         image_path = "Projeto Academia\\img\\Home\\Treinos.png"
-
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=1, pady=0)
 
-        btn_treinos = ctk.CTkButton(central_frame, text="Treinos", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_treinos = ctk.CTkButton(central_frame, text="Treinos", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_treinos.grid(row=0, column=1, pady=(250, 00))
 
         image_path = "Projeto Academia\\img\\Home\\Ajustes.png"
-
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
         self.label_image_ajustes.grid(row=0, column=2, pady=0)
 
-        btn_ajustes = ctk.CTkButton(central_frame, text="Ajustes", fg_color="#808080", hover_color="#A9A9A9", command=self.Ajustes, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_ajustes = ctk.CTkButton(central_frame, text="Ajustes", command=self.Ajustes, font=("Arial", 18, "bold"), width=150, height=50)
         btn_ajustes.grid(row=0, column=2, pady=(250, 00))
 
         # Frame inferior (usando CustomTkinter)
@@ -287,30 +275,27 @@ class Application(tk.Tk, Funções):
         central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
-
         image_path = "Projeto Academia\\img\\Treinos\\Puxador.png"
-
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_superiores = ctk.CTkButton(central_frame, text="Superiores", fg_color="#808080", hover_color="#A9A9A9", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_superiores = ctk.CTkButton(central_frame, text="Superiores", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_superiores.grid(row=0, column=0, pady=(250, 00))
 
         image_path = "Projeto Academia\\img\\Treinos\\Leg-press.png"
-
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
         self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-        btn_inferiores = ctk.CTkButton(central_frame, text="Inferiores", fg_color="#808080", hover_color="#A9A9A9", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_inferiores = ctk.CTkButton(central_frame, text="Inferiores", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_inferiores.grid(row=0, column=1, pady=(250, 00))
 
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Home, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Home, font=("Arial", 18, "bold"), width=150, height=50)
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
@@ -344,28 +329,26 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
         image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Peito.png"
-
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_Peito = ctk.CTkButton(central_frame, text="Peito", fg_color="#808080", hover_color="#A9A9A9", command=self.Peito, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Peito = ctk.CTkButton(central_frame, text="Peito", command=self.Peito, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Peito.grid(row=0, column=0, pady=(250, 00))
 
         image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Costas.png"
-
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
         self.label_image_ajustes.grid(row=0, column=1, pady=0)
 
-        btn_Costas = ctk.CTkButton(central_frame, text="Costas", fg_color="#808080", hover_color="#A9A9A9", command=self.Costas, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Costas = ctk.CTkButton(central_frame, text="Costas", command=self.Costas, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Costas.grid(row=0, column=1, pady=(250, 00))
 
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
@@ -406,29 +389,9 @@ class Application(tk.Tk, Funções):
         self.label_image_treinos = ctk.CTkLabel(central_frame, image=self.logo_image_treinos, text="")
         self.label_image_treinos.grid(row=0, column=0, pady=0)
 
-        btn_Perna = ctk.CTkButton(central_frame, text="Perna", fg_color="#808080", hover_color="#A9A9A9", command=self.Perna, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_Perna = ctk.CTkButton(central_frame, text="Perna", fg_color="#808080", hover_color="#A9A9A9", command=self.Pernas, font=("Arial", 18, "bold"), width=150, height=50)
         btn_Perna.grid(row=0, column=0, pady=(250, 00))
 
-
-        image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\Quadriceps.png"
-
-        self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
-
-        # Criar um Label para exibir a imagem
-        self.label_image_ajustes = ctk.CTkLabel(central_frame, image=self.logo_image_ajustes, text="")
-        self.label_image_ajustes.grid(row=0, column=1, pady=0)
-
-        btn_quadriceps = ctk.CTkButton(central_frame, text="Quadríceps", fg_color="#808080", hover_color="#A9A9A9", command=self.Quadriceps, font=("Arial", 18, "bold"), width=150, height=50)
-        btn_quadriceps.grid(row=0, column=1, pady=(250, 00))
-
-
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
-
-        btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
-
-        # Frame inferior (usando CustomTkinter)
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
-        frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
     def Peito(self):
@@ -528,61 +491,43 @@ class Application(tk.Tk, Funções):
 
 
     def Quadriceps(self):
-        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
-        background_frame.pack(fill="both", expand=True)
+        # Dicionário de exercícios para Quadríceps
+        treinos = {
+            "Quadríceps": [
+                {"nome": "Agachamento livre", "reps": "3x12reps"},
+                {"nome": "Leg press 45°", "reps": "3x12reps"},
+                {"nome": "Extensão de pernas", "reps": "3x15reps"},
+            ]
+        }
 
-        central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
-        central_frame.pack(pady=20)
+        # Limpar a janela
+        for widget in self.winfo_children():
+            widget.destroy()
 
-        label_pernas = ctk.CTkLabel(central_frame, text="Treino de Quadríceps", text_color="white", font=("Arial", 22, 'bold'))
-        label_pernas.grid(row=0, column=0, columnspan=3, pady=10)
+        # Título
+        tk.Label(self, text="Treinos de Quadríceps", font=("Arial", 24), bg="#313131", fg="white").pack(pady=10)
 
-        # Exercício 1: Agachamento Smith
-        agachamento_smith_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\agachamento_smith.gif"
-        self.agachamento_smith_image = ctk.CTkImage(light_image=Image.open(agachamento_smith_image_path), size=(150, 150))
-        agachamento_smith_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-        agachamento_smith_frame.grid(row=1, column=0, padx=20, pady=20)
+        # Frame principal para treinos em pirâmide
+        main_frame = tk.Frame(self, bg="#282828")
+        main_frame.pack(pady=20, padx=20)
 
-        label_agachamento_smith_img = ctk.CTkLabel(agachamento_smith_frame, image=self.agachamento_smith_image, text="")
-        label_agachamento_smith_img.pack()
+        # Exibindo o grupo muscular
+        col_frame = tk.Frame(main_frame, bg="#282828")
+        col_frame.pack(pady=20)
 
-        label_agachamento_smith_text = ctk.CTkLabel(agachamento_smith_frame, text="Agachamento Smith \n3x12 reps", text_color="white", font=("Arial", 16))
-        label_agachamento_smith_text.pack()
+        # Título do grupo muscular
+        tk.Label(col_frame, text="Quadríceps", font=("Arial", 14, "bold"), bg="#282828", fg="white").pack(pady=10)
 
-        # Exercício 2: Extensão de Pernas
-        extensao_pernas_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\extensao_pernas.gif"
-        self.extensao_pernas_image = ctk.CTkImage(light_image=Image.open(extensao_pernas_image_path), size=(150, 150))
-        extensao_pernas_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30, width=200, height=200)
-        extensao_pernas_frame.grid(row=1, column=1, padx=20, pady=20)
+        # Exibindo os exercícios de Quadríceps
+        for exercicio in treinos["Quadríceps"]:
+            tk.Label(col_frame, text=exercicio["nome"], font=("Arial", 12), bg="#282828", fg="white").pack(pady=5)
+            tk.Label(col_frame, text=exercicio["reps"], font=("Arial", 12, "bold"), bg="#282828", fg="white").pack(pady=5)
 
-        label_extensao_pernas_img = ctk.CTkLabel(extensao_pernas_frame, image=self.extensao_pernas_image, text="")
-        label_extensao_pernas_img.pack()
-
-        label_extensao_pernas_text = ctk.CTkLabel(extensao_pernas_frame, text="Extensão de Pernas \n3x12 reps", text_color="white", font=("Arial", 16))
-        label_extensao_pernas_text.pack()
-
-        # Exercício 3: Leg Press
-        leg_press_image_path = "Projeto Academia\\img\\Treinos\\Inferiores\\leg_press.gif"
-        self.leg_press_image = ctk.CTkImage(light_image=Image.open(leg_press_image_path), size=(150, 150))
-        leg_press_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
-        leg_press_frame.grid(row=1, column=2, padx=20, pady=20)
-
-        label_leg_press_img = ctk.CTkLabel(leg_press_frame, image=self.leg_press_image, text="")
-        label_leg_press_img.pack()
-
-        label_leg_press_text = ctk.CTkLabel(leg_press_frame, text="Leg Press \n3x12 reps", text_color="white", font=("Arial", 16))
-        label_leg_press_text.pack()
-
-        # Frame inferior com botão Voltar
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
-        frame_inferior.pack(side="bottom", fill="x")
-
-        btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
-        btn_voltar.pack(pady=10)
+        # Botão Voltar
+        tk.Button(self, text="Voltar", font=("Arial", 10), command=self.Inferiores).pack(pady=20)
 
 
     def Perna(self):
-         # Limpar a janela
         for widget in self.winfo_children():
             widget.destroy()
 
@@ -639,6 +584,7 @@ class Application(tk.Tk, Funções):
         btn_voltar.pack(pady=10)
 
 
+
     def Exibir_perfis(self):
         for widget in self.winfo_children():
             widget.destroy()
@@ -666,7 +612,6 @@ class Application(tk.Tk, Funções):
 
         ctk.CTkButton(background_frame, text="Deletar Perfil", command=self.deletar_perfil).pack(pady=10)
         ctk.CTkButton(background_frame, text="Voltar", command=self.menu_inicial).pack(pady=10)
-
 
     def Ajustes(self):
         for widget in self.winfo_children():
@@ -754,78 +699,72 @@ class Application(tk.Tk, Funções):
 
 
     def Perfil_usuario(self):
-        # Remove todos os widgets existentes
         for widget in self.winfo_children():
             widget.destroy()
 
-        self.puxar_informacoes()
+        self.puxar_informações()
         
-        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
-        background_frame.pack(fill="both", expand=True)
-
         # Configurações da janela para centralização
-        background_frame.grid_columnconfigure(0, weight=1)
-        background_frame.grid_columnconfigure(1, weight=1)
-        background_frame.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
-        background_frame.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
-        
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
+        self.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
+
         # Criando o frame verde
-        frame_verde = ctk.CTkFrame(background_frame, fg_color="#313131", corner_radius=10, border_color="green", border_width=7)
-        frame_verde.grid(row=1, column=0, columnspan=2, padx=40, pady=40)  # Aumentei o padding
+        frame_verde = tk.Frame(self, bg="#313131", padx=20, pady=20, highlightthickness=4, highlightcolor="green", highlightbackground="green")
+        frame_verde.grid(row=1, column=0, columnspan=2)
 
         # Criando a fonte Nunito
-        nunito_font = ("Nunito", 12)  # Fonte um pouco maior
-        titulo_font = ("Nunito", 16, "bold")
-        botao_font = ("Nunito", 12, "bold")
+        nunito_font = font.Font(family="Nunito", size=10)
+        titulo_font = font.Font(family="Nunito", size=14, weight="bold")
+        botao_font = font.Font(family="Nunito", size=10, weight="bold")
 
         # Label para o título
-        titulo_label = ctk.CTkLabel(frame_verde, text="Editar Informações", text_color="White", font=titulo_font)
-        titulo_label.grid(row=0, column=1, pady=15)  # Mais espaço vertical
+        titulo_label = tk.Label(frame_verde, text="Editar Informações", bg="#313131", fg="White", font=titulo_font)
+        titulo_label.grid(row=0, column=1, pady=10)
 
-        # Labels e entradas para nome
-        self.entry_novo_nome = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("nome").lower().capitalize())
-        label_nome = ctk.CTkLabel(frame_verde, text="Nome:", text_color="White", font=nunito_font)
-        label_nome.grid(row=1, column=0, pady=10, sticky='e')  # Espaço vertical maior
-        self.entry_novo_nome.grid(row=1, column=1, pady=10)
+        # Labels e entradas
+        self.entry_novo_nome = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        label_nome = tk.Label(frame_verde, text="Nome:", bg="#313131", fg="White", font=nunito_font)
+        label_nome.grid(row=1, column=0, pady=2, sticky='e')
+        self.entry_novo_nome.grid(row=1, column=1, pady=2)
 
-        # Labels e entradas para data de nascimento
-        self.entry_dataDeNascimento = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("data_de_nascimento"))
-        label_datanasc = ctk.CTkLabel(frame_verde, text="Data de nascimento:", text_color="White", font=nunito_font)
-        label_datanasc.grid(row=2, column=0, padx=10, pady=10, sticky='e')
-        self.entry_dataDeNascimento.grid(row=2, column=1, pady=10)
+        self.entry_novo_nome.insert(0, f'{self.get_informacao(1).lower().capitalize()}')  # Adiciona o placeholder
 
-        # Botão do calendário com cor preta
-        self.btn_calendario = ctk.CTkButton(frame_verde, text="Escolher data", command=self.abrir_calendario, fg_color="#000000", text_color="#ffffff")
-        self.btn_calendario.grid(row=2, column=2, padx=10)  # Espaço lateral maior
+        self.entry_nova_dataDeNascimento = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        label_datanasc = tk.Label(frame_verde, text="Data de nascimento:", bg="#313131", fg="White", font=nunito_font)
+        label_datanasc.grid(row=2, column=0, pady=2, sticky='e')
+        self.entry_nova_dataDeNascimento.grid(row=2, column=1, pady=2)
 
-        # Labels e entradas para endereço
-        self.entry_novo_endereco = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("endereco"))
-        label_endereco = ctk.CTkLabel(frame_verde, text="Endereço:", text_color="White", font=nunito_font)
-        label_endereco.grid(row=3, column=0, pady=10, sticky='e')
-        self.entry_novo_endereco.grid(row=3, column=1, pady=10)
+        self.entry_nova_dataDeNascimento.insert(0, f'{self.get_informacao(7)}')  # Adiciona o placeholder
 
-        # Labels e entradas para telefone
-        self.entry_novo_telefone = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("telefone"))
-        label_telefone = ctk.CTkLabel(frame_verde, text="Telefone:", text_color="White", font=nunito_font)
-        label_telefone.grid(row=4, column=0, pady=10, sticky='e')
-        self.entry_novo_telefone.grid(row=4, column=1, pady=10)
+        self.btn_calendario = tk.Button(frame_verde, text="Escolher data", command=self.abrir_calendario)
+        self.btn_calendario.grid(row=2, column=2, padx=4)
 
-        # Labels e entradas para email
-        self.entry_novo_email = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("email"))
-        label_email = ctk.CTkLabel(frame_verde, text="E-mail:", text_color="White", font=nunito_font)
-        label_email.grid(row=5, column=0, pady=10, sticky='e')
-        self.entry_novo_email.grid(row=5, column=1, pady=10)
 
-        # Labels e entradas para nova senha
-        label_nova_senha = ctk.CTkLabel(frame_verde, text="Nova senha:", text_color="White", font=nunito_font)
-        label_nova_senha.grid(row=6, column=0, pady=10, sticky='e')
-        self.entry_nova_senha = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, show='*', placeholder_text="Nova Senha")
-        self.entry_nova_senha.grid(row=6, column=1, pady=10)
+        self.entry_novo_endereco = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        label_endereco = tk.Label(frame_verde, text="Endereço:", bg="#313131", fg="White", font=nunito_font)
+        label_endereco.grid(row=3, column=0, pady=2, sticky='e')
+        self.entry_novo_endereco.grid(row=3, column=1, pady=2)
 
-        # Botão de cancelar
-        self.btn_voltar = ctk.CTkButton(frame_verde, text="Cancelar", command=self.Home, fg_color="#000000", text_color="#FF0000")
-        self.btn_voltar.grid(row=7, column=1, pady=15)
+        self.entry_novo_endereco.insert(0, f'{self.get_informacao(5)}')  # Adiciona o placeholder
 
-        # Botão de salvar alterações
-        botao_salvar = ctk.CTkButton(frame_verde, text="Salvar alterações", fg_color="#000000", text_color="#00ff00", font=botao_font, command=self.salvar_alterações)
-        botao_salvar.grid(row=8, column=1, pady=15)
+        self.entry_novo_telefone = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        label_telefone = tk.Label(frame_verde, text="Telefone:", bg="#313131", fg="White", font=nunito_font)
+        label_telefone.grid(row=4, column=0, pady=2, sticky='e')
+        self.entry_novo_telefone.grid(row=4, column=1, pady=2)
+
+        self.entry_novo_telefone.insert(0, f'{self.get_informacao(4)}')  # Adiciona o placeholder
+
+        self.entry_novo_email = tk.Entry(frame_verde, bg="#ffffff", fg="Black", font=nunito_font)
+        label_email = tk.Label(frame_verde, text="E-mail:", bg="#313131", fg="White", font=nunito_font)
+        label_email.grid(row=5, column=0, pady=2, sticky='e')
+        self.entry_novo_email.grid(row=5, column=1, pady=2)
+
+        self.entry_novo_email.insert(0, f'{self.get_informacao(2)}')  # Adiciona o placeholder
+
+        self.btn_voltar = tk.Button(frame_verde, text="Cancelar", command=self.Home, bg="#000000", fg="#FF0000")
+        self.btn_voltar.grid(row=6, column=1, pady=10)
+
+        botao_salvar = tk.Button(frame_verde, text="Salvar alterações", bg="#000000", fg="#00ff00", font=botao_font, command=self.salvar_alterações)
+        botao_salvar.grid(row=7, column=1, pady=10)
