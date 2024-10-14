@@ -665,10 +665,6 @@ class Application(tk.Tk, Funções):
         btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
         btn_voltar.pack(pady=10)
 
-
-
-
-
     def Quadriceps(self):
         # Dicionário de exercícios para Quadríceps
         treinos = {
@@ -930,7 +926,7 @@ class Application(tk.Tk, Funções):
         # Labels e entradas para nova senha
         label_nova_senha = ctk.CTkLabel(frame_verde, text="Nova senha:", text_color="White", font=nunito_font)
         label_nova_senha.grid(row=6, column=0, pady=10, sticky='e')
-        self.entry_nova_senha = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, show='*')
+        self.entry_nova_senha = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, show='*', placeholder_text="Insira sua nova senha")
         self.entry_nova_senha.grid(row=6, column=1, pady=10)
 
         # Botão de cancelar
