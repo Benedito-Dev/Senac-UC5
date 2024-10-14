@@ -588,7 +588,7 @@ class Application(tk.Tk, Funções):
         label_costas.grid(row=2, column=0, columnspan=3, pady=10)
 
         # Exercício 1: Puxada alta
-        puxada_alta_image_path = "Projeto Academia\\img\\puxada.png" 
+        puxada_alta_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Costas\\puxada.png" 
         self.puxada_alta_image = ctk.CTkImage(light_image=Image.open(puxada_alta_image_path), size=(150, 150))
         puxada_alta_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
         puxada_alta_frame.grid(row=3, column=0, padx=20, pady=20)
@@ -600,7 +600,7 @@ class Application(tk.Tk, Funções):
         label_puxada_alta_text.pack()
 
         # Exercício 2: Remada curvada
-        remada_curvada_image_path = "Projeto Academia\\img\\remada_curvada.jpg" 
+        remada_curvada_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Costas\\remada_curvada.jpg" 
         self.remada_curvada_image = ctk.CTkImage(light_image=Image.open(remada_curvada_image_path), size=(150, 150))
         remada_curvada_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
         remada_curvada_frame.grid(row=3, column=1, padx=20, pady=20)
@@ -612,7 +612,7 @@ class Application(tk.Tk, Funções):
         label_remada_curvada_text.pack()
 
         # Exercício 3: Levantamento terra
-        levantamento_terra_image_path = "Projeto Academia\\img\\levantamento_terra.jpg" 
+        levantamento_terra_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Costas\\levantamento_terra.jpg" 
         self.levantamento_terra_image = ctk.CTkImage(light_image=Image.open(levantamento_terra_image_path), size=(150, 150))
         levantamento_terra_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
         levantamento_terra_frame.grid(row=3, column=2, padx=20, pady=20)
@@ -628,7 +628,7 @@ class Application(tk.Tk, Funções):
         label_biceps.grid(row=4, column=0, columnspan=3, pady=10)
 
         # Exercício 1: Rosca direta com barra
-        rosca_direta_image_path = "Projeto Academia\\img\\rosca_direta_barra.png"
+        rosca_direta_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Costas\\rosca_direta_barra.png"
         self.rosca_direta_image = ctk.CTkImage(light_image=Image.open(rosca_direta_image_path), size=(150, 150))
         rosca_direta_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
         rosca_direta_frame.grid(row=5, column=0, padx=20, pady=20)
@@ -640,7 +640,7 @@ class Application(tk.Tk, Funções):
         label_rosca_direta_text.pack()
 
         # Exercício 2: Rosca martelo com halteres
-        rosca_martelo_image_path = "Projeto Academia\\img\\rosca_martelo.jfif"
+        rosca_martelo_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Costas\\rosca_martelo.jfif"
         self.rosca_martelo_image = ctk.CTkImage(light_image=Image.open(rosca_martelo_image_path), size=(150, 150))
         rosca_martelo_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
         rosca_martelo_frame.grid(row=5, column=1, padx=20, pady=20)
@@ -652,7 +652,7 @@ class Application(tk.Tk, Funções):
         label_rosca_martelo_text.pack()
 
         # Exercício 3: Rosca concentrada
-        rosca_concentrada_image_path = "Projeto Academia\\img\\rosca_concentrada.jfif"
+        rosca_concentrada_image_path = "Projeto Academia\\img\\Treinos\\Superiores\\Costas\\rosca_concentrada.jfif"
         self.rosca_concentrada_image = ctk.CTkImage(light_image=Image.open(rosca_concentrada_image_path), size=(150, 150))
         rosca_concentrada_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
         rosca_concentrada_frame.grid(row=5, column=2, padx=20, pady=20)
