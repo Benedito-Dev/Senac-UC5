@@ -65,4 +65,10 @@ class UsuarioController:
         if cliente:
             return False  # CPF já está cadastrado
         return True  # CPF não cadastrado, pode prosseguir
+    
+    def validar_email(self,email):
+        cliente = self.repository.consultar_email(email)
+        if cliente:
+            return False 
+        return True
         

@@ -67,6 +67,10 @@ class Funções():
         if not re.match(email_pattern, email):
             messagebox.showerror("Erro", "Por favor, insira um e-mail válido.")
             return
+        
+        if not self.controler.validar_email(email):
+            messagebox.showerror("Erro", "Email já cadastrado no sistema. ")
+            return
 
         # Validação de senha (mínimo de 8 caracteres, deve conter letras e números)
         if len(senha) < 8 or not any(char.isdigit() for char in senha) or not any(char.isalpha() for char in senha):
