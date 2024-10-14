@@ -6,6 +6,9 @@ class UsuarioController:
     def __init__(self):
         self.repository = ClienteRepository()  # Instancia o repositório de clientes
 
+    def inicar_banco(self):
+        self.repository.init_db()
+
     # Controlador responsável por criar um produto
     def adicionar_usuario(self, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
         # Convertendo data de nascimento para formato Correto

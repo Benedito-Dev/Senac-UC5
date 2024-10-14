@@ -1,10 +1,10 @@
-from repository.repositories import ClienteRepository
+from controller.controllers import UsuarioController
 from view.app import Application
 
 def main():
     # Inicializar o banco de dados
-    repository = ClienteRepository()
-    repository.init_db()
+    controlador = UsuarioController()
+    controlador.inicar_banco()
 
     # Inicializar a interface gráfica
     app = Application()
