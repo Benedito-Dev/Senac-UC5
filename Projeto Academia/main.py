@@ -1,4 +1,4 @@
-from controller.controllers import UsuarioController
+from Controller.controllers import UsuarioController
 from view.app import Application
 
 def main():

@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 from view.funcoes import Funções
 from tkinter import messagebox
 from tkinter import font
-from controller.controllers import UsuarioController
+from Controller.controllers import UsuarioController
 
 # Configurações do CustomTkinter
 ctk.set_appearance_mode("Dark")
@@ -422,7 +422,7 @@ class Application(tk.Tk, Funções):
         btn_quadriceps.grid(row=0, column=1, pady=(250, 00))
 
 
-        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar = ctk.CTkButton(central_frame, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
 
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
