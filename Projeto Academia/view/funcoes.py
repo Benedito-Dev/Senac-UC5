@@ -86,6 +86,13 @@ class Funções():
         if len(cpf) != 11:  # Corrigido para verificar se o CPF tem exatamente 11 dígitos
             messagebox.showerror("Erro", "O CPF deve ter exatamente 11 dígitos.")
             return
+        
+        
+        # Verifica se o CPF já está cadastrado
+        if not self.controler.validar_cpf(cpf):
+            messagebox.showerror("Erro", "O CPF já está cadastrado no sistema.")
+            return
+
 
         if not self.validar_data(data_de_nascimento):
             messagebox.showerror("Erro", "Você deve ter mais de 12 anos")
