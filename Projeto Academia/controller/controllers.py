@@ -44,7 +44,6 @@ class UsuarioController:
     # Controlador responsável por atualizar um produto
     def atualizar_usuario(self, id, nome, data_de_nascimento, endereco, telefone, email, senha):
         try:
-
             nome = nome
             data_de_nascimento = data_de_nascimento
             endereco = endereco
