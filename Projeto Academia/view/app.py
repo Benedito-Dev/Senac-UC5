@@ -288,7 +288,7 @@ class Application(tk.Tk, Funções):
         central_frame.place(relx=0.5, rely=0.45, anchor=ctk.CENTER)  # Centralizando o frame
 
 
-        image_path = "Projeto Academia\\img\\Treinos\\Puxador.png"
+        image_path = "Projeto Academia\\img\\Treinos\\Menu-Treinos\\Puxador.png"
 
         self.logo_image_treinos = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -299,7 +299,7 @@ class Application(tk.Tk, Funções):
         btn_superiores = ctk.CTkButton(central_frame, text="Superiores", fg_color="#808080", hover_color="#A9A9A9", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_superiores.grid(row=0, column=0, pady=(250, 00))
 
-        image_path = "Projeto Academia\\img\\Treinos\\Leg-press.png"
+        image_path = "Projeto Academia\\img\\Treinos\\Menu-Treinos\\Leg-press.png"
 
         self.logo_image_ajustes = ctk.CTkImage(light_image=Image.open(image_path), size=(350, 350))  # Ajuste o tamanho da imagem
 
@@ -668,7 +668,7 @@ class Application(tk.Tk, Funções):
         frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
         frame_inferior.pack(side="bottom", fill="x")
 
-        btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Treinos, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_voltar.pack(pady=10)
 
 
