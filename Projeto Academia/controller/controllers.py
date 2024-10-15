@@ -51,7 +51,8 @@ class UsuarioController:
             telefone = telefone
             email = email
             senha = senha
-            self.repository.atualizar_cliente(id, nome, data_de_nascimento, endereco, telefone, email, senha)
+            self.repository.atualizar_cliente(id, nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco, data_de_nascimento=data_de_nascimento)
+            messagebox.showinfo("Sucesso", "Informações Alteradas com sucesso")
 
         except Exception as e:
             raise Exception(f"Erro ao atualizar usuário: {e}")

@@ -50,7 +50,7 @@ class ClienteRepository():
             print(f"Erro ao buscar usuário: {e}")
 
     # Função para atualizar um cliente
-    def atualizar_cliente(self, cliente_id, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
+    def atualizar_cliente(self, cliente_id, nome, email, senha, telefone, endereco, data_de_nascimento):
         cliente = self.session.query(Cliente).get(cliente_id)
         if cliente:
             cliente.nome = nome
@@ -58,7 +58,6 @@ class ClienteRepository():
             cliente.senha = senha
             cliente.telefone = telefone
             cliente.endereco = endereco
-            cliente.cpf = cpf
             if not data_de_nascimento:
                 raise ValueError("Data de nascimento não pode estar vazia")
             cliente.data_de_nascimento = data_de_nascimento

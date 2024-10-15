@@ -975,5 +975,5 @@ class Application(tk.Tk, Funções):
         self.btn_voltar.grid(row=7, column=1, pady=15)
 
         # Botão de salvar alterações
-        botao_salvar = ctk.CTkButton(frame_verde, text="Salvar alterações", fg_color="#000000", text_color="#00ff00", font=botao_font, command=self.salvar_alterações)
+        botao_salvar = ctk.CTkButton(frame_verde, text="Salvar alterações", fg_color="#000000", text_color="#00ff00", font=botao_font, command=self.validar_alteracoes)
         botao_salvar.grid(row=8, column=1, pady=15)

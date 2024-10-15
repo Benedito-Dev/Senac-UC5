@@ -176,7 +176,7 @@ class Funções():
     def get_informacao(self, informacao):
         return getattr(self.informacoes, informacao, None)
     
-    def salvar_alterações(self):
+    def validar_alteracoes(self):
 
         id = self.get_informacao("id")
 
@@ -187,12 +187,50 @@ class Funções():
         novo_email = self.entry_novo_email.get().strip() or self.get_informacao("email")
         nova_senha = self.entry_nova_senha.get().strip() or self.get_informacao("senha")
 
-        if not nova_data_de_nascimento:
+        # Validação do nome (mínimo de 3 letras, apenas caracteres alfabéticos)
+        if len(novo_nome) < 3 or not novo_nome.isalpha():
+            messagebox.showerror("Erro", "O nome deve ter pelo menos 3 letras e conter apenas caracteres alfabéticos.")
+            return
+
+        # Validação de e-mail (usando expressão regular)
+        email_pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+        if not re.match(email_pattern, novo_email):
+            messagebox.showerror("Erro", "Por favor, insira um e-mail válido.")
+            return
+
+        # Validação de senha (mínimo de 8 caracteres, deve conter letras e números)
+        if len(nova_senha) < 8 or not any(char.isdigit() for char in nova_senha) or not any(char.isalpha() for char in nova_senha):
+            messagebox.showerror("Erro", "A senha deve ter pelo menos 8 caracteres e conter letras e números.")
+            return
+
+        # Validação de telefone (deve conter apenas dígitos e ter 10 ou 11 números)
+        if not novo_telefone.isdigit() or not (10 <= len(novo_telefone) <= 11):
+            messagebox.showerror("Erro", "O telefone deve conter apenas números e ter 10 ou 11 dígitos.")
+            return
+
+        # Validação de endereço (mínimo de 5 caracteres, qualquer valor é permitido)
+        if len(novo_endereco) < 5:
+            messagebox.showerror("Erro", "O endereço deve ter pelo menos 5 caracteres.")
+            return
+
+        if not self.validar_data(nova_data_de_nascimento):
+            messagebox.showerror("Erro", "Você deve ter mais de 12 anos")
+            return
+        
+        self.salvar_alterações(self,id=id,nome=novo_nome,senha=nova_senha,telefone=novo_telefone,endereco=novo_endereco,data_de_nascimento=nova_data_de_nascimento)
+    
+    def salvar_alterações(self,nome, email, senha, telefone, endereco, data_de_nascimento):
+        
+        id = self.get_informacao("id")
+
+        if not data_de_nascimento:
             messagebox.showerror("Erro", "Data de nascimento inválida")
             return
 
         try :
-            self.controler.atualizar_usuario(id=id, nome=novo_nome, data_de_nascimento=nova_data_de_nascimento, endereco=novo_endereco, telefone=novo_telefone, email=novo_email, senha=nova_senha)
+            self.nome_usuario = nome
+            self.controler.atualizar_usuario(id=id, nome=nome, data_de_nascimento=data_de_nascimento, endereco=endereco, telefone=telefone, email=email, senha=senha)
+            self.after(500, self.Home)
         
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao salvar alterações: {e}")
