@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 class Cliente(Base):
-    __tablename__ = 'clientes'
+    __tablename__ = 'Clientes'
     
     # Campos da tabela 'clientes'
     id = Column(Integer, primary_key=True)
