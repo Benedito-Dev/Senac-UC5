@@ -524,12 +524,12 @@ class Application(tk.Tk, Funções):
         if pagina > 1:
             btn_anterior = ctk.CTkButton(background_frame, text="Anterior", fg_color="#808080", hover_color="#A9A9A9",
                                         command=lambda: self.Peito(pagina-1), font=("Arial", 18, "bold"), width=150, height=50)
-            btn_anterior.pack(pady=30, padx=(0, 5))
+            btn_anterior.pack(pady=10, padx=(0, 5))
 
         if pagina < len(paginas):
             btn_proxima = ctk.CTkButton(background_frame, text="Próxima", fg_color="#808080", hover_color="#A9A9A9",
                                         command=lambda: self.Peito(pagina+1), font=("Arial", 18, "bold"), width=150, height=50)
-            btn_proxima.pack(pady=30, padx=(0, 5))
+            btn_proxima.pack(pady=10, padx=(0, 5))
 
 
         # Frame inferior com botões de navegação
