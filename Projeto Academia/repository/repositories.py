@@ -5,6 +5,8 @@ from sqlalchemy.exc import SQLAlchemyError
 from model.models import Base, Cliente
 from config.config import Config
 
+
+
 class ClienteRepository():
     def __init__(self):
         # Conectar ao banco de dados PostgreSQL

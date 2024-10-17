@@ -7,6 +7,8 @@ from datetime import datetime
 from controller.controllers import UsuarioController
 
 
+
+
 class Funções():
     def __init__(self):
         self.controler = UsuarioController()
@@ -193,6 +195,7 @@ class Funções():
 
         novo_nome = self.entry_novo_nome.get().strip().upper() or self.get_informacao("nome").upper()
         nova_data_de_nascimento = self.entry_dataDeNascimento.get().strip() or self.get_informacao("data_de_nascimento")
+        print(type(nova_data_de_nascimento))
         novo_endereco = self.entry_novo_endereco.get() or self.get_informacao("endereco")
         novo_telefone = self.entry_novo_telefone.get().strip() or self.get_informacao("telefone")
         novo_email = self.entry_novo_email.get().strip() or self.get_informacao("email")
@@ -207,6 +210,10 @@ class Funções():
         
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao salvar alterações: {e}")
+
+        if  type(nova_data_de_nascimento) == str:
+            Funções.validar_data(self,nova_data_de_nascimento)
+
 
 
     def deletar_perfil(self):
