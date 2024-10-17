@@ -714,6 +714,43 @@ class Application(tk.Tk, Funções):
         label_leg_press_text = ctk.CTkLabel(leg_press_frame, text="Leg Press \n3x12 reps", text_color="white", font=("Arial", 16))
         label_leg_press_text.pack()
 
+        # Exercício 4: Agachamento Frontal
+        agachamento_frontal_image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\agachamento_frontal.webp"
+        self.agachamento_frontal_image = ctk.CTkImage(light_image=Image.open(agachamento_frontal_image_path), size=(150, 150))
+        agachamento_frontal_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
+        agachamento_frontal_frame.grid(row=2, column=0, padx=20, pady=20)
+
+        label_agachamento_frontal_img = ctk.CTkLabel(agachamento_frontal_frame, image=self.agachamento_frontal_image, text="")
+        label_agachamento_frontal_img.pack()
+
+        label_agachamento_frontal_text = ctk.CTkLabel(agachamento_frontal_frame, text="Agachamento Frontal \n3x10 reps", text_color="white", font=("Arial", 16))
+        label_agachamento_frontal_text.pack()
+
+        # Exercício 5: Avanço
+        avancado_image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\avanco.webp"
+        self.avancado_image = ctk.CTkImage(light_image=Image.open(avancado_image_path), size=(150, 150))
+        avancado_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
+        avancado_frame.grid(row=2, column=1, padx=20, pady=20)
+
+        label_avancado_img = ctk.CTkLabel(avancado_frame, image=self.avancado_image, text="")
+        label_avancado_img.pack()
+
+        label_avancado_text = ctk.CTkLabel(avancado_frame, text="Avanço \n3x12 reps", text_color="white", font=("Arial", 16))
+        label_avancado_text.pack()
+
+        # Exercício 6: Step-Up
+        step_up_image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\step_up.webp"
+        self.step_up_image = ctk.CTkImage(light_image=Image.open(step_up_image_path), size=(150, 150))
+        step_up_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
+        step_up_frame.grid(row=2, column=2, padx=20, pady=20)
+
+        label_step_up_img = ctk.CTkLabel(step_up_frame, image=self.step_up_image, text="")
+        label_step_up_img.pack()
+
+        label_step_up_text = ctk.CTkLabel(step_up_frame, text="Step-Up \n3x12 reps", text_color="white", font=("Arial", 16))
+        label_step_up_text.pack()
+
+
         # Frame inferior com botão Voltar
         frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
         frame_inferior.pack(side="bottom", fill="x")
@@ -773,6 +810,42 @@ class Application(tk.Tk, Funções):
 
         label_pernas_text = ctk.CTkLabel(pernas_frame, text="Flexão de Pernas na Máquina \n3x15 reps", text_color="white", font=("Arial", 16))
         label_pernas_text.pack()
+
+            # Exercício 4: Agachamento Sumô
+        sumo_image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\agachamento_sumo.webp"
+        self.sumo_image = ctk.CTkImage(light_image=Image.open(sumo_image_path), size=(150, 150))
+        sumo_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
+        sumo_frame.grid(row=2, column=0, padx=20, pady=20)
+
+        label_sumo_img = ctk.CTkLabel(sumo_frame, image=self.sumo_image, text="")
+        label_sumo_img.pack()
+
+        label_sumo_text = ctk.CTkLabel(sumo_frame, text="Agachamento Sumô \n3x12 reps", text_color="white", font=("Arial", 16))
+        label_sumo_text.pack()
+
+        # Exercício 5: Levantamento de Quadril
+        hip_thrust_image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\levantamento_quadril.gif"
+        self.hip_thrust_image = ctk.CTkImage(light_image=Image.open(hip_thrust_image_path), size=(150, 150))
+        hip_thrust_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
+        hip_thrust_frame.grid(row=2, column=1, padx=20, pady=20)
+
+        label_hip_thrust_img = ctk.CTkLabel(hip_thrust_frame, image=self.hip_thrust_image, text="")
+        label_hip_thrust_img.pack()
+
+        label_hip_thrust_text = ctk.CTkLabel(hip_thrust_frame, text="Levantamento de Quadril \n3x12 reps", text_color="white", font=("Arial", 16))
+        label_hip_thrust_text.pack()
+
+        # Exercício 6: Elevação de Panturrilha
+        panturrilha_image_path = "D:\\Users\\Aluno\\Documents\\Mika\\Senac-UC5\\Projeto Academia\\img\\Treinos\\Inferiores\\elevacao_panturrilha.webp"
+        self.panturrilha_image = ctk.CTkImage(light_image=Image.open(panturrilha_image_path), size=(150, 150))
+        panturrilha_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
+        panturrilha_frame.grid(row=2, column=2, padx=20, pady=20)
+
+        label_panturrilha_img = ctk.CTkLabel(panturrilha_frame, image=self.panturrilha_image, text="")
+        label_panturrilha_img.pack()
+
+        label_panturrilha_text = ctk.CTkLabel(panturrilha_frame, text="Elevação de Panturrilha \n3x15 reps", text_color="white", font=("Arial", 16))
+        label_panturrilha_text.pack()
 
         # Frame inferior com botão Voltar
         frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
