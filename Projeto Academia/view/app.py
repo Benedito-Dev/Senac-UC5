@@ -18,6 +18,7 @@ class Application(tk.Tk, Funções):
         super().__init__()
         self.title("4 FITNESS")
         self.geometry("800x600")
+        self.attributes("-fullscreen", True)
         self.current_page = 0
         self.controler = UsuarioController()
         self.menu_inicial()
