@@ -18,7 +18,6 @@ class Application(tk.Tk, Funções):
         super().__init__()
         self.title("4 FITNESS")
         self.geometry("800x600")
-        self.attributes("-fullscreen", True)
         self.current_page = 0
         self.controler = UsuarioController()
         self.menu_inicial()
@@ -433,142 +432,115 @@ class Application(tk.Tk, Funções):
         frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
-    def Peito(self):
+    def Peito(self, pagina=1):
         # Limpar a janela
-            for widget in self.winfo_children():
-                widget.destroy()
+        for widget in self.winfo_children():
+            widget.destroy()
 
-            background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
-            background_frame.pack(fill="both", expand=True)
+        # Frame de fundo
+        background_frame = ctk.CTkFrame(self, fg_color="#313131", corner_radius=0)
+        background_frame.pack(fill="both", expand=True)
 
-            central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
-            central_frame.pack(pady=20)
-        
-            label_peito = ctk.CTkLabel(central_frame, text="Treino de Peito", text_color="white", font=("Arial", 22, 'bold'))
-            label_peito.grid(row=0, column=0, columnspan=3, pady=10)
+        # Frame central
+        central_frame = ctk.CTkFrame(background_frame, fg_color="#313131")
+        central_frame.pack(pady=20)
 
-            #Exercicio 1
-            supino_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\supino reto.jpg" 
-            self.supino_image = ctk.CTkImage(light_image=Image.open(supino_image_path), size=(150, 150))
-            supino_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-            supino_frame.grid(row=1, column=0, padx=20, pady=20)
+        # Dicionário com dados de cada página
+        paginas = {
+            1: {
+                "titulo": "Treino de Peito e Ombros",
+                "exercicios": [
+                    {
+                        "nome": "Supino reto com barra\n3x15 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\supino reto.jpg"
+                    },
+                    {
+                        "nome": "Crucifixo inclinado\n3x15 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\crucifixo inclinado.jpg"
+                    },
+                    {
+                        "nome": "Cruxifico no Crossover\n3x12 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\crossover-musculos-.jpg"
+                    },
+                                        {
+                        "nome": "Elevação Lateral com Halteres\n3x12 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\elevacao_lateral.jpg"
+                    },
+                    {
+                        "nome": "Desenvolvimento com Halteres\n3x12 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\desenvolvimento_halteres.jpg"
+                    },
+                    {
+                        "nome": "Renada alta com barra\n3x12 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\remada_alta_barra.jpg"
+                    }
+                ]
+            },
+            2: {
+                "titulo": "Treino de Tríceps",
+                "exercicios": [
+                    {
+                        "nome": "Tríceps testa\n3x15 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\triceps_testa.png"
+                    },
+                    {
+                        "nome": "Mergulho em bancos\n3x12 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\mergulho_bancos.jpg"
+                    },
+                    {
+                        "nome": "Puxada de tríceps na polia\n3x15 reps",
+                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\triceps_polia.jfif"
+                    }
+                ]
+            }
+        }
 
-            label_supino_img = ctk.CTkLabel(supino_frame, image=self.supino_image, text="")
-            label_supino_img.pack()
+        # Título da página
+        label_titulo = ctk.CTkLabel(central_frame, text=paginas[pagina]["titulo"], text_color="white", font=("Arial", 22, 'bold'))
+        label_titulo.grid(row=0, column=2, pady=20, padx=(0,0))
 
-            label_supino_text = ctk.CTkLabel(supino_frame, text="Supino reto com barra\n3x15 reps", text_color="white", font=("Arial", 16))
-            label_supino_text.pack()
-            
-            crucifixo_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\crucifixo inclinado.jpg" 
-            self.crucifixo_image = ctk.CTkImage(light_image=Image.open(crucifixo_image_path), size=(150, 150))
-            crucifixo_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30, width=200, height=200)
-            crucifixo_frame.grid(row=1, column=1, padx=20, pady=20)
+        # Mostrar exercícios da página atual
+        total_exercicios = len(paginas[pagina]["exercicios"])
+        for i, exercicio in enumerate(paginas[pagina]["exercicios"]):
+            image_path = exercicio["imagem"]
+            self.exercise_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))
 
-            label_crucifixo_img = ctk.CTkLabel(crucifixo_frame, image=self.crucifixo_image, text="")
-            label_crucifixo_img.pack()
+            # Definir a linha com base no índice
+            coluna = i % 3 + 1  # 1 para os exercícios de peito e 2 para os de ombro
+            linha = i // 3  # A mesma coluna para peito e ombro
 
-            label_crucifixo_text = ctk.CTkLabel(crucifixo_frame, text="Crucifixo inclinado\n3x15 reps", text_color="white", font=("Arial", 16))
-            label_crucifixo_text.pack()
+            exercise_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
+            exercise_frame.grid(row=linha+1, column=coluna, padx=20, pady=20)
 
-            # Exercício 3: Crucifixo no crossover polia alta
-            crossover_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\crossover-musculos-.jpg" 
-            self.crossover_image = ctk.CTkImage(light_image=Image.open(crossover_image_path), size=(150, 150))
-            crossover_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=30)
-            crossover_frame.grid(row=1, column=2, padx=20, pady=20)
+            label_exercise_img = ctk.CTkLabel(exercise_frame, image=self.exercise_image, text="")
+            label_exercise_img.pack()
 
-            label_crossover_img = ctk.CTkLabel(crossover_frame, image=self.crossover_image, text="")
-            label_crossover_img.pack()
+            label_exercise_text = ctk.CTkLabel(exercise_frame, text=exercicio["nome"], text_color="white", font=("Arial", 16))
+            label_exercise_text.pack()
 
-            label_crossover_text = ctk.CTkLabel(crossover_frame, text="Crucifixo no crossover\n3x15 reps", text_color="white", font=("Arial", 16))
-            label_crossover_text.pack()
+        ultima_linha = 3
 
+        # Botões de navegação entre páginas
+        if pagina > 1:
+            btn_anterior = ctk.CTkButton(background_frame, text="Anterior", fg_color="#808080", hover_color="#A9A9A9",
+                                        command=lambda: self.Peito(pagina-1), font=("Arial", 18, "bold"), width=150, height=50)
+            btn_anterior.pack(pady=30, padx=(0, 5))
 
-            # Adicionando Treino de Ombros
-            label_ombros = ctk.CTkLabel(central_frame, text="Treino de Ombros", text_color="white", font=("Arial", 22, 'bold'))
-            label_ombros.grid(row=2, column=0, columnspan=3, pady=10)
-
-            # Exercício 1: Elevação lateral com halteres
-            elevacao_lateral_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\elevacao_lateral.jpg" 
-            self.elevacao_lateral_image = ctk.CTkImage(light_image=Image.open(elevacao_lateral_image_path), size=(150, 150))
-            elevacao_lateral_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-            elevacao_lateral_frame.grid(row=3, column=0, padx=20, pady=20)
-
-            label_elevacao_lateral_img = ctk.CTkLabel(elevacao_lateral_frame, image=self.elevacao_lateral_image, text="")
-            label_elevacao_lateral_img.pack()
-
-            label_elevacao_lateral_text = ctk.CTkLabel(elevacao_lateral_frame, text="Elevação lateral com halteres\n3x12 reps", text_color="white", font=("Arial", 16))
-            label_elevacao_lateral_text.pack()
-
-            # Exercício 2: Desenvolvimento com halteres
-            desenvolvimento_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\desenvolvimento_halteres.jpg" 
-            self.desenvolvimento_image = ctk.CTkImage(light_image=Image.open(desenvolvimento_image_path), size=(150, 150))
-            desenvolvimento_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-            desenvolvimento_frame.grid(row=3, column=1, padx=20, pady=20)
-
-            label_desenvolvimento_img = ctk.CTkLabel(desenvolvimento_frame, image=self.desenvolvimento_image, text="")
-            label_desenvolvimento_img.pack()
-
-            label_desenvolvimento_text = ctk.CTkLabel(desenvolvimento_frame, text="Desenvolvimento com halteres\n3x12 reps", text_color="white", font=("Arial", 16))
-            label_desenvolvimento_text.pack()
-
-            # Exercício 3: Remada alta com barra
-            remada_alta_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\remada_alta_barra.jpg" 
-            self.remada_alta_image = ctk.CTkImage(light_image=Image.open(remada_alta_image_path), size=(150, 150))
-            remada_alta_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-            remada_alta_frame.grid(row=3, column=2, padx=20, pady=20)
-
-            label_remada_alta_img = ctk.CTkLabel(remada_alta_frame, image=self.remada_alta_image, text="")
-            label_remada_alta_img.pack()
-
-            label_remada_alta_text = ctk.CTkLabel(remada_alta_frame, text="Remada alta com barra\n3x12 reps", text_color="white", font=("Arial", 16))
-            label_remada_alta_text.pack()
-
-            label_triceps = ctk.CTkLabel(central_frame, text="Treino de Tríceps", text_color="white", font=("Arial", 22, 'bold'))
-            label_triceps.grid(row=4, column=0, columnspan=3, pady=10)
-
-            # Exercício 1: Tríceps testa
-            triceps_testa_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\triceps_testa.png" 
-            self.triceps_testa_image = ctk.CTkImage(light_image=Image.open(triceps_testa_image_path), size=(150, 150))
-            triceps_testa_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-            triceps_testa_frame.grid(row=5, column=0, padx=20, pady=20)
-
-            label_triceps_testa_img = ctk.CTkLabel(triceps_testa_frame, image=self.triceps_testa_image, text="")
-            label_triceps_testa_img.pack()
-
-            label_triceps_testa_text = ctk.CTkLabel(triceps_testa_frame, text="Tríceps testa\n3x15 reps", text_color="white", font=("Arial", 16))
-            label_triceps_testa_text.pack()
-
-            # Exercício 2: Mergulho em bancos
-            mergulho_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\mergulho_bancos.jpg" 
-            self.mergulho_image = ctk.CTkImage(light_image=Image.open(mergulho_image_path), size=(150, 150))
-            mergulho_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-            mergulho_frame.grid(row=5, column=1, padx=20, pady=20)
-
-            label_mergulho_img = ctk.CTkLabel(mergulho_frame, image=self.mergulho_image, text="")
-            label_mergulho_img.pack()
-
-            label_mergulho_text = ctk.CTkLabel(mergulho_frame, text="Mergulho em bancos\n3x12 reps", text_color="white", font=("Arial", 16))
-            label_mergulho_text.pack()
-
-            # Exercício 3: Puxada de tríceps na polia
-            puxada_polia_image_path = "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\triceps_polia.jfif" 
-            self.puxada_polia_image = ctk.CTkImage(light_image=Image.open(puxada_polia_image_path), size=(150, 150))
-            puxada_polia_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-            puxada_polia_frame.grid(row=5, column=2, padx=20, pady=20)
-
-            label_puxada_polia_img = ctk.CTkLabel(puxada_polia_frame, image=self.puxada_polia_image, text="")
-            label_puxada_polia_img.pack()
-
-            label_puxada_polia_text = ctk.CTkLabel(puxada_polia_frame, text="Puxada de tríceps na polia\n3x15 reps", text_color="white", font=("Arial", 16))
-            label_puxada_polia_text.pack()
+        if pagina < len(paginas):
+            btn_proxima = ctk.CTkButton(background_frame, text="Próxima", fg_color="#808080", hover_color="#A9A9A9",
+                                        command=lambda: self.Peito(pagina+1), font=("Arial", 18, "bold"), width=150, height=50)
+            btn_proxima.pack(pady=30, padx=(0, 5))
 
 
-            # Frame inferior com botão Voltar
-            frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
-            frame_inferior.pack(side="bottom", fill="x")
+        # Frame inferior com botões de navegação
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
+        frame_inferior.pack(side="bottom", fill="x")
 
-            btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
-            btn_voltar.pack(pady=10)
+
+        # Botão Voltar para Superiores
+        btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9",
+                                command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
+        btn_voltar.pack(pady=10)
 
             
     def Costas(self):
