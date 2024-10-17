@@ -471,7 +471,7 @@ class Application(tk.Tk, Funções):
                         "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\desenvolvimento_halteres.jpg"
                     },
                     {
-                        "nome": "Renada alta com barra\n3x12 reps",
+                        "nome": "Remada alta com barra\n3x12 reps",
                         "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\remada_alta_barra.jpg"
                     }
                 ]
@@ -518,29 +518,27 @@ class Application(tk.Tk, Funções):
             label_exercise_text = ctk.CTkLabel(exercise_frame, text=exercicio["nome"], text_color="white", font=("Arial", 16))
             label_exercise_text.pack()
 
-        ultima_linha = 3
-
-        # Botões de navegação entre páginas
-        if pagina > 1:
-            btn_anterior = ctk.CTkButton(background_frame, text="Anterior", fg_color="#808080", hover_color="#A9A9A9",
-                                        command=lambda: self.Peito(pagina-1), font=("Arial", 18, "bold"), width=150, height=50)
-            btn_anterior.pack(pady=10, padx=(0, 5))
-
-        if pagina < len(paginas):
-            btn_proxima = ctk.CTkButton(background_frame, text="Próxima", fg_color="#808080", hover_color="#A9A9A9",
-                                        command=lambda: self.Peito(pagina+1), font=("Arial", 18, "bold"), width=150, height=50)
-            btn_proxima.pack(pady=10, padx=(0, 5))
-
 
         # Frame inferior com botões de navegação
         frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
         frame_inferior.pack(side="bottom", fill="x")
 
 
+        # Botões de navegação entre páginas
+        if pagina > 1:
+            btn_anterior = ctk.CTkButton(frame_inferior, text="Anterior", fg_color="#808080", hover_color="#A9A9A9",
+                                        command=lambda: self.Peito(pagina-1), font=("Arial", 18, "bold"), width=150, height=50)
+            btn_anterior.pack(side='left', padx=(10, 0), pady=10)
+
+        if pagina < len(paginas):
+            btn_proxima = ctk.CTkButton(frame_inferior, text="Próxima", fg_color="#808080", hover_color="#A9A9A9",
+                                        command=lambda: self.Peito(pagina+1), font=("Arial", 18, "bold"), width=150, height=50)
+            btn_proxima.pack(side='right', padx=(0, 10), pady=10)
+
         # Botão Voltar para Superiores
         btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9",
                                 command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
-        btn_voltar.pack(pady=10)
+        btn_voltar.place(relx=0.5, rely=0.5, anchor="center")
 
             
     def Costas(self):
