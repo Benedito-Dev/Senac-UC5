@@ -1,20 +1,17 @@
-from gui import Application
-from db import Database
-
-DATABASE_URL = "postgresql://postgres:postgres@localhost/postgres"
+from controller.controllers import UsuarioController
+from view.app import Application
 
 def main():
-    db = Database(DATABASE_URL)
-    db.create_table()
+    # Inicializar o banco de dados
+    controlador = UsuarioController()
+    controlador.inicar_banco()
 
-    app = Application(db)
+    # Inicializar a interface gráfica
+    app = Application()
     app.mainloop()
 
-    db.close()
-
+# Executar a função main
 if __name__ == "__main__":
     main()
 
-# Develop]
-
-#asdasd
+# MVCR
