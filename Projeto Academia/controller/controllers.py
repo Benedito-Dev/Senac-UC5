@@ -69,6 +69,6 @@ class UsuarioController:
     def validar_email(self,email):
         cliente = self.repository.consultar_email(email)
         if cliente:
-            return False 
-        return True
+            return False # Email já está cadastrado
+        return True # Email não cadastrado, pode prosseguir
         

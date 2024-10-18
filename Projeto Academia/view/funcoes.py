@@ -99,7 +99,7 @@ class Funções():
             messagebox.showerror("Erro", "O CPF já está cadastrado no sistema.")
             return
         
-        if not self.validar_data(data_de_nascimento):
+        if self.validar_data(data_de_nascimento):
             messagebox.showerror("Erro", "Insira uma data valida por favor")
             return
 
