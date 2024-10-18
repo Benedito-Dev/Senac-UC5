@@ -132,7 +132,6 @@ class Funções():
 
             # Calcula a diferença de anos
             idade = data_atual.year - data_nascimento.year
-            print(idade)
 
             # Ajusta a idade caso o aniversário ainda não tenha ocorrido este ano
             if (data_atual.month, data_atual.day) < (data_nascimento.month, data_nascimento.day):
@@ -160,7 +159,7 @@ class Funções():
 
         def pegar_data():
             data_selecionada = calendario.get_date()
-            data_obj = datetime.strptime(data_selecionada, '%m/%d/%y')
+            data_obj = datetime.strptime(data_selecionada, '%d/%m/%Y')
             # Convertendo a data para o formato "YYYY-MM-DD"
             data_formatada = data_obj.strftime('%Y-%m-%d')
             self.entry_dataDeNascimento.delete(0, tk.END)
