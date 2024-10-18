@@ -44,14 +44,14 @@ class UsuarioController:
     # Controlador responsável por atualizar um produto
     def atualizar_usuario(self, id, nome, data_de_nascimento, endereco, telefone, email, senha):
         try:
-
             nome = nome
             data_de_nascimento = data_de_nascimento
             endereco = endereco
             telefone = telefone
             email = email
             senha = senha
-            self.repository.atualizar_cliente(id, nome, data_de_nascimento, endereco, telefone, email, senha)
+            self.repository.atualizar_cliente(id, nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco, data_de_nascimento=data_de_nascimento)
+            messagebox.showinfo("Sucesso", "Informações Alteradas com sucesso")
 
         except Exception as e:
             raise Exception(f"Erro ao atualizar usuário: {e}")
@@ -59,3 +59,16 @@ class UsuarioController:
     # Controlador responsável por deletar um produto
     def deletar_usuario(self, usuario_id):
         self.repository.deletar_cliente(usuario_id)
+
+    def validar_cpf(self, cpf):
+        cliente = self.repository.consultar_cpf(cpf)
+        if cliente:
+            return False  # CPF já está cadastrado
+        return True  # CPF não cadastrado, pode prosseguir
+    
+    def validar_email(self,email):
+        cliente = self.repository.consultar_email(email)
+        if cliente:
+            return False 
+        return True
+        
