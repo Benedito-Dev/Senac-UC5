@@ -93,7 +93,6 @@ class Funções():
             messagebox.showerror("Erro", "O CPF deve ter exatamente 11 dígitos.")
             return
         
-        
         # Verifica se o CPF já está cadastrado
         if not self.controler.validar_cpf(cpf):
             messagebox.showerror("Erro", "O CPF já está cadastrado no sistema.")
@@ -121,14 +120,14 @@ class Funções():
                 data_nascimento = data_nascimento_str
             
             else:
-                data_nascimento = datetime.strptime(data_nascimento_str, '%Y-%m-%d').date()
+                data_nascimento = datetime.strptime(data_nascimento_str, '%d/%m/%Y').date()
 
             # Obtém a data atual
             data_atual = datetime.now().date()
 
             # Verifica se a data de nascimento é no futuro
             if data_nascimento > data_atual:
-                return False
+                return True
 
             # Calcula a diferença de anos
             idade = data_atual.year - data_nascimento.year
@@ -159,11 +158,9 @@ class Funções():
 
         def pegar_data():
             data_selecionada = calendario.get_date()
-            data_obj = datetime.strptime(data_selecionada, '%d/%m/%Y')
             # Convertendo a data para o formato "YYYY-MM-DD"
-            data_formatada = data_obj.strftime('%Y-%m-%d')
             self.entry_dataDeNascimento.delete(0, tk.END)
-            self.entry_dataDeNascimento.insert(0, data_formatada)
+            self.entry_dataDeNascimento.insert(0, data_selecionada)
             janela_calendario.destroy()
 
         btn_selecionar_data = ttk.Button(janela_calendario, text="Selecionar", command=pegar_data)
