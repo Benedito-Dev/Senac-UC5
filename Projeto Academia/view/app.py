@@ -1,4 +1,5 @@
 import tkinter as tk
+import cv2
 from sqlalchemy import *
 from sqlalchemy.exc import SQLAlchemyError
 from tkinter import ttk
@@ -434,7 +435,7 @@ class Application(tk.Tk, Funções):
         frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
-    def Peito(self, pagina=1):
+    def Peito(self, pagina=1, exercicio_atual=0):
         # Limpar a janela
         for widget in self.winfo_children():
             widget.destroy()
@@ -454,7 +455,7 @@ class Application(tk.Tk, Funções):
                 "exercicios": [
                     {
                         "nome": "Supino reto com barra\n3x15 reps",
-                        "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\supino reto.jpg"
+                        "video": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\Supino-reto-Barra.mp4"
                     },
                     {
                         "nome": "Crucifixo inclinado\n3x15 reps",
@@ -464,7 +465,7 @@ class Application(tk.Tk, Funções):
                         "nome": "Cruxifico no Crossover\n3x12 reps",
                         "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\crossover-musculos-.jpg"
                     },
-                                        {
+                    {
                         "nome": "Elevação Lateral com Halteres\n3x12 reps",
                         "imagem": "Projeto Academia\\img\\\\Treinos\\Superiores\\Peito\\elevacao_lateral.jpg"
                     },
@@ -499,20 +500,22 @@ class Application(tk.Tk, Funções):
 
         # Título da página
         label_titulo = ctk.CTkLabel(central_frame, text=paginas[pagina]["titulo"], text_color="white", font=("Arial", 22, 'bold'))
-        label_titulo.grid(row=0, column=2, pady=20, padx=(0,0))
+        label_titulo.pack(pady=20)
 
-        # Mostrar exercícios da página atual
-        total_exercicios = len(paginas[pagina]["exercicios"])
-        for i, exercicio in enumerate(paginas[pagina]["exercicios"]):
+        # Mostrar exercício atual
+        exercicio = paginas[pagina]["exercicios"][exercicio_atual]
+
+        # Verificar se o exercício tem um vídeo ou uma imagem
+        if "video" in exercicio:
+            # Exibir o vídeo
+            self.show_video(central_frame, exercicio["video"])
+        else:
+            # Exibir a imagem normalmente
             image_path = exercicio["imagem"]
             self.exercise_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))
 
-            # Definir a linha com base no índice
-            coluna = i % 3 + 1  # 1 para os exercícios de peito e 2 para os de ombro
-            linha = i // 3  # A mesma coluna para peito e ombro
-
             exercise_frame = ctk.CTkFrame(central_frame, fg_color="#29412b", corner_radius=15, width=200, height=200)
-            exercise_frame.grid(row=linha+1, column=coluna, padx=20, pady=20)
+            exercise_frame.pack(pady=20)
 
             label_exercise_img = ctk.CTkLabel(exercise_frame, image=self.exercise_image, text="")
             label_exercise_img.pack()
@@ -520,27 +523,53 @@ class Application(tk.Tk, Funções):
             label_exercise_text = ctk.CTkLabel(exercise_frame, text=exercicio["nome"], text_color="white", font=("Arial", 16))
             label_exercise_text.pack()
 
-
         # Frame inferior com botões de navegação
         frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
         frame_inferior.pack(side="bottom", fill="x")
 
-
-        # Botões de navegação entre páginas
-        if pagina > 1:
+        # Botões de navegação entre exercícios
+        if exercicio_atual > 0:
             btn_anterior = ctk.CTkButton(frame_inferior, text="Anterior", fg_color="#808080", hover_color="#A9A9A9",
-                                        command=lambda: self.Peito(pagina-1), font=("Arial", 18, "bold"), width=150, height=50)
+                                        command=lambda: self.Peito(pagina, exercicio_atual-1), font=("Arial", 18, "bold"), width=150, height=50)
             btn_anterior.pack(side='left', padx=(10, 0), pady=10)
 
-        if pagina < len(paginas):
+        if exercicio_atual < len(paginas[pagina]["exercicios"]) - 1:
             btn_proxima = ctk.CTkButton(frame_inferior, text="Próxima", fg_color="#808080", hover_color="#A9A9A9",
-                                        command=lambda: self.Peito(pagina+1), font=("Arial", 18, "bold"), width=150, height=50)
+                                        command=lambda: self.Peito(pagina, exercicio_atual+1), font=("Arial", 18, "bold"), width=150, height=50)
             btn_proxima.pack(side='right', padx=(0, 10), pady=10)
 
         # Botão Voltar para Superiores
         btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9",
                                 command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
         btn_voltar.place(relx=0.5, rely=0.5, anchor="center")
+
+
+    # Função para exibir o vídeo
+    def show_video(self, frame, video_path):
+        cap = cv2.VideoCapture(video_path)
+
+        def update_video():
+            ret, frame_img = cap.read()
+            if ret:
+                #Redimensionando Frames
+                frame_img = cv2.resize(frame_img, (400, 600))
+
+                frame_img = cv2.cvtColor(frame_img, cv2.COLOR_BGR2RGB)
+                frame_img = Image.fromarray(frame_img)
+                frame_img = ImageTk.PhotoImage(frame_img)
+
+                label_video.imgtk = frame_img
+                label_video.configure(image=frame_img)
+            
+            else:
+                cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+
+            label_video.after(10, update_video)  # Atualiza o frame a cada 10ms
+
+        label_video = tk.Label(frame)
+        label_video.pack()
+
+        update_video()
 
 
     def Costas(self):
