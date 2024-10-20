@@ -59,3 +59,16 @@ class UsuarioController:
     # Controlador responsável por deletar um produto
     def deletar_usuario(self, usuario_id):
         self.repository.deletar_cliente(usuario_id)
+
+    def validar_cpf(self, cpf):
+        cliente = self.repository.consultar_cpf(cpf)
+        if cliente:
+            return False  # CPF já está cadastrado
+        return True  # CPF não cadastrado, pode prosseguir
+    
+    def validar_email(self,email):
+        cliente = self.repository.consultar_email(email)
+        if cliente:
+            return False # Email já está cadastrado
+        return True # Email não cadastrado, pode prosseguir
+        

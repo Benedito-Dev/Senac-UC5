@@ -3,8 +3,10 @@ import re
 from tkinter import ttk
 from tkinter import messagebox
 from tkcalendar import Calendar
-from datetime import datetime
+from datetime import datetime, date
 from controller.controllers import UsuarioController
+
+
 
 
 class Funções():
@@ -67,6 +69,10 @@ class Funções():
         if not re.match(email_pattern, email):
             messagebox.showerror("Erro", "Por favor, insira um e-mail válido.")
             return
+        
+        if not self.controler.validar_email(email):
+            messagebox.showerror("Erro", "Email já cadastrado no sistema. ")
+            return
 
         # Validação de senha (mínimo de 8 caracteres, deve conter letras e números)
         if len(senha) < 8 or not any(char.isdigit() for char in senha) or not any(char.isalpha() for char in senha):
@@ -87,8 +93,13 @@ class Funções():
             messagebox.showerror("Erro", "O CPF deve ter exatamente 11 dígitos.")
             return
         
-        if not self.validar_data(data_de_nascimento):
-            messagebox.showerror("Erro", "Você deve ter mais de 12 anos")
+        # Verifica se o CPF já está cadastrado
+        if not self.controler.validar_cpf(cpf):
+            messagebox.showerror("Erro", "O CPF já está cadastrado no sistema.")
+            return
+        
+        if self.validar_data(data_de_nascimento):
+            messagebox.showerror("Erro", "Insira uma data valida por favor")
             return
 
         # Se todos os dados estiverem válidos, prosseguir com a lógica de envio
@@ -101,17 +112,22 @@ class Funções():
             self.after(500, self.menu_inicial)
 
             
+    from datetime import datetime, date
+
     def validar_data(self, data_nascimento_str):
         try:
-            # Converte a string em um objeto datetime
-            data_nascimento = datetime.strptime(data_nascimento_str, '%d/%m/%Y')
+            if isinstance(data_nascimento_str, date):
+                data_nascimento = data_nascimento_str
+            
+            else:
+                data_nascimento = datetime.strptime(data_nascimento_str, '%d/%m/%Y').date()
 
             # Obtém a data atual
-            data_atual = datetime.now()
+            data_atual = datetime.now().date()
 
             # Verifica se a data de nascimento é no futuro
             if data_nascimento > data_atual:
-                return False
+                return True
 
             # Calcula a diferença de anos
             idade = data_atual.year - data_nascimento.year
@@ -121,12 +137,17 @@ class Funções():
                 idade -= 1
 
             # Verifica se a idade é menor que 12
-            return idade >= 12
+            if idade >= 12:
+                return False
+            
+            else :
+                return True
 
-        except ValueError:
-            # Retorna False se o formato da data for inválido
-            return False
-        
+        except ValueError as e:
+                # Retorna False se o formato da data for inválido
+                print(f"O erro é {e}")
+                return False
+
 
     def abrir_calendario(self):
         janela_calendario = tk.Toplevel(self)
@@ -137,6 +158,7 @@ class Funções():
 
         def pegar_data():
             data_selecionada = calendario.get_date()
+            # Convertendo a data para o formato "YYYY-MM-DD"
             self.entry_dataDeNascimento.delete(0, tk.END)
             self.entry_dataDeNascimento.insert(0, data_selecionada)
             janela_calendario.destroy()
@@ -212,10 +234,10 @@ class Funções():
             messagebox.showerror("Erro", "O endereço deve ter pelo menos 5 caracteres.")
             return
 
-        # Validação de data de nascimento
-        # if not self.validar_data(nova_data_de_nascimento):
-        #     messagebox.showerror("Erro", "Data de nascimento inválida ou você deve ter mais de 12 anos.")
-        #     return
+         # Validação de data de nascimento
+        if self.validar_data(nova_data_de_nascimento):
+             messagebox.showerror("Erro", "Data de nascimento inválida ou você deve ter mais de 12 anos.")
+             return
 
         # Chamada para salvar alterações
         self.salvar_alterações(id_cliente, novo_nome, novo_email, nova_senha, novo_telefone, novo_endereco, nova_data_de_nascimento)
