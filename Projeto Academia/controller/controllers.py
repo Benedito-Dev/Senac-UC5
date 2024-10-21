@@ -42,15 +42,11 @@ class UsuarioController:
         return self.repository.obter_usuario(nome)
 
     # Controlador responsável por atualizar um produto
-    def atualizar_usuario(self, id, nome, data_de_nascimento, endereco, telefone, email, senha):
+    def atualizar_usuario(self, id, nome, data_de_nascimento):
         try:
             nome = nome
             data_de_nascimento = data_de_nascimento
-            endereco = endereco
-            telefone = telefone
-            email = email
-            senha = senha
-            self.repository.atualizar_cliente(id, nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco, data_de_nascimento=data_de_nascimento)
+            self.repository.atualizar_cliente(id, nome=nome, data_de_nascimento=data_de_nascimento)
             messagebox.showinfo("Sucesso", "Informações Alteradas com sucesso")
 
         except Exception as e:

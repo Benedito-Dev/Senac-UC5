@@ -97,18 +97,16 @@ class Application(tk.Tk, Funções):
         titulo.grid(row=0, column=0, columnspan=2, pady=10)
 
         # Nome do usuário
-        ctk.CTkLabel(frame, text="Nome:", text_color="white", font=("Arial", 14)).grid(row=1, column=0, sticky="e", padx=10)
+        nome_emoji = ctk.CTkLabel(frame, text="👤", text_color="white", font=("Arial", 16))
+        nome_emoji.grid(row=1, column=0)
         self.entry_nome = ctk.CTkEntry(frame, placeholder_text="Nome")
-        self.entry_nome.grid(row=1, column=1, pady=5, padx=20)
-
-        # Data de Nascimento
-        ctk.CTkLabel(frame, text="Data de nascimento", text_color="white", font=("Arial", 14)).grid(row=2,column=0, sticky="e", padx=10)
+        self.entry_nome.grid(row=1, column=1, pady=10, padx=20)
         
-        self.entry_dataDeNascimento = ctk.CTkEntry(frame)
-        self.entry_dataDeNascimento.grid(row=2,column=1,pady=5)
+        self.entry_dataDeNascimento = ctk.CTkEntry(frame, placeholder_text="Data de Nascimento")
+        self.entry_dataDeNascimento.grid(row=2,column=1,pady=10)
 
-        btn_abrir_calendario = ttk.Button(frame, text="Escolher data", command=self.abrir_calendario)
-        btn_abrir_calendario.grid(row=2, column=2,padx=10)
+        btn_abrir_calendario = ctk.CTkButton(frame, text="🗓️", font=("Arial", 16, 'bold'), width=15, command=self.abrir_calendario)
+        btn_abrir_calendario.grid(row=2, column=0)
 
         # Botão de validar
         ctk.CTkButton(frame, text="Acessar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.validando_login).grid(row=4, column=0, columnspan=2, pady=10)
@@ -968,7 +966,7 @@ class Application(tk.Tk, Funções):
         background_frame.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
         
         # Criando o frame verde
-        frame_verde = ctk.CTkFrame(background_frame, fg_color="#313131", corner_radius=10, border_color="green", border_width=7)
+        frame_verde = ctk.CTkFrame(background_frame, fg_color="#313131", corner_radius=10, border_color="#5ce1e6", border_width=7)
         frame_verde.grid(row=1, column=0, columnspan=2, padx=40, pady=40)  # Aumentei o padding
 
         # Criando a fonte Nunito
@@ -982,47 +980,19 @@ class Application(tk.Tk, Funções):
 
         # Labels e entradas para nome
         self.entry_novo_nome = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("nome").lower().capitalize())
-        label_nome = ctk.CTkLabel(frame_verde, text="Nome:", text_color="White", font=nunito_font)
-        label_nome.grid(row=1, column=0, pady=10, sticky='e')  # Espaço vertical maior
-        self.entry_novo_nome.grid(row=1, column=1, pady=10)
+        self.entry_novo_nome.grid(row=1, column=1, pady=1, padx=20)
 
         # Labels e entradas para data de nascimento
         self.entry_dataDeNascimento = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("data_de_nascimento"))
-        label_datanasc = ctk.CTkLabel(frame_verde, text="Data de nascimento:", text_color="White", font=nunito_font)
-        label_datanasc.grid(row=2, column=0, padx=10, pady=10, sticky='e')
         self.entry_dataDeNascimento.grid(row=2, column=1, pady=10)
 
         # Botão do calendário com cor preta
-        self.btn_calendario = ctk.CTkButton(frame_verde, text="Escolher data", command=self.abrir_calendario, fg_color="#000000", text_color="#ffffff")
-        self.btn_calendario.grid(row=2, column=2, padx=10)  # Espaço lateral maior
-
-        # Labels e entradas para endereço
-        self.entry_novo_endereco = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("endereco"))
-        label_endereco = ctk.CTkLabel(frame_verde, text="Endereço:", text_color="White", font=nunito_font)
-        label_endereco.grid(row=3, column=0, pady=10, sticky='e')
-        self.entry_novo_endereco.grid(row=3, column=1, pady=10)
-
-        # Labels e entradas para telefone
-        self.entry_novo_telefone = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("telefone"))
-        label_telefone = ctk.CTkLabel(frame_verde, text="Telefone:", text_color="White", font=nunito_font)
-        label_telefone.grid(row=4, column=0, pady=10, sticky='e')
-        self.entry_novo_telefone.grid(row=4, column=1, pady=10)
-
-        # Labels e entradas para email
-        self.entry_novo_email = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("email"))
-        label_email = ctk.CTkLabel(frame_verde, text="E-mail:", text_color="White", font=nunito_font)
-        label_email.grid(row=5, column=0, pady=10, sticky='e')
-        self.entry_novo_email.grid(row=5, column=1, pady=10)
-
-        # Labels e entradas para nova senha
-        label_nova_senha = ctk.CTkLabel(frame_verde, text="Nova senha:", text_color="White", font=nunito_font)
-        label_nova_senha.grid(row=6, column=0, pady=10, sticky='e')
-        self.entry_nova_senha = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, show='*', placeholder_text="Nova Senha")
-        self.entry_nova_senha.grid(row=6, column=1, pady=10)
+        btn_abrir_calendario = ctk.CTkButton(frame_verde, text="🗓️", font=("Arial", 16, 'bold'), width=15, command=self.abrir_calendario)
+        btn_abrir_calendario.grid(row=2, column=2,padx=(0, 10))
 
         # Botão de cancelar
-        self.btn_voltar = ctk.CTkButton(frame_verde, text="Cancelar", command=self.Home, fg_color="#000000", text_color="#FF0000")
-        self.btn_voltar.grid(row=7, column=1, pady=15)
+        btn_voltar = ctk.CTkButton(frame_verde, text="Cancelar", command=self.Home, fg_color="#000000", text_color="#FF0000")
+        btn_voltar.grid(row=7, column=1, pady=15)
 
         # Botão de salvar alterações
         botao_salvar = ctk.CTkButton(frame_verde, text="Salvar alterações", fg_color="#000000", text_color="#00ff00", font=botao_font, command=self.validar_alteracoes)
