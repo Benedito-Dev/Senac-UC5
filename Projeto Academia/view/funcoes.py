@@ -168,12 +168,10 @@ class Funções():
 
     def validando_login(self):
         nome = self.entry_nome.get().strip()
-        senha = self.entry_senha.get().strip()
         
         # Chama o método do controlador para validar o login
-        if self.controler.fazer_login(nome.upper(), senha) :
+        if self.controler.fazer_login(nome.upper()) :
             self.nome_usuario = nome.capitalize()
-            self.senha_usuario = senha
             self.after(500, self.Home)
         else:
             pass

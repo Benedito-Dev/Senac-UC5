@@ -31,10 +31,10 @@ class ClienteRepository():
         self.session.commit()
         return True
 
-    def validar_login(self, nome, senha):
+    def validar_login(self, nome):
         try:
             # Busca o cliente com o nome e senha fornecidos
-            cliente = self.session.query(Cliente).filter_by(nome=nome, senha=senha).one()
+            cliente = self.session.query(Cliente).filter_by(nome=nome).one()
             return True  # Login válido
         except NoResultFound:
             return False 

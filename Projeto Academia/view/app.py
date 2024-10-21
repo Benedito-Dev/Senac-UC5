@@ -101,15 +101,14 @@ class Application(tk.Tk, Funções):
         self.entry_nome = ctk.CTkEntry(frame, placeholder_text="Nome")
         self.entry_nome.grid(row=1, column=1, pady=5, padx=20)
 
-        # Senha
-        ctk.CTkLabel(frame, text="Senha:", text_color="white", font=("Arial", 14)).grid(row=2, column=0, sticky="e", padx=10)
-        self.entry_senha = ctk.CTkEntry(frame, show="*", placeholder_text="Senha")
-        self.entry_senha.grid(row=2, column=1, pady=5, padx=20)
+        # Data de Nascimento
+        ctk.CTkLabel(frame, text="Data de nascimento", text_color="white", font=("Arial", 14)).grid(row=2,column=0, sticky="e", padx=10)
+        
+        self.entry_dataDeNascimento = ctk.CTkEntry(frame)
+        self.entry_dataDeNascimento.grid(row=2,column=1,pady=5)
 
-        # Checkbutton para mostrar senha
-        self.check_senha = ctk.IntVar()
-        check = ctk.CTkCheckBox(frame, text="Mostrar senha", text_color="white", variable=self.check_senha, command=self.Exibir_senha)
-        check.grid(row=3, column=0, columnspan=2, pady=5)
+        btn_abrir_calendario = ttk.Button(frame, text="Escolher data", command=self.abrir_calendario)
+        btn_abrir_calendario.grid(row=2, column=2,padx=10)
 
         # Botão de validar
         ctk.CTkButton(frame, text="Acessar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.validando_login).grid(row=4, column=0, columnspan=2, pady=10)

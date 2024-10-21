@@ -23,10 +23,10 @@ class UsuarioController:
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao cadastrar usuário: {e}")
 
-    def fazer_login(self, nome, senha):
+    def fazer_login(self, nome):
         # Chama a função validar_login do repository
             try:
-                if self.repository.validar_login(nome, senha):
+                if self.repository.validar_login(nome):
                     messagebox.showinfo("Sucesso", "Login Efetuado")
                     return True
                 else :
