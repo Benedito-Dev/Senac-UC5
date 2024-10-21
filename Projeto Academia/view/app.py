@@ -18,7 +18,7 @@ ctk.set_default_color_theme("blue")
 class Application(tk.Tk, Funções):
     def __init__(self):
         super().__init__()
-        self.title("4 FITNESS")
+        self.title("MultiForm")
         self.geometry("800x600")
         self.current_page = 0
         self.controler = UsuarioController()
@@ -37,13 +37,13 @@ class Application(tk.Tk, Funções):
         background_frame.grid_rowconfigure(0, weight=0) 
 
         image_path = "Projeto Academia\\img\\Logo.png"
-        self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
+        self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(200, 200))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image = ctk.CTkLabel(background_frame, image=self.logo_image, text="")
-        self.label_image.grid(row=1, column=0, pady=(60, 0))
+        self.label_image.grid(row=1, column=0, pady=0)
 
-        border_frame = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=10)
+        border_frame = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=10)
         border_frame.grid(row=2, column=0, padx=20, pady=20)
 
         # Frame para centralizar o conteúdo
@@ -51,7 +51,7 @@ class Application(tk.Tk, Funções):
         frame.grid(row=0, column=0, padx=10, pady=10)
         
         #Titulo
-        titulo = ctk.CTkLabel(frame, text="4 FITNESS", text_color="white", font=("Arial", 40))
+        titulo = ctk.CTkLabel(frame, text="Multiform", text_color="white", font=("Helvetica", 40, "bold"))
         titulo.grid(row=0, column=0, columnspan=2, pady=20)
 
         #Botoes
@@ -78,14 +78,14 @@ class Application(tk.Tk, Funções):
 
         image_path = "Projeto Academia\\img\\Logo.png"
 
-        self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(150, 150))  # Ajuste o tamanho da imagem
+        self.logo_image = ctk.CTkImage(light_image=Image.open(image_path), size=(200, 200))  # Ajuste o tamanho da imagem
 
         # Criar um Label para exibir a imagem
         self.label_image = ctk.CTkLabel(background_frame, image=self.logo_image, text="")
         self.label_image.grid(row=0, column=0, pady=0)
 
         # Frame para a borda
-        border_frame = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=10)
+        border_frame = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=10)
         border_frame.grid(row=1, column=0, padx=20, pady=20)
 
         # Frame para centralizar o conteúdo
@@ -135,7 +135,7 @@ class Application(tk.Tk, Funções):
         backgorund_frame.grid_rowconfigure(0, weight=1)  # Para centralizar verticalmente
         backgorund_frame.grid_rowconfigure(6, weight=1)  # Espaço na parte inferior
         
-        border_frame = ctk.CTkFrame(backgorund_frame,fg_color="#7fd350",corner_radius=10)
+        border_frame = ctk.CTkFrame(backgorund_frame,fg_color="#5ce1e6",corner_radius=10)
         border_frame.grid(row=0,column=0,columnspan=2,padx=20,pady=20)
         
         
@@ -206,16 +206,16 @@ class Application(tk.Tk, Funções):
         background_frame.pack(fill="both", expand=True)
 
         # Frame superior com o título e plano (usando CustomTkinter)
-        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0, height=30)
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="MultiForm", text_color="white", fg_color="#5ce1e6", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
         log_out = ctk.CTkButton(frame_superior, text=" ⬅ Log Out", text_color="white", fg_color='#ED1B24', hover_color='#242424', font=("Arial", 14, 'bold'), height=20, command=self.realizar_login)
         log_out.pack(side="right", padx=10)
 
-        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#5ce1e6", font=("Arial", 18, 'bold'))
         plano_label.pack(side="top")
 
         # Frame central para os botões (usando CustomTkinter)
@@ -260,7 +260,7 @@ class Application(tk.Tk, Funções):
         btn_ajustes.grid(row=0, column=2, pady=(250, 00))
 
         # Frame inferior (usando CustomTkinter)
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0,height=30)
         frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
@@ -273,16 +273,16 @@ class Application(tk.Tk, Funções):
         background_frame.pack(fill="both", expand=True)
 
         # Frame superior com o título e plano (usando CustomTkinter)
-        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0, height=30)
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="MultiForm", text_color="white", fg_color="#5ce1e6", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
         home_button = ctk.CTkButton(frame_superior, text="🏠 Home", font=("Arial", 14, 'bold'), text_color="white", height=20 ,command=self.Home)
         home_button.pack(side="right", padx=10)
 
-        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#5ce1e6", font=("Arial", 18, 'bold'))
         plano_label.pack(side="top")
 
         # Frame central para os botões (usando CustomTkinter)
@@ -316,7 +316,7 @@ class Application(tk.Tk, Funções):
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0,height=30)
         frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
@@ -329,16 +329,16 @@ class Application(tk.Tk, Funções):
         background_frame.pack(fill="both", expand=True)
 
         # Frame superior com o título e plano (usando CustomTkinter)
-        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0, height=30)
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="MultiForm", text_color="white", fg_color="#5ce1e6", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
         home_button = ctk.CTkButton(frame_superior, text="🏠 Home", font=("Arial", 14, 'bold'), text_color="white", height=20 ,command=self.Home)
         home_button.pack(side="right", padx=10)
 
-        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#5ce1e6", font=("Arial", 18, 'bold'))
         plano_label.pack(side="top")
 
         # Frame central para os botões (usando CustomTkinter)
@@ -371,7 +371,7 @@ class Application(tk.Tk, Funções):
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0,height=30)
         frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
@@ -384,16 +384,16 @@ class Application(tk.Tk, Funções):
         background_frame.pack(fill="both", expand=True)
 
         # Frame superior com o título e plano (usando CustomTkinter)
-        frame_superior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=30)
+        frame_superior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0, height=30)
         frame_superior.pack(side="top", fill="x", pady=10)
 
-        title = ctk.CTkLabel(frame_superior, text="4 FITNESS", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        title = ctk.CTkLabel(frame_superior, text="MultiForm", text_color="white", fg_color="#5ce1e6", font=("Arial", 18, 'bold'))
         title.pack(side="left", padx=20)
 
         home_button = ctk.CTkButton(frame_superior, text="🏠 Home", font=("Arial", 14, 'bold'), text_color="white", height=20 ,command=self.Home)
         home_button.pack(side="right", padx=10)
 
-        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#7fd350", font=("Arial", 18, 'bold'))
+        plano_label = ctk.CTkLabel(frame_superior, text=f"Plano Intermediário, Olá {self.nome_usuario}", text_color="white", fg_color="#5ce1e6", font=("Arial", 18, 'bold'))
         plano_label.pack(side="top")
 
         # Frame central para os botões (usando CustomTkinter)
@@ -430,7 +430,7 @@ class Application(tk.Tk, Funções):
         btn_voltar.grid(row=1, column=0, columnspan=2, pady=(20, 0))
 
         # Frame inferior (usando CustomTkinter)
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0,height=30)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0,height=30)
         frame_inferior.pack(side="bottom", fill="x", pady=10)
 
 
@@ -522,7 +522,7 @@ class Application(tk.Tk, Funções):
 
 
         # Frame inferior com botões de navegação
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0, height=50)
         frame_inferior.pack(side="bottom", fill="x")
 
 
@@ -637,7 +637,7 @@ class Application(tk.Tk, Funções):
 
 
         # Frame inferior com botão Voltar
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0, height=50)
         frame_inferior.pack(side="bottom", fill="x")
 
         btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Superiores, font=("Arial", 18, "bold"), width=150, height=50)
@@ -734,7 +734,7 @@ class Application(tk.Tk, Funções):
 
 
         # Frame inferior com botão Voltar
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0, height=50)
         frame_inferior.pack(side="bottom", fill="x")
 
         btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
@@ -831,7 +831,7 @@ class Application(tk.Tk, Funções):
         label_panturrilha_text.pack()
 
         # Frame inferior com botão Voltar
-        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#7fd350", corner_radius=0, height=50)
+        frame_inferior = ctk.CTkFrame(background_frame, fg_color="#5ce1e6", corner_radius=0, height=50)
         frame_inferior.pack(side="bottom", fill="x")
 
         btn_voltar = ctk.CTkButton(frame_inferior, text="Voltar", fg_color="#808080", hover_color="#A9A9A9", command=self.Inferiores, font=("Arial", 18, "bold"), width=150, height=50)
