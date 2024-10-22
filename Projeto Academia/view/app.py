@@ -985,6 +985,7 @@ class Application(tk.Tk, Funções):
         # Labels e entradas para data de nascimento
         self.entry_dataDeNascimento = ctk.CTkEntry(frame_verde, fg_color="#ffffff", text_color="Black", font=nunito_font, placeholder_text=self.get_informacao("data_de_nascimento"))
         self.entry_dataDeNascimento.grid(row=2, column=1, pady=10)
+        print(type(self.get_informacao("data_de_nascimento")))
 
         # Botão do calendário com cor preta
         btn_abrir_calendario = ctk.CTkButton(frame_verde, text="🗓️", font=("Arial", 16, 'bold'), width=15, command=self.abrir_calendario)

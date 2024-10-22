@@ -13,19 +13,6 @@ class Funções():
     def __init__(self):
         self.controler = UsuarioController()
 
-    # Funções para acrescentar placeholder
-    def on_entry_click(self, event):
-        if len(entry.get()) > 0:  # type: ignore # Texto do placeholder
-            entry.delete(0, tk.END)  # type: ignore # Limpa o placeholder
-            entry.configure(fg_color='white')  # type: ignore # Muda a cor de fundo para branco
-            entry.configure(fg='black')  # type: ignore # Muda a cor do texto
-
-    def on_focusout(self, event):
-        if entry.get() == '':  # type: ignore # Se o campo estiver vazio
-            entry.insert(0, 'Digite aqui...')  # type: ignore # Reinsere o placeholder
-            entry.configure(fg_color='grey')  # type: ignore # Muda a cor de fundo para cinza
-            entry.configure(fg='grey')  # type: ignore # Muda a cor do texto
-
     def Exibir_senha(self):
         if self.check_senha.get() == 1:
             self.entry_senha.configure(show="")
@@ -168,6 +155,20 @@ class Funções():
 
     def validando_login(self):
         nome = self.entry_nome.get().strip()
+        data_de_nascimento = self.entry_dataDeNascimento.get().strip()
+
+        # Verificando atributos
+        if len(nome) < 3 or not nome.isalpha():
+            messagebox.showerror("Erro", "O nome deve ter pelo menos 3 letras e conter apenas caracteres alfabéticos.")
+            return
+        
+        if not data_de_nascimento:
+            messagebox.showerror("Erro", "A data de nascimento não pode estar vazia.")
+            return
+        
+        #Convertendo data antes de enviar
+        data_de_nascimento =  datetime.strptime(data_de_nascimento, "%d/%m/%Y")
+        data_de_nascimento = data_de_nascimento.date()
         
         # Chama o método do controlador para validar o login
         if self.controler.fazer_login(nome.upper()) :
@@ -176,6 +177,7 @@ class Funções():
         else:
             pass
     
+
     def puxar_informacoes(self):
         user_name = self.nome_usuario.strip().upper()
 
@@ -185,7 +187,6 @@ class Funções():
 
             if user:
                 self.informacoes = user
-
 
             else:
                 messagebox.showinfo("Info", "Usuario não encontrado")
