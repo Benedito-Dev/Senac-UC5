@@ -39,11 +39,7 @@ class Funções():
 
     def validar_dados(self):
         nome = self.entry_nome.get().strip()
-        email = self.entry_email.get().strip()
-        senha = self.entry_senha.get().strip()
-        telefone = self.entry_telefone.get().strip()
-        endereco = self.entry_endereco.get().strip()
-        cpf = self.entry_cpf.get().strip()
+
         data_de_nascimento = self.entry_dataDeNascimento.get().strip()
 
         # Validação do nome (mínimo de 3 letras, apenas caracteres alfabéticos)
@@ -51,89 +47,51 @@ class Funções():
             messagebox.showerror("Erro", "O nome deve ter pelo menos 3 letras e conter apenas caracteres alfabéticos.")
             return
 
-        # Validação de e-mail (usando expressão regular)
-        email_pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-        if not re.match(email_pattern, email):
-            messagebox.showerror("Erro", "Por favor, insira um e-mail válido.")
-            return
-        
-        if not self.controler.validar_email(email):
-            messagebox.showerror("Erro", "Email já cadastrado no sistema. ")
-            return
-
-        # Validação de senha (mínimo de 8 caracteres, deve conter letras e números)
-        if len(senha) < 8 or not any(char.isdigit() for char in senha) or not any(char.isalpha() for char in senha):
-            messagebox.showerror("Erro", "A senha deve ter pelo menos 8 caracteres e conter letras e números.")
-            return
-
-        # Validação de telefone (deve conter apenas dígitos e ter 10 ou 11 números)
-        if not telefone.isdigit() or not (10 <= len(telefone) <= 11):
-            messagebox.showerror("Erro", "O telefone deve conter apenas números e ter 10 ou 11 dígitos.")
-            return
-
-        # Validação de endereço (mínimo de 5 caracteres, qualquer valor é permitido)
-        if len(endereco) < 5:
-            messagebox.showerror("Erro", "O endereço deve ter pelo menos 5 caracteres.")
-            return
-
-        if len(cpf) != 11:  # Corrigido para verificar se o CPF tem exatamente 11 dígitos
-            messagebox.showerror("Erro", "O CPF deve ter exatamente 11 dígitos.")
-            return
-        
-        # Verifica se o CPF já está cadastrado
-        if not self.controler.validar_cpf(cpf):
-            messagebox.showerror("Erro", "O CPF já está cadastrado no sistema.")
-            return
-        
-        if self.validar_data(data_de_nascimento):
-            messagebox.showerror("Erro", "Insira uma data valida por favor")
-            return
-
         # Se todos os dados estiverem válidos, prosseguir com a lógica de envio
-        self.enviar_dados(nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco, cpf=cpf, data_de_nascimento=data_de_nascimento)
+        self.enviar_dados(nome=nome, data_de_nascimento=data_de_nascimento)
 
     # Função para validar a idade do novo usuário
 
-    def enviar_dados(self, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
-        if self.controler.adicionar_usuario(nome.upper(), email, senha, telefone, endereco, cpf, data_de_nascimento):
+    def enviar_dados(self, nome, data_de_nascimento):
+        if self.controler.adicionar_usuario(nome.upper(), data_de_nascimento):
             self.after(500, self.menu_inicial)
 
             
     from datetime import datetime, date
 
-    def validar_data(self, data_nascimento_str):
-        try:
-            if isinstance(data_nascimento_str, date):
-                data_nascimento = data_nascimento_str
-            
-            else:
-                data_nascimento = datetime.strptime(data_nascimento_str, '%d/%m/%Y').date()
+    # def validar_data(self, data_nascimento_str):
+    #     try:
+    #         if isinstance(data_nascimento_str, date):
+    #             data_nascimento = data_nascimento_str
 
-            # Obtém a data atual
-            data_atual = datetime.now().date()
+    #         else:
+    #             data_nascimento = datetime.strptime(data_nascimento_str, '%d/%m/%Y').date()
 
-            # Verifica se a data de nascimento é no futuro
-            if data_nascimento > data_atual:
-                return True
+    #         # Obtém a data atual
+    #         data_atual = datetime.now().date()
 
-            # Calcula a diferença de anos
-            idade = data_atual.year - data_nascimento.year
+    #         # Verifica se a data de nascimento é no futuro
+    #         if data_nascimento > data_atual:
+    #             return True
 
-            # Ajusta a idade caso o aniversário ainda não tenha ocorrido este ano
-            if (data_atual.month, data_atual.day) < (data_nascimento.month, data_nascimento.day):
-                idade -= 1
+    #         # Calcula a diferença de anos
+    #         idade = data_atual.year - data_nascimento.year
 
-            # Verifica se a idade é menor que 12
-            if idade >= 12:
-                return False
-            
-            else :
-                return True
+    #         # Ajusta a idade caso o aniversário ainda não tenha ocorrido este ano
+    #         if (data_atual.month, data_atual.day) < (data_nascimento.month, data_nascimento.day):
+    #             idade -= 1
 
-        except ValueError as e:
-                # Retorna False se o formato da data for inválido
-                print(f"O erro é {e}")
-                return False
+    #         # Verifica se a idade é menor que 12
+    #         if idade >= 12:
+    #             return False
+
+    #         else :
+    #             return True
+
+    #     except ValueError as e:
+    #             # Retorna False se o formato da data for inválido
+    #             print(f"O erro é {e}")
+    #             return False
 
 
     def abrir_calendario(self):

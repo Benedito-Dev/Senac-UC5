@@ -10,12 +10,13 @@ class UsuarioController:
         self.repository.init_db()
 
     # Controlador responsável por criar um produto
-    def adicionar_usuario(self, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
+    def adicionar_usuario(self, nome, data_de_nascimento):
         # Convertendo data de nascimento para formato Correto
-        data_de_nascimento = datetime.strptime(data_de_nascimento, '%d/%m/%Y').date()
+        data_de_nascimento =  datetime.strptime(data_de_nascimento, "%d/%m/%Y")
+        data_de_nascimento = data_de_nascimento.date()
         try:
             # Mudado de self.db para self.controler
-            if self.repository.cadastrar_cliente(nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
+            if self.repository.cadastrar_cliente(nome, data_de_nascimento):
                 messagebox.showinfo("Sucesso", "Cadastro realizado com sucesso!")
                 return True
             else:

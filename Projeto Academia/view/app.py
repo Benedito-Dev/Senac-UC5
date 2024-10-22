@@ -148,51 +148,21 @@ class Application(tk.Tk, Funções):
         ctk.CTkLabel(frame, text="Nome:",text_color="white", font=("Arial", 14)).grid(row=1, column=0, sticky="e", padx=10)
         self.entry_nome = ctk.CTkEntry(frame)
         self.entry_nome.grid(row=1, column=1, pady=5)
-
-        # Email
-        ctk.CTkLabel(frame, text="Email:", text_color="white", font=("Arial", 14)).grid(row=2, column=0, sticky="e", padx=10)
-        self.entry_email = ctk.CTkEntry(frame)
-        self.entry_email.grid(row=2, column=1, pady=5)
-
-        # Senha
-        ctk.CTkLabel(frame, text="Senha:", text_color="white", font=("Arial", 14)).grid(row=3, column=0, sticky="e", padx=10)
-        self.entry_senha = ctk.CTkEntry(frame, show="*")
-        self.entry_senha.grid(row=3, column=1, pady=5)
-
-        # Checkbutton para mostrar senha
-        self.check_senha = ctk.IntVar()
-        check_button = ctk.CTkCheckBox(frame, text="Mostrar senha", text_color="white", variable=self.check_senha, command=self.Exibir_senha)
-        check_button.grid(row=4, column=1, sticky="w", padx=10)  # Posicionando à esquerda
-
-        # Telefone
-        ctk.CTkLabel(frame, text="Telefone:", text_color="white", font=("Arial", 14)).grid(row=5, column=0, sticky="e", padx=10)
-        self.entry_telefone = ctk.CTkEntry(frame)
-        self.entry_telefone.grid(row=5, column=1, pady=5)
-
-        # Endereço
-        ctk.CTkLabel(frame, text="Endereço:", text_color="white", font=("Arial", 14)).grid(row=6, column=0, sticky="e", padx=10)
-        self.entry_endereco = ctk.CTkEntry(frame)
-        self.entry_endereco.grid(row=6, column=1, pady=5)
-
-        #CPF 
-        ctk.CTkLabel(frame, text="CPF", text_color="white", font=("Arial", 14)).grid(row=7, column=0, sticky="e",padx=10)
-        self.entry_cpf = ctk.CTkEntry(frame)
-        self.entry_cpf.grid(row=7,column=1, pady=5)
         
         #Data de nascimento 
-        ctk.CTkLabel(frame, text="Data de nascimento", text_color="white", font=("Arial", 14)).grid(row=8,column=0, sticky="e", padx=10)
+        ctk.CTkLabel(frame, text="Data de nascimento", text_color="white", font=("Arial", 14)).grid(row=2,column=0, sticky="e", padx=10)
         
         self.entry_dataDeNascimento = ctk.CTkEntry(frame)
-        self.entry_dataDeNascimento.grid(row=8,column=1,pady=5)
+        self.entry_dataDeNascimento.grid(row=2,column=1,pady=5)
 
         btn_abrir_calendario = ttk.Button(frame, text="Escolher data", command=self.abrir_calendario)
-        btn_abrir_calendario.grid(row=8, column=2,padx=10)
+        btn_abrir_calendario.grid(row=2, column=2,padx=10)
 
         # Botão Cadastrar-se
-        ctk.CTkButton(frame,text="Cadastrar-se",fg_color="#609746", hover_color="#A9A9A9", command=self.validar_dados).grid(row=9,column=1,pady=10)
+        ctk.CTkButton(frame,text="Cadastrar-se",fg_color="#609746", hover_color="#A9A9A9", command=self.validar_dados).grid(row=3,column=1,pady=10)
 
         # Botão Voltar
-        ctk.CTkButton(frame, text="Voltar",fg_color="#808080", hover_color="#A9A9A9", command=self.realizar_login).grid(row=10, column=1,pady=10)
+        ctk.CTkButton(frame, text="Voltar",fg_color="#808080", hover_color="#A9A9A9", command=self.realizar_login).grid(row=4, column=1,pady=10)
 
     def Home(self):
         for widget in self.winfo_children():
