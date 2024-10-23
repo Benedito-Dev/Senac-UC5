@@ -127,7 +127,7 @@ class Funções():
         data_de_nascimento = data_de_nascimento.date()
         
         # Chama o método do controlador para validar o login
-        if self.controler.fazer_login(nome.upper()) :
+        if self.controler.fazer_login(nome.upper(), data_de_nascimento) :
             self.nome_usuario = nome.capitalize()
             self.after(500, self.Home)
         else:
