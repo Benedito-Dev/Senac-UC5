@@ -39,7 +39,6 @@ class Funções():
 
     def validar_dados(self):
         nome = self.entry_nome.get().strip()
-
         data_de_nascimento = self.entry_dataDeNascimento.get().strip()
 
         # Validação do nome (mínimo de 3 letras, apenas caracteres alfabéticos)
