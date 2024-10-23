@@ -825,13 +825,11 @@ class Application(tk.Tk, Funções):
         title = tk.Label(background_frame, text="Perfis dos Clientes", fg="white", bg="#313131", font=("Arial", 20))
         title.pack(pady=20)
 
-        colunas = ("ID", "Nome", "Email", "Telefone", "Endereço") 
+        colunas = ("ID", "Nome", "Data_de_nascimento") 
         self.tree = ttk.Treeview(background_frame, columns=colunas, show='headings')
         self.tree.heading("ID", text="ID")
         self.tree.heading("Nome", text="Nome")
-        self.tree.heading("Email", text="Email")
-        self.tree.heading("Telefone", text="Telefone")
-        self.tree.heading("Endereço", text="Endereço")
+        self.tree.heading("Data_de_nascimento", text="Data_de_nascimento")
         self.tree.pack(pady=0, fill=tk.BOTH, expand=True)
         self.carregar_perfis()
 

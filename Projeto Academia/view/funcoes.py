@@ -29,9 +29,8 @@ class Funções():
             for user in users:
                 id = user.id  # Acessando o atributo 'id'
                 nome = user.nome  # Acessando o atributo 'nome'
-                email = user.email  # Acessando o atributo 'email'
-                telefone = user.telefone  # Acessando o atributo 'telefone' # Acessando o atributo 'endereco'
-                self.tree.insert('', tk.END, values=(id, nome, email, telefone))
+                data_de_nascimento = user.data_de_nascimento
+                self.tree.insert('', tk.END, values=(id, nome, data_de_nascimento))
 
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao carregar perfis: {e}")
