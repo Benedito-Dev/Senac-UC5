@@ -10,12 +10,13 @@ class UsuarioController:
         self.repository.init_db()
 
     # Controlador responsável por criar um produto
-    def adicionar_usuario(self, nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
+    def adicionar_usuario(self, nome, data_de_nascimento):
         # Convertendo data de nascimento para formato Correto
-        data_de_nascimento = datetime.strptime(data_de_nascimento, '%d/%m/%Y').date()
+        data_de_nascimento =  datetime.strptime(data_de_nascimento, "%d/%m/%Y")
+        data_de_nascimento = data_de_nascimento.date()
         try:
             # Mudado de self.db para self.controler
-            if self.repository.cadastrar_cliente(nome, email, senha, telefone, endereco, cpf, data_de_nascimento):
+            if self.repository.cadastrar_cliente(nome, data_de_nascimento):
                 messagebox.showinfo("Sucesso", "Cadastro realizado com sucesso!")
                 return True
             else:
@@ -23,10 +24,10 @@ class UsuarioController:
         except Exception as e:
             messagebox.showerror("Erro", f"Erro ao cadastrar usuário: {e}")
 
-    def fazer_login(self, nome):
+    def fazer_login(self, nome, data_de_nascimento):
         # Chama a função validar_login do repository
             try:
-                if self.repository.validar_login(nome):
+                if self.repository.validar_login(nome, data_de_nascimento):
                     messagebox.showinfo("Sucesso", "Login Efetuado")
                     return True
                 else :
@@ -42,15 +43,11 @@ class UsuarioController:
         return self.repository.obter_usuario(nome)
 
     # Controlador responsável por atualizar um produto
-    def atualizar_usuario(self, id, nome, data_de_nascimento, endereco, telefone, email, senha):
+    def atualizar_usuario(self, id, nome, data_de_nascimento):
         try:
             nome = nome
             data_de_nascimento = data_de_nascimento
-            endereco = endereco
-            telefone = telefone
-            email = email
-            senha = senha
-            self.repository.atualizar_cliente(id, nome=nome, email=email, senha=senha, telefone=telefone, endereco=endereco, data_de_nascimento=data_de_nascimento)
+            self.repository.atualizar_cliente(id, nome=nome, data_de_nascimento=data_de_nascimento)
             messagebox.showinfo("Sucesso", "Informações Alteradas com sucesso")
 
         except Exception as e:
