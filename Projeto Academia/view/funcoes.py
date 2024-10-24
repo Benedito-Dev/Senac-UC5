@@ -25,6 +25,7 @@ class Funções():
             # Obtendo os dados da tabela através do controlador
             users = self.controler.listar_usuarios()
 
+            #Ordendando lista de usuarios por nome
             users = sorted(users, key=lambda user : user.nome)
 
             # Inserindo os dados na ordem correta no TreeView
