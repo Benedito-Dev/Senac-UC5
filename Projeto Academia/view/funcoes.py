@@ -25,6 +25,8 @@ class Funções():
             # Obtendo os dados da tabela através do controlador
             users = self.controler.listar_usuarios()
 
+            users = sorted(users, key=lambda user : user.nome)
+
             # Inserindo os dados na ordem correta no TreeView
             for user in users:
                 id = user.id  # Acessando o atributo 'id'
@@ -53,43 +55,6 @@ class Funções():
     def enviar_dados(self, nome, data_de_nascimento):
         if self.controler.adicionar_usuario(nome.upper(), data_de_nascimento):
             self.after(500, self.menu_inicial)
-
-            
-    from datetime import datetime, date
-
-    # def validar_data(self, data_nascimento_str):
-    #     try:
-    #         if isinstance(data_nascimento_str, date):
-    #             data_nascimento = data_nascimento_str
-
-    #         else:
-    #             data_nascimento = datetime.strptime(data_nascimento_str, '%d/%m/%Y').date()
-
-    #         # Obtém a data atual
-    #         data_atual = datetime.now().date()
-
-    #         # Verifica se a data de nascimento é no futuro
-    #         if data_nascimento > data_atual:
-    #             return True
-
-    #         # Calcula a diferença de anos
-    #         idade = data_atual.year - data_nascimento.year
-
-    #         # Ajusta a idade caso o aniversário ainda não tenha ocorrido este ano
-    #         if (data_atual.month, data_atual.day) < (data_nascimento.month, data_nascimento.day):
-    #             idade -= 1
-
-    #         # Verifica se a idade é menor que 12
-    #         if idade >= 12:
-    #             return False
-
-    #         else :
-    #             return True
-
-    #     except ValueError as e:
-    #             # Retorna False se o formato da data for inválido
-    #             print(f"O erro é {e}")
-    #             return False
 
 
     def abrir_calendario(self):

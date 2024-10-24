@@ -164,7 +164,7 @@ class Application(tk.Tk, Funções):
         btn_abrir_calendario.grid(row=2, column=0, padx=(20, 0))
 
         # Botão Cadastrar-se
-        ctk.CTkButton(frame, text="Acessar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.validar_dados).grid(row=3, column=0, columnspan=2, pady=10)
+        ctk.CTkButton(frame, text="Cadastrar Novo Cliente", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.validar_dados).grid(row=3, column=0, columnspan=2, pady=10)
 
         # Botão Voltar
         ctk.CTkButton(frame, text="Voltar", font=("Arial", 18), width=160, fg_color="#808080", hover_color="#A9A9A9", command=self.realizar_login).grid(row=4, column=0, columnspan=2, pady=10)
