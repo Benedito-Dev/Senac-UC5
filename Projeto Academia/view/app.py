@@ -954,7 +954,7 @@ class Application(tk.Tk, Funções):
         frame.grid(row=0, column=0, padx=10, pady=10)
 
         # Título
-        titulo = ctk.CTkLabel(frame, text="Realizar login", text_color="white", font=("Arial", 20))
+        titulo = ctk.CTkLabel(frame, text="Alterar Informações", text_color="white", font=("Arial", 20))
         titulo.grid(row=0, column=0, columnspan=2, pady=10)
 
         # Nome do usuário
